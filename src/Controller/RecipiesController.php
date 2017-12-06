@@ -3,16 +3,28 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class RecipiesController
+class RecipiesController extends Controller
 {
     /**
-    * @Route("/getRecipies")
+    * @Route("/getRestaurants")
     */
-    public function getRecipies()
+    public function getRestaurants()
     {
         return new Response(
-            '<html><body><h1>Recipies</h1></body></html>'
+            '<html><body><h1>Restaurants</h1></body></html>'
         );
+    }
+
+    /**
+    * @Route("/getRestaurant/restaurant")
+    */
+    public function getRestaurant()
+    {
+        $restaurant = 'Knajpka na fyrtlu';
+        return $this->render('getRestaurant/restaurant.html.twig', array(
+            'restaurant' => $restaurant,
+        ));
     }
 }
