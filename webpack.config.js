@@ -11,6 +11,12 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('main', './assets/js/main.js')
 
+    .createSharedEntry('vendor', [
+        'jquery',
+        'bootstrap',
+        'bootstrap-sass/assets/stylesheets/_bootstrap.scss'
+    ])
+
     // allow sass/scss files to be processed
     .enableSassLoader(function(sassOptions) {}, {
         resolveUrlLoader: false
