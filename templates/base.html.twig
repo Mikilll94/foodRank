@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}Test Application{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('build/vendor.css') }}" />
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">

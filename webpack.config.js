@@ -10,9 +10,11 @@ Encore
 
     .addEntry('app', './assets/js/app.js')
     .addEntry('main', './assets/js/main.js')
+    .addEntry('restaurant_index', './assets/css/restaurant_index.scss')
     .addEntry('image1', './assets/images/image1.jpg')
     .addEntry('image2', './assets/images/image2.jpg')
     .addEntry('image3', './assets/images/image3.jpg')
+    .addEntry('image4', './assets/images/image4.jpg')
 
     .createSharedEntry('vendor', [
         'jquery',
