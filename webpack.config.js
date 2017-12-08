@@ -10,6 +10,9 @@ Encore
 
     .addEntry('app', './assets/js/app.js')
     .addEntry('main', './assets/js/main.js')
+    .addEntry('image1', './assets/images/image1.jpg')
+    .addEntry('image2', './assets/images/image2.jpg')
+    .addEntry('image3', './assets/images/image3.jpg')
 
     .createSharedEntry('vendor', [
         'jquery',
