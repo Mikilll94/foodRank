@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {#<link rel="stylesheet" href="{{ asset('build/app.css') }}">#}
+    <meta charset="UTF-8">
+    <title>{% block title %}Test Application{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
 </head>
 <body>
+    <div id="content">{% block content %}{% endblock %}</div>
     <script src="{{ asset('build/app.js') }}"></script>
+    <script src="{{ asset('build/main.js') }}"></script>
 </body>
 </html>

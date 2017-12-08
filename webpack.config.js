@@ -8,11 +8,13 @@ Encore
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
 
-    // will create public/build/app.js and public/build/app.css
     .addEntry('app', './assets/js/app.js')
+    .addEntry('main', './assets/js/main.js')
 
     // allow sass/scss files to be processed
-    .enableSassLoader()
+    .enableSassLoader(function(sassOptions) {}, {
+        resolveUrlLoader: false
+    })
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
