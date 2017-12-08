@@ -3,5 +3,5 @@ var $ = require('jquery');
 var greet = require('./greet');
 
 $(document).ready(function() {
-    alert(greet('john'));
+    console.log(greet('john'));
 });
