@@ -6,7 +6,7 @@ parameters:
     env(DATABASE_URL): ''
 
 doctrine:
-    foodrank:
+    dbal:
         driver: 'pdo_pgsql'
         server_version: '10'
         charset: utf8mb4
