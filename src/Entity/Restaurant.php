@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RestaurantRepository")
+ * @Table(name="restaurants")
  */
 class Restaurant
 {
@@ -27,12 +29,12 @@ class Restaurant
     private $image_url;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=500)
      */
     private $short_description;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $description;
 
