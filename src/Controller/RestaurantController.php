@@ -6,18 +6,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Symfony\Component\Debug\Debug;
-
 class RestaurantController extends Controller
 {
     /**
+    * @Route("/", name="all_restaurants")
     * @Route("restaurants")
     */
     public function Index()
     {
-        Debug::enable();
         $restaurants = $this->getDoctrine()
-            ->getRepository(Restaurant::class)->findAll();
+            ->getRepository(Restaurant::class)
+            ->findAll();
 
         return $this->render('Restaurant/index.html.twig',
             [ 'restaurants' => $restaurants ]);
@@ -32,12 +31,16 @@ class RestaurantController extends Controller
     }
 
     /**
-    * @Route("restaurants/{restaurantId}", name="restaurant_details", requirements={"restaurantId"="\d+"})
+    * @Route("restaurants/{restaurant_id}", name="restaurant_details", requirements={"restaurant_id"="\d+"})
     */
-    public function Details($restaurantId)
+    public function Details($restaurant_id)
     {
+        $restaurant = $this->getDoctrine()
+            ->getRepository(Restaurant::class)
+            ->find($restaurant_id);
+
         return $this->render('Restaurant/details.html.twig', array(
-            'restaurantId' => $restaurantId,
+            'restaurant' => $restaurant,
         ));
     }
 }
