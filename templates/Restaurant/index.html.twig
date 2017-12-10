@@ -24,57 +24,20 @@
 
     <div class="row text-center">
 
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail restaurant-thumbnail">
-                <img src="{{ asset('build/images/image1.8e9b4ad0.jpg') }}" alt="cannot load image" class="restaurant-image">
-                <div class="caption">
-                    <h3>Tutti Santi</h3>
-                    <p>Jedyna w Polsce pizzeria pod patronatem Mistrza Włoch i vice-mistrza świata. Valeria Valle.</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">Więcej informacji</a>
-                    </p>
+        {% for restaurant in restaurants %}
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail restaurant-thumbnail">
+                    <img src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}" alt="cannot load image" class="restaurant-image">
+                    <div class="caption">
+                        <h3>{{ restaurant.getName() }}</h3>
+                        <p>{{ restaurant.getShortDescription() }}</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">Więcej informacji</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail restaurant-thumbnail">
-                <img src="{{ asset('build/images/image2.e9e95845.jpg') }}" alt="cannot load image" class="restaurant-image">
-                <div class="caption">
-                    <h3>A nóż widelec</h3>
-                    <p>Odwiedzając A nóż widelec, wkraczasz w wielowymiarowy świat smaków i aromatów kuchni wielkopolskiej jak również europejskiej.</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail restaurant-thumbnail">
-                <img src="{{ asset('build/images/image3.5122cb7d.jpg') }}" alt="cannot load image" class="restaurant-image">
-                <div class="caption">
-                    <h3>Weranda Caffe</h3>
-                    <p>Ukryta w samym centrum, tuż przy Starym Rynku, jest idealnie przytulna i zachwyca swym urokiem. Ta niewielka kawiarnia czaruje detalami – od kształtu filiżanki, giętych brzegów drewnianych stołów po zapach idealnie dobranych świeżych kwiatów. Na dziedzińcu schowany jest zaciszny ogród, w którym można zapomnieć o zgiełku miasta i zatopić się we wszechobecnej zieleni..</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail restaurant-thumbnail">
-                <img src="{{ asset('build/images/image4.5da1b52f.jpg') }}" alt="cannot load image" class="restaurant-image">
-                <div class="caption">
-                    <h3>Restauracja Papierówka</h3>
-                    <p>Papierówka to zielona odskocznia w centrum miasta. U nas zjesz lekką kuchnię regionalną urozmaiconą sezonowo, odpoczniesz w cieniu parku Zakrzewskiego oraz uraczysz się soczystymi jabłkami..</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                    </p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
 
     </div>
 {% endblock %}
