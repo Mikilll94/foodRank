@@ -32,7 +32,7 @@ class RestaurantController extends Controller
     }
 
     /**
-    * @Route("restaurants/details/{restaurantId}")
+    * @Route("restaurants/{restaurantId}", name="restaurant_details", requirements={"restaurantId"="\d+"})
     */
     public function Details($restaurantId)
     {
