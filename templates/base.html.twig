@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>{% block title %}Test Application{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('build/vendor.css') }}" />
+    <link rel="stylesheet" href="{{ asset('build/global.css') }}"></link>
+    <link rel="stylesheet" href="{{ asset('build/footer.css') }}"></link>
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -14,7 +16,6 @@
     {% include 'footer.html.twig' %}
     <script src="{{ asset('build/manifest.js') }}"></script>
     <script src="{{ asset('build/vendor.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('build/footer.css') }}"></link>
     {% block javascripts %}{% endblock %}
 </body>
 </html>

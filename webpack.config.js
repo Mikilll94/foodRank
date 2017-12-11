@@ -3,6 +3,7 @@ var Encore = require('@symfony/webpack-encore');
 Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
+    .addEntry('global', './assets/js/global.js')
     .addEntry('footer', './assets/js/footer.js')
     .addEntry('restaurant_index', './assets/js/restaurant_index.js')
     .addEntry('restaurant_details', './assets/js/restaurant_details.js')
