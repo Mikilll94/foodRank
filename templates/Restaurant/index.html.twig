@@ -28,7 +28,7 @@
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail restaurant-thumbnail">
                     <img src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}" alt="cannot load image" class="restaurant-image">
-                    <div class="caption">
+                    <div class="caption restaurant-caption">
                         <h3>{{ restaurant.getName() }}</h3>
                         <p>{{ restaurant.getShortDescription() }}</p>
                         <p>
@@ -40,4 +40,7 @@
         {% endfor %}
 
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script src={{ asset('build/js/restaurant_index.js') }}></script>
 {% endblock %}

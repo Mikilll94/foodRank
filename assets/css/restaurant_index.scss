@@ -16,9 +16,9 @@ footer {
 
 .restaurant-thumbnail {
   border: 1px solid black;
+  height: 370px;
 }
 
-//.restaurant-image {
-//  height: 165px;
-//  width: 220px;
-//}
+.thumbnail .restaurant-caption.caption {
+  padding-top: 0px
+}

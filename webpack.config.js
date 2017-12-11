@@ -11,6 +11,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('main', './assets/js/main.js')
     .addEntry('restaurant_index', './assets/css/restaurant_index.scss')
+    .addEntry('js/restaurant_index', './assets/js/restaurant_index.js')
     .addEntry('restaurant_details', './assets/css/restaurant_details.scss')
     .addEntry('image1', './assets/images/image1.jpg')
     .addEntry('image2', './assets/images/image2.jpg')
