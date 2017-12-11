@@ -1,9 +1,5 @@
-var $ = require('jquery');
-
-$(document).ready(function() {
-    var maxHeight = Math.max.apply(null, $(".restaurant-thumbnail").map(function ()
-    {
-        return $(this).height();
-    }).get());
-    console.log("MAX HEIGHT", maxHeight);
-});
+require('../css/restaurant_index.scss')
+require('../images/image1.jpg')
+require('../images/image2.jpg')
+require('../images/image3.jpg')
+require('../images/image4.jpg')
