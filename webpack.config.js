@@ -4,7 +4,7 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('restaurant_index', './assets/js/restaurant_index.js')
-    .addEntry('restaurant_details', './assets/css/restaurant_details.scss')
+    .addEntry('restaurant_details', './assets/js/restaurant_details.js')
     .createSharedEntry('vendor', [
         'jquery',
         'bootstrap',

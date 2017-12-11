@@ -1,0 +1,1 @@
+require('../css/restaurant_details.scss')
