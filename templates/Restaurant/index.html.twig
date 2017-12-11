@@ -31,11 +31,12 @@
                     <div class="caption restaurant-caption">
                         <h3>{{ restaurant.getName() }}</h3>
                         <p>{{ restaurant.getShortDescription() }}</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a><a href="{{ path('restaurant_details', {'restaurant_id': restaurant.getId()}) }}" class="btn btn-default">Więcej informacji</a>
-                        </p>
                     </div>
                 </div>
+                <button class="btn btn-primary btn-more-info"
+                    href="{{ path('restaurant_details', {'restaurant_id': restaurant.getId()}) }}"
+                    class="btn btn-default">Więcej informacji
+                </button>
             </div>
         {% endfor %}
 

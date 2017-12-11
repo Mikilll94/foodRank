@@ -16,9 +16,15 @@ footer {
 
 .restaurant-thumbnail {
   border: 1px solid black;
-  height: 370px;
+  border-bottom: none;
+  height: 320px;
+  margin-bottom: 0px;
 }
 
 .thumbnail .restaurant-caption.caption {
-  padding-top: 0px
+  padding-top: 0px;
+}
+
+.btn-more-info {
+  width: 100%;
 }
