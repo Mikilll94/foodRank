@@ -26,102 +26,6 @@ class Comment
     private $restaurant;
 
     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRestaurant()
-    {
-        return $this->restaurant;
-    }
-
-    /**
-     * @param mixed $restaurant
-     */
-    public function setRestaurant($restaurant): void
-    {
-        $this->restaurant = $restaurant;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param mixed $author
-     */
-    public function setAuthor($author): void
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
-     * @param mixed $content
-     */
-    public function setContent($content): void
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRate()
-    {
-        return $this->rate;
-    }
-
-    /**
-     * @param mixed $rate
-     */
-    public function setRate($rate): void
-    {
-        $this->rate = $rate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPostingDate()
-    {
-        return $this->posting_date;
-    }
-
-    /**
-     * @param mixed $posting_date
-     */
-    public function setPostingDate($posting_date): void
-    {
-        $this->posting_date = $posting_date;
-    }
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $author;
@@ -144,4 +48,59 @@ class Comment
      * @ORM\Column(type="datetime")
      */
     private $posting_date;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
+
+    public function setRestaurant($restaurant): void
+    {
+        $this->restaurant = $restaurant;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function setAuthor($author): void
+    {
+        $this->author = $author;
+    }
+
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    public function setContent($content): void
+    {
+        $this->content = $content;
+    }
+
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    public function setRate($rate): void
+    {
+        $this->rate = $rate;
+    }
+
+    public function getPostingDate()
+    {
+        return $this->posting_date;
+    }
+
+    public function setPostingDate($posting_date): void
+    {
+        $this->posting_date = $posting_date;
+    }
 }

@@ -32,9 +32,9 @@
                 <div class="text-right">
                     <a class="btn btn-success">Wystaw opinię</a>
                 </div>
-                <hr>
 
                 {% for comment in restaurant.comments %}
+                    <hr>
                     <div class="row">
                         <div class="col-md-12">
                             <span class="glyphicon glyphicon-star"></span>
@@ -43,41 +43,11 @@
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star-empty"></span>
                             {{ comment.getAuthor() }}
-                            <span class="pull-right">{{ comment.getPostingDate() | date("m/d/Y") }}</span>
+                            <span class="pull-right">{{ comment.getPostingDate() | date("m-d-Y H:i:s") }}</span>
                             <p>{{ comment.getContent() }}</p>
                         </div>
                     </div>
                 {% endfor %}
-                {#<hr>#}
-
-                {#<div class="row">#}
-                    {#<div class="col-md-12">#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star-empty"></span>#}
-                        {#Anonymous#}
-                        {#<span class="pull-right">12 days ago</span>#}
-                        {#<p>I've alredy ordered another one!</p>#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<hr>#}
-
-                {#<div class="row">#}
-                    {#<div class="col-md-12">#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star"></span>#}
-                        {#<span class="glyphicon glyphicon-star-empty"></span>#}
-                        {#Anonymous#}
-                        {#<span class="pull-right">15 days ago</span>#}
-                        {#<p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>#}
-                    {#</div>#}
-
-                </div>
             </div>
         </div>
     </div>
