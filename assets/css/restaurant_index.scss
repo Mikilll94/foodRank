@@ -20,8 +20,9 @@ body {
   padding: 0px;
 }
 
-.restaurant-thumbnail > img {
+.restaurant-thumbnail > img, .restaurant-caption {
   display: flex;
+  flex-direction: column;
   flex: 1 0 auto;
 }
 
@@ -37,6 +38,7 @@ body {
 
 .restaurants-flex-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .restaurant-flex-item {
