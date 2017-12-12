@@ -43,7 +43,7 @@
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star-empty"></span>
                             {{ comment.getAuthor() }}
-                            <span class="pull-right">2016-01-02</span>
+                            <span class="pull-right">{{ comment.getPostingDate()|date("m/d/Y") }}</span>
                             <p>{{ comment.getContent() }}</p>
                         </div>
                     </div>
