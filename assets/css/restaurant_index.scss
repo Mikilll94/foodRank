@@ -15,7 +15,15 @@ body {
   border-bottom: none;
   margin-bottom: 0px;
   border-radius: 4px 4px 0 0;
+  display: flex;
+  flex-direction: column;
 }
+
+.restaurant-thumbnail > img {
+  display: flex;
+  flex: 1 0 auto;
+}
+
 
 .thumbnail .restaurant-caption.caption {
   padding-top: 0px;
@@ -24,4 +32,12 @@ body {
 .btn.btn-more-info {
   width: 100%;
   border-radius: 0 0 4px 4px;
+}
+
+.restaurants-flex-container {
+  display: flex;
+}
+
+.restaurant-flex-item {
+  display: flex;
 }

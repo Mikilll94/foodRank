@@ -13,20 +13,22 @@
         </div>
     </div>
 
-    <div class="row text-center">
+    <div class="row text-center restaurants-flex-container">
         {% for restaurant in restaurants %}
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-md-3 col-sm-6 hero-feature restaurant-flex-item">
                 <div class="thumbnail restaurant-thumbnail">
                     <img src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}" alt="cannot load image" class="restaurant-image">
                     <div class="caption restaurant-caption">
                         <h3>{{ restaurant.getName() }}</h3>
                         <p>{{ restaurant.getShortDescription() }}</p>
+                        <p>
+                            <a class="btn btn-primary btn-more-info"
+                                href="{{ path('restaurant_details', {'restaurant_id': restaurant.getId()}) }}"
+                                class="btn btn-default">Więcej informacji
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <a class="btn btn-primary btn-more-info"
-                    href="{{ path('restaurant_details', {'restaurant_id': restaurant.getId()}) }}"
-                    class="btn btn-default">Więcej informacji
-                </a>
             </div>
         {% endfor %}
     </div>
