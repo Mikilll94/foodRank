@@ -38,6 +38,16 @@ class Restaurant
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="restaurant")
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;

@@ -17,3 +17,13 @@ VALUES ('Restauracja Papierówka', 'image4.be1a5d23.jpg', 'Jedyna w Polsce pizze
        'Papierówka to zielona odskocznia w centrum miasta. U nas zjesz lekką kuchnię regionalną urozmaiconą sezonowo, odpoczniesz w cieniu parku Zakrzewskiego oraz uraczysz się soczystymi jabłkami. Jesteśmy rodziną i naszą pasją od wielu lat jest gotowanie dla innych, przygotowywane dania przyrządzamy z najlepszych produktów z lokalnych gospodarstw.
 Starujemy już od 9.00 z pysznymi śniadaniami które dadzą wam energię na cały dzień, zapraszamy również na lunche i obiady.
 Papierówka to nie tylko smakowite dania ale również świetny wystrój: prosty świeży i przyjazny, już od progu poczęstuj się jabłkiem i rozpocznij przygodę z papierówką.');
+
+INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
+VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'Mikilll', 'Pyszna pizza, miła i sprawna obsługa, krótki czas oczekiwania na zamówienie :) Miejsce godne polecenia, duży plus za wegańską pizze :)',
+        5, '2016-04-02 13:25:27');
+INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
+VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'marta_k', 'Przemiła obsługa! Przepyszne jedzenie! Jestem zauroczona tym miejscem a odczucia Moje spowodowane są tym że tak dobra restauracja ( poziom wielkich miast) jest przyjazna nie tylko czlowiekowi ale również Zwierzętom!!!! Dziękujemy za wszystko i zapewniam że będziemy częstymi klientami ! Marta- mama Maks Olek i Kira - najlepszy pies na świecie',
+        5, '2017-01-23 20:12:34');
+INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
+VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'Wojtas123', 'Po półgodzinnym oczekiwaniu i obserwowaniu jak obsługiwani są klienci, którzy złożyli zamówienia znacznie później niż my, zdecydowałem się na zadanie pytania co z naszym zamówieniem. Okazało się, że kelnerka zapomniała, jak ona to określiła, nabić. Niby każdy może się pomylić, ale ja już podziękuję ...chociaż pizza owszem, dobra',
+        1, '2017-06-01 17:56:12');
