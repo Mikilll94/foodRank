@@ -19,8 +19,8 @@ Starujemy już od 9.00 z pysznymi śniadaniami które dadzą wam energię na ca�
 Papierówka to nie tylko smakowite dania ale również świetny wystrój: prosty świeży i przyjazny, już od progu poczęstuj się jabłkiem i rozpocznij przygodę z papierówką.');
 
 INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
-VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'Mikilll', 'Pyszna pizza, miła i sprawna obsługa, krótki czas oczekiwania na zamówienie :) Miejsce godne polecenia, duży plus za wegańską pizze :)',
-        5, '2016-04-02 13:25:27');
+VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'Gosiaddd', 'Pyszna pizza, miła i sprawna obsługa, krótki czas oczekiwania na zamówienie :) Miejsce godne polecenia. Niestety brakuje mi wegańskiej pizzy :)',
+        4, '2016-04-02 13:25:27');
 INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
 VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'marta_k', 'Przemiła obsługa! Przepyszne jedzenie! Jestem zauroczona tym miejscem a odczucia Moje spowodowane są tym że tak dobra restauracja ( poziom wielkich miast) jest przyjazna nie tylko czlowiekowi ale również Zwierzętom!!!! Dziękujemy za wszystko i zapewniam że będziemy częstymi klientami ! Marta- mama Maks Olek i Kira - najlepszy pies na świecie',
         5, '2017-01-23 20:12:34');
