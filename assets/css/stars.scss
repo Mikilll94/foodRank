@@ -1,12 +1,11 @@
-.stars {
+#form_rate {
   display: inline-block;
 }
-
-.stars input {
+#form_rate input {
   display: none;
 }
 
-.stars label {
+#form_rate label {
   float: right;
   padding: 2px;
   font-size: 24px;
@@ -14,15 +13,15 @@
   transition: all .2s;
 }
 
-.stars label:before {
+#form_rate label:before {
   content: '\2605';
 }
 
-.stars input:checked ~ label:before {
+#form_rate input:checked ~ label:before {
   color: gold;
   transition: all .25s;
 }
 
-.stars label:hover {
+#form_rate label:hover {
   transform: scale(1.3);
 }

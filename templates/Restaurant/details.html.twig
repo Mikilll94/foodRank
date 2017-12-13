@@ -31,26 +31,23 @@
             <div class="well comments-well">
                 {% form_theme form 'bootstrap_3_layout.html.twig' %}
                 {{ form_start(form) }}
-                    {#<div class="form-group stars">#}
-                        {#<input id="star-5" type="radio" name="star"/>#}
-                        {#<label for="star-5"></label>#}
-                        {#<input id="star-4" type="radio" name="star"/>#}
-                        {#<label for="star-4"></label>#}
-                        {#<input id="star-3" type="radio" name="star"/>#}
-                        {#<label for="star-3"></label>#}
-                        {#<input id="star-2" type="radio" name="star"/>#}
-                        {#<label for="star-2"></label>#}
-                        {#<input id="star-1" type="radio" name="star"/>#}
-                        {#<label for="star-1"></label>#}
-                    {#</div>#}
-                    {#<div class="form-group">#}
-                        {#<textarea class="form-control"></textarea>#}
-                    {#</div>#}
-                    {{ form_widget(form) }}
-                    <div class="text-right">
-                        <a class="btn btn-success">Wystaw opinię</a>
-                    </div>
-                {{ form_end(form    ) }}
+                <div id="form_rate">
+                    <input type="radio" id="form_rate_4" name="form[rate]" required="required" value="5">
+                    <label for="form_rate_4" class="required"></label>
+                    <input type="radio" id="form_rate_3" name="form[rate]" required="required" value="4">
+                    <label for="form_rate_3" class="required"></label>
+                    <input type="radio" id="form_rate_2" name="form[rate]" required="required" value="3">
+                    <label for="form_rate_2" class="required"></label>
+                    <input type="radio" id="form_rate_1" name="form[rate]" required="required" value="2">
+                    <label for="form_rate_1" class="required"></label>
+                    <input type="radio" id="form_rate_0" name="form[rate]" required="required" value="1">
+                    <label for="form_rate_0" class="required"></label>
+                </div>
+                {{ form_widget(form.content) }}
+                <div class="text-right">
+                    <a class="btn btn-success" type="submit">Wystaw opinię</a>
+                </div>
+                {{ form_end(form) }}
 
                 {% for comment in restaurant.comments %}
                     <hr>

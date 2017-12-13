@@ -41,17 +41,17 @@ class RestaurantController extends Controller
             ->find($restaurant_id);
 
         $form = $this->createFormBuilder()
-            ->add('rate', ChoiceType::class, array(
-                'choices' => array(
-                    '1' => 'Poor',
-                    '2' => 'Fair',
-                    '3' => 'Good',
-                    '4' => 'Very good',
-                    '5' => 'Excellent'
-                ),
-                'expanded'    => true,
-                'multiple' => false,
-            ))
+//            ->add('rate', ChoiceType::class, array(
+//                'choices' => array(
+//                    '1' => '1',
+//                    '2' => '2',
+//                    '3' => '3',
+//                    '4' => '4',
+//                    '5' => '5'
+//                ),
+//                'expanded'    => true,
+//                'multiple' => false,
+//            ))
             ->add('content', TextareaType::class)
             ->getForm();
 
