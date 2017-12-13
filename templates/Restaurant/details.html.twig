@@ -29,26 +29,28 @@
             </div>
 
             <div class="well comments-well">
-                <form>
-                    <div class="form-group stars">
-                        <input id="star-5" type="radio" name="star"/>
-                        <label for="star-5"></label>
-                        <input id="star-4" type="radio" name="star"/>
-                        <label for="star-4"></label>
-                        <input id="star-3" type="radio" name="star"/>
-                        <label for="star-3"></label>
-                        <input id="star-2" type="radio" name="star"/>
-                        <label for="star-2"></label>
-                        <input id="star-1" type="radio" name="star"/>
-                        <label for="star-1"></label>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control"></textarea>
-                    </div>
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                {{ form_start(form) }}
+                    {#<div class="form-group stars">#}
+                        {#<input id="star-5" type="radio" name="star"/>#}
+                        {#<label for="star-5"></label>#}
+                        {#<input id="star-4" type="radio" name="star"/>#}
+                        {#<label for="star-4"></label>#}
+                        {#<input id="star-3" type="radio" name="star"/>#}
+                        {#<label for="star-3"></label>#}
+                        {#<input id="star-2" type="radio" name="star"/>#}
+                        {#<label for="star-2"></label>#}
+                        {#<input id="star-1" type="radio" name="star"/>#}
+                        {#<label for="star-1"></label>#}
+                    {#</div>#}
+                    {#<div class="form-group">#}
+                        {#<textarea class="form-control"></textarea>#}
+                    {#</div>#}
+                    {{ form_widget(form) }}
                     <div class="text-right">
                         <a class="btn btn-success">Wystaw opinię</a>
                     </div>
-                </form>
+                {{ form_end(form    ) }}
 
                 {% for comment in restaurant.comments %}
                     <hr>

@@ -2,7 +2,8 @@
 namespace App\Controller;
 
 use App\Entity\Restaurant;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -39,8 +40,24 @@ class RestaurantController extends Controller
             ->getRepository(Restaurant::class)
             ->find($restaurant_id);
 
+        $form = $this->createFormBuilder()
+            ->add('rate', ChoiceType::class, array(
+                'choices' => array(
+                    '1' => 'Poor',
+                    '2' => 'Fair',
+                    '3' => 'Good',
+                    '4' => 'Very good',
+                    '5' => 'Excellent'
+                ),
+                'expanded'    => true,
+                'multiple' => false,
+            ))
+            ->add('content', TextareaType::class)
+            ->getForm();
+
         return $this->render('Restaurant/details.html.twig', array(
             'restaurant' => $restaurant,
+            'form' => $form->createView(),
         ));
     }
 }
