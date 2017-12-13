@@ -11,21 +11,25 @@ body {
 }
 
 .thumbnail.restaurant-thumbnail {
-  border: 1px solid black;
   border-bottom: none;
   margin-bottom: 0px;
-  border-radius: 4px 4px 0 0;
   display: flex;
   flex-direction: column;
   padding: 0px;
 }
 
-.restaurant-thumbnail > img, .restaurant-caption {
+div.restaurant-thumbnail > img.restaurant-image, div.restaurant-caption {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
+div.restaurant-thumbnail > img.restaurant-image {
+  border-top: 1px solid black;
+  border-radius: 4px 4px 0 0;
+}
 
 .thumbnail .restaurant-caption.caption {
   padding-top: 0px;
