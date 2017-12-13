@@ -28,26 +28,24 @@
                 </div>
             </div>
 
+
+
             <div class="well comments-well">
                 {% form_theme form 'bootstrap_3_layout.html.twig' %}
                 {{ form_start(form) }}
-                <div id="form_rate">
-                    <input type="radio" id="form_rate_4" name="form[rate]" required="required" value="5">
-                    <label for="form_rate_4" class="required"></label>
-                    <input type="radio" id="form_rate_3" name="form[rate]" required="required" value="4">
-                    <label for="form_rate_3" class="required"></label>
-                    <input type="radio" id="form_rate_2" name="form[rate]" required="required" value="3">
-                    <label for="form_rate_2" class="required"></label>
-                    <input type="radio" id="form_rate_1" name="form[rate]" required="required" value="2">
-                    <label for="form_rate_1" class="required"></label>
-                    <input type="radio" id="form_rate_0" name="form[rate]" required="required" value="1">
-                    <label for="form_rate_0" class="required"></label>
-                </div>
+                {% block choice_widget_expanded -%}
+                    <div id="form_rate">
+                        {%- for child in form.rate %}
+                            <input type="radio" id="form_rate_{{ child.vars.value }}" name="form[rate]" required="required" value="{{ child.vars.value }}">
+                            <label for="form_rate_{{ child.vars.value }}" class="required"></label>
+                        {% endfor -%}
+                    </div>
+                {%- endblock choice_widget_expanded -%}
+
                 {{ form_widget(form.content) }}
-                <div class="text-right">
-                    <a class="btn btn-success" type="submit">Wystaw opinię</a>
-                </div>
-                {{ form_end(form) }}
+                <br />
+                <button class="btn btn-success" type="submit">Wystaw opinię</button>
+                {{ form_end(form.content) }}
 
                 {% for comment in restaurant.comments %}
                     <hr>
