@@ -47,11 +47,11 @@ class RestaurantController extends Controller
         $form = $this->createFormBuilder()
             ->add('rate', ChoiceType::class, array(
                 'choices' => array(
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
+                    '5' => '5',
                     '4' => '4',
-                    '5' => '5'
+                    '3' => '3',
+                    '2' => '2',
+                    '1' => '1',
                 ),
                 'expanded' => true,
                 'multiple' => false,
@@ -71,6 +71,7 @@ class RestaurantController extends Controller
             $comment->setContent($form_data['content']);
             $comment->setPostingDate(new \DateTime('now'));
             $comment->setRestaurant($restaurant);
+
             $em->persist($comment);
             $em->flush();
         }
