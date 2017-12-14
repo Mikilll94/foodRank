@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RestaurantController extends Controller
 {
@@ -45,17 +46,20 @@ class RestaurantController extends Controller
             ->find($restaurant_id);
 
         $form = $this->createFormBuilder()
-            ->add('rate', ChoiceType::class, array(
-                'choices' => array(
+            ->add('rate', ChoiceType::class, [
+                'choices' => [
                     '5' => '5',
                     '4' => '4',
                     '3' => '3',
                     '2' => '2',
                     '1' => '1',
-                ),
+                ],
                 'expanded' => true,
                 'multiple' => false,
-            ))
+                'constraints' => [
+                    new NotBlank(['message' => 'Musisz wystawić ocenę.']),
+                ]
+            ])
             ->add('content', TextareaType::class)
             ->getForm();
 

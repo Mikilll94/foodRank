@@ -34,13 +34,15 @@
                 {% block choice_widget_expanded -%}
                     <div id="form_rate">
                         {%- for child in form.rate %}
-                            <input type="radio" id="form_rate_{{ child.vars.value }}" name="form[rate]" required="required" value="{{ child.vars.value }}">
+                            <input type="radio" id="form_rate_{{ child.vars.value }}" name="form[rate]" value="{{ child.vars.value }}">
                             <label for="form_rate_{{ child.vars.value }}" class="required"></label>
                         {% endfor -%}
                     </div>
                 {%- endblock choice_widget_expanded -%}
+                {{ form_errors(form.rate) }}
 
                 {{ form_widget(form.content) }}
+                {{ form_errors(form.content) }}
                 <br />
                 <button class="btn btn-success" type="submit">Wystaw opinię</button>
                 {{ form_end(form.content) }}

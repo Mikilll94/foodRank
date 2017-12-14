@@ -32,11 +32,13 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=500)
+     * @Assert\NotBlank(message = "Komentarz nie może być pusty.")
      */
     private $content;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Musisz wystawić ocenę.")
      * @Assert\Range(min = 1, max = 5,
      *      minMessage = "Nie możesz wystawić oceny mniejsze niż {{ limit }}.",
      *      maxMessage = "Nie możesz wystawić oceny większe niż {{ limit }}."
