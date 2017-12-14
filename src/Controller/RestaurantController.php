@@ -74,6 +74,8 @@ class RestaurantController extends Controller
 
             $em->persist($comment);
             $em->flush();
+
+            return $this->redirect($request->getUri());
         }
 
 
