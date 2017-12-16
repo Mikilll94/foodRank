@@ -16,3 +16,10 @@ body {
   z-index: 9999;
   background: #fff no-repeat center;
 }
+
+.se-pre-con > img {
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
