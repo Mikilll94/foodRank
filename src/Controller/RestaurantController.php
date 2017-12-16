@@ -66,50 +66,25 @@ class RestaurantController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $form_data = $form->getData();
-
+        if ($request->isXmlHttpRequest()) {
             $comment = new Comment();
             $comment->setAuthor('Anonymous');
-            $comment->setRate($form_data['rate']);
-            $comment->setContent($form_data['content']);
+            $comment->setRate($request->get('rate'));
+            $comment->setContent($request->get('content'));
             $comment->setPostingDate(new \DateTime('now'));
             $comment->setRestaurant($restaurant);
 
+            $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
 
-            return $this->redirect($request->getUri());
+            return new JsonResponse([]);
         }
 
 
-        return $this->render('Restaurant/details.html.twig', array(
+        return $this->render('Restaurant/details.html.twig', [
             'restaurant' => $restaurant,
             'form' => $form->createView()
-        ));
-    }
-
-    /**
-     * @Route("restaurants/{restaurant_id}/add-comment", requirements={"restaurant_id"="\d+"})
-     */
-    public function AddComment($restaurant_id, Request $request)
-    {
-        $restaurant = $this->getDoctrine()
-            ->getRepository(Restaurant::class)
-            ->find($restaurant_id);
-
-        $comment = new Comment();
-        $comment->setAuthor('Anonymous');
-        $comment->setRate($request->get('rate'));
-        $comment->setContent($request->get('content'));
-        $comment->setPostingDate(new \DateTime('now'));
-        $comment->setRestaurant($restaurant);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($comment);
-        $em->flush();
-
-        return new JsonResponse([]);
+        ]);
     }
 }
