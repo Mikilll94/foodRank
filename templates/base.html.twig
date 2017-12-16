@@ -14,8 +14,12 @@
         {% block content %}{% endblock %}
     </div>
     {% include 'footer.html.twig' %}
+    <div class="se-pre-con">
+        <img src="{{ asset('build/images/Preloader_2.a8c98ef9.gif') }}">
+    </div>
     <script src="{{ asset('build/manifest.js') }}"></script>
     <script src="{{ asset('build/vendor.js') }}"></script>
+    <script src="{{ asset('build/global.js') }}"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
