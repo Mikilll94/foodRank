@@ -1,5 +1,5 @@
 require('../css/global.scss');
-require('../images/Preloader_2.gif');
+require('../images/throbber.gif');
 
 $ = require('jquery');
 
