@@ -81,7 +81,7 @@
                 let rateHTML = '<span class="glyphicon glyphicon-star"></span> '.repeat(rate);
                 rateHTML += '<span class="glyphicon glyphicon-star-empty"></span> '.repeat(5 - rate);
                 $.ajax({
-                    url: '/restaurants/{{ app.request.get('restaurant_id') }}',
+                    url: '{{ path('restaurant_details', { restaurant_id: app.request.get('restaurant_id') }) }}',
                     type: 'POST',
                     dataType: 'json',
                     data: {
