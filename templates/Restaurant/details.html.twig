@@ -21,20 +21,22 @@
         <div class="col-md-9">
 
             <div class="thumbnail restaurant-details-thumbnail">
-                <img class="img-responsive" src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}" alt="cannot load image">
+                <img class="img-responsive" src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}"
+                     alt="cannot load image">
                 <div class="caption-full">
-                    <br />
+                    <br/>
                     <p class="restaurant-description">{{ restaurant.description }}</p>
                 </div>
             </div>
 
             <div class="well comments-well">
                 {% form_theme form 'bootstrap_3_layout.html.twig' %}
-                {{ form_start(form) }}
+                {{ form_start(form, { 'attr': {'id': 'add-comment-form'} }) }}
                 {% block choice_widget_expanded -%}
                     <div id="form_rate">
                         {%- for child in form.rate %}
-                            <input type="radio" id="form_rate_{{ child.vars.value }}" name="form[rate]" value="{{ child.vars.value }}">
+                            <input type="radio" id="form_rate_{{ child.vars.value }}" name="form-rate"
+                                   value="{{ child.vars.value }}">
                             <label for="form_rate_{{ child.vars.value }}" class="required"></label>
                         {% endfor -%}
                     </div>
@@ -43,8 +45,8 @@
 
                 {{ form_widget(form.content) }}
                 {{ form_errors(form.content) }}
-                <br />
-                <button class="btn btn-success" type="submit">Wystaw opinię</button>
+                <br/>
+                <button id="add-review" class="btn btn-success" type="button">Wystaw opinię</button>
                 {{ form_end(form.content) }}
 
                 {% for comment in restaurant.comments %}
@@ -68,4 +70,38 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $("#add-review").click(function () {
+                let content = $('#form_content').val();
+                let rate = $('input[name=form-rate]:checked').val();
+                let rateHTML = '<span class="glyphicon glyphicon-star"></span> '.repeat(rate);
+                rateHTML += '<span class="glyphicon glyphicon-star-empty"></span> '.repeat(5 - rate);
+                $.ajax({
+                    url: '/restaurants/{{ app.request.get('restaurant_id') }}/add-comment',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, status) {
+                        $('#add-comment-form').remove();
+                        $('.comments-well').prepend(
+                            '<hr>' +
+                            '<div class=\"row\">' +
+                            '   <div class=\"col-md-12\">' +
+                                rateHTML +
+                                " Anonymous" +
+                            '   <span class=\"pull-right\">przed chwilą</span>' +
+                            '       <p>' + content + '</p>' +
+                            '   </div>' +
+                            '</div>');
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert('Ajax request failed.');
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

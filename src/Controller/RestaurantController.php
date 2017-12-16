@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Restaurant;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -87,5 +88,13 @@ class RestaurantController extends Controller
             'restaurant' => $restaurant,
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * @Route("restaurants/{restaurant_id}/add-comment", requirements={"restaurant_id"="\d+"})
+     */
+    public function AddComment($restaurant_id, Request $request)
+    {
+        return new JsonResponse(['data' => 123]);
     }
 }

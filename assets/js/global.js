@@ -1,7 +1,8 @@
 require('../css/global.scss');
 require('../images/throbber.gif');
 
-$ = require('jquery');
+const $ = require('jquery');
+global.$ = global.jQuery = $;
 
 $(window).on('load', function() {
     $(".se-pre-con").fadeOut("slow");
