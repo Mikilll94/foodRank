@@ -95,6 +95,21 @@ class RestaurantController extends Controller
      */
     public function AddComment($restaurant_id, Request $request)
     {
-        return new JsonResponse(['data' => 123]);
+        $restaurant = $this->getDoctrine()
+            ->getRepository(Restaurant::class)
+            ->find($restaurant_id);
+
+        $comment = new Comment();
+        $comment->setAuthor('Anonymous');
+        $comment->setRate($request->get('rate'));
+        $comment->setContent($request->get('content'));
+        $comment->setPostingDate(new \DateTime('now'));
+        $comment->setRestaurant($restaurant);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+
+        return new JsonResponse([]);
     }
 }

@@ -84,6 +84,10 @@
                     url: '/restaurants/{{ app.request.get('restaurant_id') }}/add-comment',
                     type: 'POST',
                     dataType: 'json',
+                    data: {
+                        rate: rate,
+                        content: content,
+                    },
                     success: function (data, status) {
                         $('#add-comment-form').remove();
                         $('.comments-well').prepend(
@@ -96,9 +100,6 @@
                             '       <p>' + content + '</p>' +
                             '   </div>' +
                             '</div>');
-                    },
-                    error: function (xhr, textStatus, errorThrown) {
-                        alert('Ajax request failed.');
                     }
                 });
             });
