@@ -1,6 +1,5 @@
 require('../css/restaurant_details.scss');
 require('../css/stars.scss');
-require('../js/ajax_add_comment');
 var $ = require('jquery');
 
 $(document).ready(function () {
