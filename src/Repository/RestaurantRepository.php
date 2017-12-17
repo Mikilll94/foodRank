@@ -20,7 +20,7 @@ class RestaurantRepository extends ServiceEntityRepository
         try {
             return $this->createQueryBuilder('r')
                 ->select('r, c')
-                ->join('r.comments', 'c')
+                ->leftJoin('r.comments', 'c')
                 ->orderBy('c.posting_date', 'DESC')
                 ->where('r.id = :restaurant_id')->setParameter('restaurant_id', $restaurant_id)
                 ->getQuery()
