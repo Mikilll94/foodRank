@@ -12,6 +12,7 @@ Encore
         'bootstrap',
         'bootstrap-sass/assets/stylesheets/_bootstrap.scss'
     ])
+    .enableVersioning()
     .enableSassLoader(function(sassOptions) {}, {
         resolveUrlLoader: false
     })
