@@ -43,7 +43,7 @@ class RestaurantController extends Controller
     {
         $restaurant = $this->getDoctrine()
             ->getRepository(Restaurant::class)
-            ->find($restaurant_id);
+            ->findRestaurantWithCommentsOrdered($restaurant_id);
 
         $form = $this->createFormBuilder()
             ->add('rate', ChoiceType::class, [
@@ -79,7 +79,6 @@ class RestaurantController extends Controller
 
             return new JsonResponse([]);
         }
-
 
         return $this->render('Restaurant/details.html.twig', [
             'restaurant' => $restaurant,

@@ -62,7 +62,7 @@
                                 <span class="glyphicon glyphicon-star-empty"></span>
                             {% endfor %}
                             {{ comment.getAuthor() }}
-                            <span class="pull-right">{{ comment.getPostingDate() | date("m-d-Y H:i:s") }}</span>
+                            <span class="pull-right">{{ comment.getPostingDate() | date("d-m-Y H:i:s") }}</span>
                             <p>{{ comment.getContent() }}</p>
                         </div>
                     </div>
