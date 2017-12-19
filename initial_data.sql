@@ -51,3 +51,8 @@ VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'marta_k', 'Przem
 INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
 VALUES ((SELECT id from restaurants WHERE name='Tutti Santi'), 'Wojtas123', 'Po półgodzinnym oczekiwaniu i obserwowaniu jak obsługiwani są klienci, którzy złożyli zamówienia znacznie później niż my, zdecydowałem się na zadanie pytania co z naszym zamówieniem. Okazało się, że kelnerka zapomniała, jak ona to określiła, nabić. Niby każdy może się pomylić, ale ja już podziękuję ...chociaż pizza owszem, dobra',
         1, '2017-06-01 17:56:12');
+
+
+
+INSERT INTO users (username, password, email, is_active)
+VALUES ('admin', '$2a$08$jHZj/wJfcVKlIwr5AvR78euJxYK7Ku5kURNhNx.7.CSIJ3Pq6LEPC', 'admin@example.com', '1');
