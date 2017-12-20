@@ -39,7 +39,22 @@ VALUES ('Muga Restauracja', 'image7.jpg', 'Położona w bezpośredniej okolicy p
 INSERT INTO restaurants (name, image_url, short_description, description)
 VALUES ('Cucina 88', 'image8.jpg', 'W Cucinie można zobaczyć smaki, usłyszeć zapachy i dotknąć świeżości.',
         'W Cucinie można zobaczyć smaki, usłyszeć zapachy i dotknąć świeżości. Poczuć tętno Kuchni – bo ona tu żyje. Jesteśmy ludźmi, którzy tę Kuchnię tworzą i naturą, której się podporządkowują. To natura wyznacza bowiem pojawiające się w karcie propozycje. Menu zmienia się wraz z porami roku. Inaczej smakuje lato od jesieni, czego innego potrzebujemy wiosną, czym innym obdarza nas zima. Zdajemy sobie z tego sprawę, dlatego w Cucinie dania są przygotowane wyłącznie ze świeżych, sezonowych produktów. Pragniemy rozpowszechniać ideę „Wiem, Co Jem”, dlatego Goście w naszych delikatesach mogą kupić składniki, na kanwie których powstały ich ulubione posiłki. A przede wszystkim zapytać kucharzy, jak z nich skorzystać. Bo w prawdziwej Kuchni dużo rozmawia się o tym, co nas syci i daje rozkosz.');
+INSERT INTO restaurants (name, image_url, short_description, description)
+VALUES ('Restauracja Bamberka', 'image9.jpg', 'Restauracja ”Przy Bamberce” znajduje się w sercu Starego Rynku, w miejscu, gdzie przed wiekami mieściły się jadki chlebowe. Słynnymi sąsiadkami restauracji są fontanna Bamberka oraz Waga Miejska.',
+        'Restauracja ”Przy Bamberce” znajduje się w sercu Starego Rynku, w miejscu, gdzie przed wiekami mieściły się jadki chlebowe. Słynnymi sąsiadkami restauracji są fontanna Bamberka oraz Waga Miejska.
 
+Restauracja oferuje dwie sale i loże, znajdujące się na dwóch poziomach, dające poczucie spokoju podczas kolacji przy świecach, jak również przy spotkaniach biznesowych, rodzinnych czy z przyjaciółmi.
+
+Ogródek letni oraz zimowy to część zewnętrzna, która oferuje wspaniałą przestrzeń, aby móc chłonąć atmosferę Starego Miasta.
+
+Kuchnia oferuje tradycyjne polskie menu. Wybór kaczki, gęsi wraz własnoręcznie robionymi pyzami są naszą specjalnością, lubianą przez Gości, którzy często powtarzają, że są one najlepsze w mieście.
+
+Nasze własne pieczywo By jeszcze bardziej zadowolić naszych gości, codziennie wypiekamy świeże pieczywo. Tradycyjne receptury sprawiają, że nasze wypieki smakują wyśmienicie i są idealnym dodatkiem do zup, sałatek i przystawek.');
+INSERT INTO restaurants (name, image_url, short_description, description)
+VALUES ('Pyra Bar', 'image10.jpg', 'Nasz pierwszy lokal znajduje się na ulicy  Strzeleckiej w Poznaniu. Tak, to samo centrum. W ciepłe dni, proponujemy przesiadywanie na świeżym powietrzu w naszym ogródku, w chłodniejsze - ciepłą  herbatę i grzanie się w lokalu. No i jedzenie, ale to oczywiste.',
+        'Ziemniaczana pyranoja zaczęła się w marcu 2009 w Poznaniu, kiedy to nieustraszona grupa entuzjastów bulw przyczyniła się do otworzenia pionierskiej placówki gastronomicznej opierającej swoje menu w głównej mierze na PYRACH. Od tego czasu Kurczak Cukinsyn, zBoczek czy poTEJto Korsarza to nasze codzienne wyzwania, na których się koncentrujemy, by jak najlepiej nakarmić naszych Gości. Ale jak jest z pyrą, każdy wie? Za długo poleży w cieple to zaczyna kiełkować. Było więc zatem kwestią czasu otworzenie drugiego baru - w Gdańsku - gdzie w najbliższym otoczeniu starówki, przy ulicy Garbary 7, wyrósł godny kompan poznańskiego brata - ziemniaka. A jak już uzyskaliśmy dostęp do morza , mogliśmy śmiało wypłynąć na szerokie wody i bez obaw weszliśmy szturmem na poznańskie Jeżyce, gdzie w kameralnym lokalu zaczęliśmy odtwarzać wspomnienia serwując domowe placki ziemniaczane i pyry z bzikiem.
+W 2016 wodujemy flagowy okręt przy Skwerze Kościuszki w Gdyni i pełną pyrą ruszamy na bitwę wystawiając naszych najdzielniejszych pyratów ,więc jeśli kiedykolwiek słyszałeś i wziąłeś sobie do serca "zjedz mięso a zostaw ziemniaka " lepiej na nich uważaj i miej się na baczności. Od zawsze wkładamy w nasze działania całe serce i wiedzę, dlatego nasze ziemniaki są takie dobre, a mając zakorzenione nieustające parcie do doskonałości można się spodziewać, że w przyszłości będą tylko lepsze.
+Do zobaczenia w Pyra Bar -ACH');
 
 
 INSERT INTO comments (restaurant_id, author, content, rate, posting_date)
