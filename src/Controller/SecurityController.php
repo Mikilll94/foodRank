@@ -16,12 +16,8 @@ class SecurityController extends Controller
     public function index(Request $request, AuthenticationUtils $authUtils)
     {
         $error = $authUtils->getLastAuthenticationError();
-
         $lastUsername = $authUtils->getLastUsername();
 
-        return $this->render('Security/login.html.twig', array(
-            'last_username' => $lastUsername,
-            'error'         => $error,
-        ));
+        return $this->redirect('/');
     }
 }
