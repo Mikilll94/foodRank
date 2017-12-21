@@ -16,6 +16,7 @@
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                {% if app.user == NULL %}
                 <li>
                     <p class="navbar-text navbar-have-account">Masz konto?</p>
                 </li>
@@ -34,6 +35,7 @@
                         </li>
                     </ul>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
