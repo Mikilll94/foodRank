@@ -13,7 +13,7 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="login")
      */
-    public function index(Request $request, AuthenticationUtils $authUtils)
+    public function login(Request $request, AuthenticationUtils $authUtils)
     {
         $error = $authUtils->getLastAuthenticationError();
         $lastUsername = $authUtils->getLastUsername();
