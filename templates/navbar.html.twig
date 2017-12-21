@@ -1,3 +1,9 @@
+<style>
+    #user-thumbnail {
+        height: 35px;
+    }
+</style>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -17,24 +23,48 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if app.user == NULL %}
-                <li>
-                    <p class="navbar-text navbar-have-account">Masz konto?</p>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Zaloguj się</b> <span class="caret"></span></a>
-                    <ul id="login-dp" class="dropdown-menu">
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    {{ render(controller('App\\Controller\\SecurityController::index')) }}
+                    <li>
+                        <p class="navbar-text navbar-have-account">Masz konto?</p>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Zaloguj się</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ render(controller('App\\Controller\\SecurityController::index')) }}
+                                    </div>
+                                    <div class="bottom text-center">
+                                        Nie masz konta? <a href="#"><b>Załóż je</b></a>
+                                    </div>
                                 </div>
-                                <div class="bottom text-center">
-                                    Nie masz konta? <a href="#"><b>Załóż je</b></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="dropdown">
+                        {#<button>#}
+                            {#<p class="navbar-text">#}
+                                {#<span class="glyphicon glyphicon-user"></span>#}
+                                {#{{ app.user.username }}#}
+                            {#</p>#}
+                        {#</button>#}
+                        {#<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">#}
+
+                        {#</ul>#}
+                            <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="glyphicon glyphicon-user"></span>
+                                {{ app.user.username }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                    </li>
                 {% endif %}
             </ul>
         </div>
