@@ -17,3 +17,5 @@ security:
             login_path: login
             check_path: login
           provider: user_provider
+          logout:
+            path: logout
