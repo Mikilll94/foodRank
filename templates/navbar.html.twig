@@ -32,7 +32,7 @@
                                         {{ render(controller('App\\Controller\\SecurityController::login')) }}
                                     </div>
                                     <div class="bottom text-center">
-                                        Nie masz konta? <a href="#"><b>Załóż je</b></a>
+                                        Nie masz konta? <a href="{{ path('user_registration') }}"><b>Załóż je</b></a>
                                     </div>
                                 </div>
                             </li>
