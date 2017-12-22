@@ -65,3 +65,17 @@
   max-height: none;
   overflow-x: hidden;
 }
+
+.navbar-brand:hover {
+  transform: scale(1.20);
+}
+
+.navbar-inverse .nav > li> a {
+  font-size: 18px;
+}
+
+.navbar-inverse .nav > li> a:hover,
+.navbar-inverse .nav > li > a:focus {
+  color: #efefef;
+  background: #353549;
+}
