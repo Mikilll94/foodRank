@@ -2,13 +2,22 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="users")
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Istnieje użytkownik o podanej nazwie."
+ * )
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Istnieje użytkownik o podanym adresie email."
+ * )
  */
 class User implements UserInterface, \Serializable
 {
@@ -21,11 +30,12 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\NotBlank(message="Pole nie może być puste")
      */
     private $username;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Pole nie może być puste")
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -37,28 +47,13 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\NotBlank(message="Pole nie może być puste")
+     * @Assert\Email(
+     *     message = "Wprowadzony adres email jest nieprawidłowy",
+     *     checkMX = true
+     * )
      */
     private $email;
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
-
-    public function getisActive()
-    {
-        return $this->isActive;
-    }
-
-    public function setIsActive($isActive): void
-    {
-        $this->isActive = $isActive;
-    }
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
@@ -78,6 +73,26 @@ class User implements UserInterface, \Serializable
     public function setUsername($username): void
     {
         $this->username = $username;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getisActive()
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive($isActive): void
+    {
+        $this->isActive = $isActive;
     }
 
     public function getSalt()
@@ -114,7 +129,6 @@ class User implements UserInterface, \Serializable
     {
     }
 
-    /** @see \Serializable::serialize() */
     public function serialize()
     {
         return serialize(array(
@@ -124,7 +138,6 @@ class User implements UserInterface, \Serializable
         ));
     }
 
-    /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list (

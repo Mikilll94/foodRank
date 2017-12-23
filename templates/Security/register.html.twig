@@ -16,11 +16,7 @@
         {{ form_row(form.email) }}
         {{ form_row(form.plainPassword.first) }}
         {{ form_row(form.plainPassword.second) }}
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Akceptuję regulamin
-            </label>
-        </div>
+        {{ form_row(form.termsAccepted) }}
         <button type="submit" class="btn btn-primary btn-block">Utwórz konto</button>
         {{ form_end(form) }}
     </div>
