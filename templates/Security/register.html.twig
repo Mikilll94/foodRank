@@ -7,41 +7,21 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    {#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
-    {#{{ form_start(form) }}#}
-        {#{{ form_row(form.username) }}#}
-        {#{{ form_row(form.email) }}#}
-        {#{{ form_row(form.plainPassword.first) }}#}
-        {#{{ form_row(form.plainPassword.second) }}#}
-
-    {#<button type="submit">Register!</button>#}
-    {#{{ form_end(form) }}#}
 
     <div class="container container-small">
         <h1 id="registration-header">Rejestracja w serwisie FoodRank</h1>
-        <form>
-            <div class="form-group">
-                <label for="username">Nazwa użytkownika</label>
-                <input class="form-control" id="username">
-            </div>
-            <div class="form-group">
-                <label for="email">Adres email</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <div class="form-group">
-                <label for="password">Hasło</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-            <div class="form-group">
-                <label for="repeat-password">Powtórz hasło</label>
-                <input type="password" class="form-control" id="repeat-password">
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Akceptuję regulamin
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-        </form>
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Akceptuję regulamin
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Utwórz konto</button>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
