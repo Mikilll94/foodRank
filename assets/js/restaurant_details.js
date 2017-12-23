@@ -22,7 +22,7 @@ $(document).ready(function () {
                     '<div class=\"row\">' +
                     '   <div class=\"col-md-12\">' +
                     rateHTML +
-                    " Anonymous" +
+                    ' ' + $('#restaurant-details').data('logged-user') +
                     '   <span class=\"pull-right\">przed chwilą</span>' +
                     '       <p>' + content + '</p>' +
                     '   </div>' +

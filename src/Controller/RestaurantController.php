@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RestaurantController extends Controller
@@ -39,7 +40,7 @@ class RestaurantController extends Controller
     /**
      * @Route("restaurants/{restaurant_id}", name="restaurant_details", requirements={"restaurant_id"="\d+"})
      */
-    public function Details($restaurant_id, Request $request)
+    public function Details($restaurant_id, Request $request, UserInterface $user = null)
     {
         $restaurant = $this->getDoctrine()
             ->getRepository(Restaurant::class)
@@ -67,7 +68,7 @@ class RestaurantController extends Controller
 
         if ($request->isXmlHttpRequest()) {
             $comment = new Comment();
-            $comment->setAuthor('Anonymous');
+            $comment->setAuthor($user->getUsername());
             $comment->setRate($request->get('rate'));
             $comment->setContent($request->get('content'));
             $comment->setPostingDate(new \DateTime('now'));
