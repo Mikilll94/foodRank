@@ -30,6 +30,7 @@
             </div>
 
             <div class="well comments-well">
+                <ul id="error_list"></ul>
                 {% form_theme form 'bootstrap_3_layout.html.twig' %}
                 {{ form_start(form, { 'attr': {'id': 'add-comment-form'} }) }}
                 {% block choice_widget_expanded -%}

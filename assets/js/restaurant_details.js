@@ -17,6 +17,13 @@ $(document).ready(function () {
                 content: content,
             },
             success: function (data, status) {
+                $('#error_list').empty();
+                if (data.errors.length > 0) {
+                    for (let i in data.errors) {
+                        $('#error_list').append('<li>' + data.errors[i] + '</li>');
+                    }
+                    return;
+                }
                 $('#add-comment-form').remove();
                 $('.comments-well').prepend(
                     '<div class=\"row\">' +

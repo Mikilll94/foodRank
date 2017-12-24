@@ -67,6 +67,9 @@ class RestaurantController extends Controller
         $form->handleRequest($request);
 
         if ($request->isXmlHttpRequest()) {
+            if ($user == null) {
+                return new JsonResponse(['errors' => ['Tylko zalogowani użytkownicy mogą dodawać komentarze']]);
+            }
             $comment = new Comment();
             $comment->setAuthor($user->getUsername());
             $comment->setRate($request->get('rate'));
@@ -74,11 +77,22 @@ class RestaurantController extends Controller
             $comment->setPostingDate(new \DateTime('now'));
             $comment->setRestaurant($restaurant);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
+            $errors = [];
+            $validator = $this->get('validator');
+            $errorsValidator = $validator->validate($comment);
+            foreach ($errorsValidator as $error) {
+                array_push($errors, $error->getMessage());
+            }
 
-            return new JsonResponse([]);
+            if (count($errors) == 0) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($comment);
+                $em->flush();
+
+                return new JsonResponse(['errors' => []]);
+            } else {
+                return new JsonResponse(['errors' => $errors]);
+            }
         }
 
         return $this->render('Restaurant/details.html.twig', [
