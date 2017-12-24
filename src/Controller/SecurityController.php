@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Service\EmailSender;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormBuilder;
@@ -14,6 +15,17 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
 {
+    private $email_sender;
+
+    /**
+     * SecurityController constructor.
+     * @param EmailSender $email_sender
+     */
+    public function __construct(EmailSender $email_sender)
+    {
+        $this->email_sender = $email_sender;
+    }
+
     /**
      * @Route("/login", name="login")
      * @param Request $request
@@ -35,7 +47,6 @@ class SecurityController extends Controller
      * @Route("/register", name="user_registration")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param \Swift_Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -53,19 +64,9 @@ class SecurityController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $https['ssl']['verify_peer'] = FALSE;
-            $https['ssl']['verify_peer_name'] = FALSE;
-
-            $transport = (new \Swift_SmtpTransport('smtp.gmail.com', '587', 'tls'))
-                ->setUsername('wasniewskimikolaj@gmail.com')
-                ->setPassword('svwhlfeixxsjxaoy')
-                ->setStreamOptions($https);
-
-            $message = (new \Swift_Message('Hello Email'))
-                ->setFrom('no-reply@foodrank.com')
-                ->setTo($user->getEmail())
-                ->setBody($this->renderView('Emails/registration.html.twig', ['name' => $user->getUsername()]));
-            (new \Swift_Mailer($transport))->send($message);
+            $this->email_sender->sendMail('Rejestracja w serwisie FoodRank',
+                $this->renderView('Emails/registration.html.twig', ['name' => $user->getUsername()]),
+                $user->getEmail());
 
             return $this->redirect('/');
         }
