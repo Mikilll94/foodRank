@@ -16,6 +16,9 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="login")
+     * @param Request $request
+     * @param AuthenticationUtils $authUtils
+     * @return Response
      */
     public function login(Request $request, AuthenticationUtils $authUtils)
     {
@@ -24,12 +27,16 @@ class SecurityController extends Controller
 
         return $this->render('security/login.html.twig', array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
     }
 
     /**
      * @Route("/register", name="user_registration")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -46,12 +53,24 @@ class SecurityController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $https['ssl']['verify_peer'] = FALSE;
+            $https['ssl']['verify_peer_name'] = FALSE;
+
+            $transport = (new \Swift_SmtpTransport('smtp.gmail.com', '587', 'tls'))
+                ->setUsername('wasniewskimikolaj@gmail.com')
+                ->setPassword('svwhlfeixxsjxaoy')
+                ->setStreamOptions($https);
+
+            $message = (new \Swift_Message('Hello Email'))
+                ->setFrom('no-reply@foodrank.com')
+                ->setTo($user->getEmail())
+                ->setBody($this->renderView('Emails/registration.html.twig', ['name' => $user->getUsername()]));
+            (new \Swift_Mailer($transport))->send($message);
+
             return $this->redirect('/');
         }
 
-        return $this->render('Security/register.html.twig',
-            array('form' => $form->createView())
-        );
+        return $this->render('Security/register.html.twig', ['form' => $form->createView()]);
     }
 
     /**

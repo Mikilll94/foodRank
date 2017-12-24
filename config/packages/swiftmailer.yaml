@@ -1,0 +1,7 @@
+swiftmailer:
+  transport: smtp
+  host: smtp.gmail.com
+  username: wasniewskimikolaj@gmail.com
+  password: svwhlfeixxsjxaoy
+  port: 587
+  encryption: tls
