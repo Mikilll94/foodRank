@@ -1,6 +1,6 @@
 require('../css/restaurant_details.scss');
 require('../css/stars.scss');
-var $ = require('jquery');
+const alertify = require('alertifyjs');
 
 $(document).ready(function () {
     $("#add-review").click(function () {
@@ -19,9 +19,8 @@ $(document).ready(function () {
             success: function (data, status) {
                 $('#error_list').empty();
                 if (data.errors.length > 0) {
-                    for (let i in data.errors) {
-                        $('#error_list').append('<li>' + data.errors[i] + '</li>');
-                    }
+                    alertify.set('notifier','position', 'bottom-center');
+                    alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
                 $('#add-comment-form').remove();
