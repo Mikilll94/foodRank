@@ -7,6 +7,10 @@ require('../js/login.js');
 const $ = require('jquery');
 global.$ = global.jQuery = $;
 
+// Only for development purposes
+const alertify = require('alertifyjs');
+global.alertify = alertify;
+
 $(window).on('load', function() {
     $(".se-pre-con").fadeOut("slow");
 });

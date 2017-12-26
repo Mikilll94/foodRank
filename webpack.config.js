@@ -10,7 +10,10 @@ Encore
     .createSharedEntry('vendor', [
         'jquery',
         'bootstrap',
-        'bootstrap-sass/assets/stylesheets/_bootstrap.scss'
+        'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+        'alertifyjs/build/alertify.min.js',
+        'alertifyjs/build/css/alertify.min.css',
+        'alertifyjs/build/css/themes/default.min.css',
     ])
     .enableVersioning()
     .enableSassLoader(function(sassOptions) {}, {

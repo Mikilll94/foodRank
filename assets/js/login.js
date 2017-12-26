@@ -1,3 +1,9 @@
+const alertify = require('alertifyjs');
+
+$('#forgot-password').click(function () {
+   alertify.alert("Hello");
+});
+
 $('#login-button').click(function() {
     let username = $('#username').val();
     let password = $('#password').val();
