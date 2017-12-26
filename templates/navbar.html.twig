@@ -29,7 +29,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        {{ render(controller('App\\Controller\\SecurityController::login')) }}
+                                        {% include 'Security/login.html.twig' %}
                                     </div>
                                     <div class="bottom text-center">
                                         Nie masz konta? <a href="{{ path('user_registration') }}"><b>Załóż je</b></a>

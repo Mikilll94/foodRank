@@ -8,6 +8,7 @@ use App\Service\EmailSender;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -28,18 +29,11 @@ class SecurityController extends Controller
 
     /**
      * @Route("/login", name="login")
-     * @param AuthenticationUtils $authUtils
      * @return Response
      */
-    public function login(AuthenticationUtils $authUtils)
+    public function login()
     {
-        $error = $authUtils->getLastAuthenticationError();
-        $lastUsername = $authUtils->getLastUsername();
-
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
+        return new JsonResponse([]);
     }
 
     /**

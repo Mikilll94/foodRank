@@ -13,8 +13,7 @@ security:
           security: false
         main:
           anonymous: ~
-          form_login:
-            login_path: login
+          json_login:
             check_path: login
           provider: user_provider
           logout:
