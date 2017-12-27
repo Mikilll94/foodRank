@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-10 id="logout">
         <div class="page-header">
-            <h3 class="reviews">Leave your comment</h3>
+            <h3 class="reviews">Zostaw swoją opinię na temat tego miejsca</h3>
         </div>
         <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
             {% block choice_widget_expanded -%}
@@ -22,12 +22,31 @@
             <div class="form-group">
                 <div>
                     <button class="btn btn-success btn-circle text-uppercase pull-right" type="submit" id="submitComment"><span
-                                class="glyphicon glyphicon-send"></span> Summit comment
+                                class="glyphicon glyphicon-send"></span>Dodaj komentarz
                     </button>
                 </div>
             </div>
         </form>
         <ul class="media-list">
+            {% for comment in restaurant.comments %}
+                <li class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object img-circle"
+                             src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
+                    </a>
+                    <div class="media-body">
+                        <div class="well well-lg">
+                            <h4 class="media-heading text-uppercase reviews">{{ comment.author }}</h4>
+                            <div class="media-date text-uppercase reviews list-inline">
+                                {{ comment.getPostingDate() | date("d-m-Y H:i:s") }}
+                            </div>
+                            <p class="media-comment">{{ comment.getContent() }}</p>
+                            <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span
+                                        class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
             <li class="media">
                 <a class="pull-left" href="#">
                     <img class="media-object img-circle"
@@ -99,27 +118,6 @@
                             </div>
                         </li>
                     </ul>
-                </div>
-            </li>
-            <li class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-circle"
-                         src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
-                </a>
-                <div class="media-body">
-                    <div class="well well-lg">
-                        <h4 class="media-heading text-uppercase reviews">Nico</h4>
-                        <ul class="media-date text-uppercase reviews list-inline">
-                            <li class="dd">22</li>
-                            <li class="mm">09</li>
-                            <li class="aaaa">2014</li>
-                        </ul>
-                        <p class="media-comment">
-                            I'm looking for that. Thanks!
-                        </p>
-                        <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span
-                                    class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                    </div>
                 </div>
             </li>
             <li class="media">
