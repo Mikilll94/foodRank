@@ -1,5 +1,7 @@
 require('../css/restaurant_details.scss');
 require('../css/stars.scss');
+require('../css/comment-box.scss');
+
 const alertify = require('alertifyjs');
 
 $(document).ready(function () {
@@ -14,7 +16,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: {
                 rate: rate,
-                content: content,
+                content: content
             },
             success: function (data, status) {
                 $('#error_list').empty();
