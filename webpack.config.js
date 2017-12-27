@@ -13,7 +13,7 @@ Encore
         'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
         'alertifyjs/build/alertify.min.js',
         'alertifyjs/build/css/alertify.min.css',
-        'alertifyjs/build/css/themes/default.min.css',
+        'alertifyjs/build/css/themes/bootstrap.min.css',
     ])
     .enableVersioning()
     .enableSassLoader(function(sassOptions) {}, {

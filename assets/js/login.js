@@ -19,7 +19,7 @@ $('#login-button').click(function() {
         error: function (xhr, ajaxOptions, thrownError) {
             alertify.set('notifier','position', 'top-left');
             if (thrownError === "Unauthorized") {
-                alertify.notify('Nieprawidłowy hasło lub login', 'error', 5);
+                alertify.notify('Nieprawidłowe hasło lub login', 'error', 5);
             } else {
                 alertify.notify('Wystąpił nieoczekiwany błąd', 'error', 5);
             }
