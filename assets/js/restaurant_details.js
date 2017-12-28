@@ -29,7 +29,7 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-
+                $('#commentForm').replaceWith('<div id="new-comment-msg" class="alert alert-info" role="alert">Komentarz został dodany</div>');
                 $(`
                     <li class="media">
                         <a class="pull-left" href="#">
@@ -37,7 +37,7 @@ $(document).ready(function () {
                             src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
                         </a>
                         <div class="media-body">
-                            <div class="well well-lg">
+                            <div class="well well-lg newly-added">
                             ${rateHTML}
                             <h4 class="media-heading reviews">
                                 ${$('#restaurant-details').data('logged-user')}
@@ -46,9 +46,6 @@ $(document).ready(function () {
                                 przed chwilą
                             </div>
                             <p class="media-comment">${content}</p>
-                            <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span
-                                class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                            </div>
                         </div>
                     </li>
                     `).hide().prependTo('#comments-list').slideDown();
