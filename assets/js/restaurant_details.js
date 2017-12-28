@@ -19,23 +19,34 @@ $(document).ready(function () {
                 content: content
             },
             success: function (data, status) {
-                $('#error_list').empty();
                 if (data.errors.length > 0) {
                     alertify.set('notifier','position', 'bottom-center');
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#commentForm').remove();
-                $('#leave-opinion-header').remove();
-                $('.comments-well').prepend(
-                    '<div class=\"row\">' +
-                    '   <div class=\"col-md-12\">' +
-                    rateHTML +
-                    ' ' + $('#restaurant-details').data('logged-user') +
-                    '   <span class=\"pull-right\">przed chwilą</span>' +
-                    '       <p>' + content + '</p>' +
-                    '   </div>' +
-                    '</div>');
+                $('#commentForm, #leave-opinion-header').remove();
+                $('#comments-list').prepend(
+                    '<li class="media">' +
+                        '<a class="pull-left" href="#">' +
+                        '<img class="media-object img-circle"' +
+                            ' src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">' +
+                        '</a>' +
+                        '<div class="media-body">' +
+                            '<div class="well well-lg">' +
+                            rateHTML +
+                            '<h4 class="media-heading reviews">' +
+                                $('#restaurant-details').data('logged-user') +
+                            '</h4>' +
+                            '<div class="media-date text-uppercase reviews list-inline">' +
+                                'przed chwila' +
+                            '</div>' +
+                            '<p class="media-comment">' + content + '</p>' +
+                            '<a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span' +
+                                ' class="glyphicon glyphicon-share-alt"></span> Reply</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</li>'
+                );
             }
         });
     });

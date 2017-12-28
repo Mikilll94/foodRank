@@ -3,7 +3,7 @@
         <div id="leave-opinion-header" class="page-header">
             <h3 class="reviews">Zostaw swoją opinię na temat tego miejsca</h3>
         </div>
-        <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+        <form class="form-horizontal" id="commentForm" role="form">
             {% block choice_widget_expanded -%}
                 <div id="form_rate">
                     {%- for child in form.rate %}
@@ -20,14 +20,14 @@
             </div>
             <div class="form-group">
                 <div>
-                    <button class="btn btn-success btn-circle text-uppercase pull-right" type="submit"
-                            id="submitComment"><span
+                    <button class="btn btn-success btn-circle text-uppercase pull-right" type="button"
+                            id="add-review"><span
                                 class="glyphicon glyphicon-send"></span>Dodaj komentarz
                     </button>
                 </div>
             </div>
         </form>
-        <ul class="media-list">
+        <ul id="comments-list" class="media-list">
             {% for comment in restaurant.comments %}
                 <li class="media">
                     <a class="pull-left" href="#">
