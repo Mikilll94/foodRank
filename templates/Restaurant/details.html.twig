@@ -28,48 +28,6 @@
                     <p class="restaurant-description">{{ restaurant.description }}</p>
                 </div>
             </div>
-
-            {#<div class="well comments-well">#}
-                {#<ul id="error_list"></ul>#}
-                {#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
-                {#{{ form_start(form, { 'attr': {'id': 'add-comment-form'} }) }}#}
-                {#{% block choice_widget_expanded -%}#}
-                    {#<div id="form_rate">#}
-                        {#{%- for child in form.rate %}#}
-                            {#<input type="radio" id="form_rate_{{ child.vars.value }}" name="form-rate"#}
-                                   {#value="{{ child.vars.value }}">#}
-                            {#<label for="form_rate_{{ child.vars.value }}" class="required"></label>#}
-                        {#{% endfor -%}#}
-                    {#</div>#}
-                {#{%- endblock choice_widget_expanded -%}#}
-                {#{{ form_errors(form.rate) }}#}
-
-                {#{{ form_widget(form.content) }}#}
-                {#{{ form_errors(form.content) }}#}
-                {#<br/>#}
-                {#<button id="add-review" class="btn btn-success" type="button">Wystaw opinię</button>#}
-                {#{{ form_end(form.content) }}#}
-
-                {#{% for comment in restaurant.comments %}#}
-                    {#<hr>#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-12">#}
-                            {#{% set star_index = 0 %}#}
-                            {#{% for i in 1..comment.getRate() %}#}
-                                {#{% set star_index = i %}#}
-                                {#<span class="glyphicon glyphicon-star"></span>#}
-                            {#{% endfor %}#}
-                            {#{% for i in star_index + 1..5 if star_index < 5 %}#}
-                                {#<span class="glyphicon glyphicon-star-empty"></span>#}
-                            {#{% endfor %}#}
-                            {#{{ comment.getAuthor() }}#}
-                            {#<span class="pull-right">{{ comment.getPostingDate() | date("d-m-Y H:i:s") }}</span>#}
-                            {#<p>{{ comment.getContent() }}</p>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#{% endfor %}#}
-            {#</div>#}
-
             {% include ('comment-box.html.twig') %}
         </div>
     </div>
