@@ -44,15 +44,17 @@
                             {% for i in star_index + 1..5 if star_index < 5 %}
                                 <span class="glyphicon glyphicon-star-empty"></span>
                             {% endfor %}
-                            <h4 class="media-heading reviews">
-                                {{ comment.author }}
-                            </h4>
-                            <div class="media-date text-uppercase reviews list-inline">
-                                {{ comment.getPostingDate() | date("d-m-Y H:i:s") }}
-                            </div>
+                            <h4 class="media-heading reviews">{{ comment.author }}</h4>
+                            <ul class="media-date text-uppercase reviews list-inline">
+                                <li>{{ comment.getPostingDate() | date("d") }}</li>
+                                <li>{{ comment.getPostingDate() | date("m") }}</li>
+                                <li>{{ comment.getPostingDate() | date("Y") }}</li>
+                            </ul>
                             <p class="media-comment">{{ comment.getContent() }}</p>
                             <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span
                                         class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                            <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
+                               href="#"><span class="glyphicon glyphicon-comment"></span> 0 comments</a>
                         </div>
                     </div>
                 </li>
