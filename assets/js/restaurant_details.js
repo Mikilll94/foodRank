@@ -24,7 +24,7 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#commentForm, #leave-opinion-header').remove();
+                $('#commentForm').remove();
                 $('#comments-list').prepend(
                     `
                     <li class="media">
