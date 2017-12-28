@@ -24,9 +24,8 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#commentForm').remove();
-                $('#comments-list').prepend(
-                    `
+
+                $(`
                     <li class="media">
                         <a class="pull-left" href="#">
                         <img class="media-object img-circle"
@@ -47,8 +46,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </li>
-                    `
-                );
+                    `).hide().prependTo('#comments-list').slideDown();
             }
         });
     });
