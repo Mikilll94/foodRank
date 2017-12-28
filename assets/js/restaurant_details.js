@@ -6,7 +6,7 @@ const alertify = require('alertifyjs');
 
 $(document).ready(function () {
     $("#add-review").click(function () {
-        let content = $('#form_content').val();
+        let content = $('#addComment').val();
         let rate = $('input[name=form-rate]:checked').val();
         let rateHTML = '<span class="glyphicon glyphicon-star"></span> '.repeat(rate);
         rateHTML += '<span class="glyphicon glyphicon-star-empty"></span> '.repeat(5 - rate);
@@ -25,7 +25,8 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#add-comment-form').remove();
+                $('#commentForm').remove();
+                $('#leave-opinion-header').remove();
                 $('.comments-well').prepend(
                     '<div class=\"row\">' +
                     '   <div class=\"col-md-12\">' +
