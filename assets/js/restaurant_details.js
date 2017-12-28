@@ -8,8 +8,13 @@ $(document).ready(function () {
     $("#add-review").click(function () {
         let content = $('#addComment').val();
         let rate = $('input[name=form-rate]:checked').val();
-        let rateHTML = '<span class="glyphicon glyphicon-star"></span> '.repeat(rate);
-        rateHTML += '<span class="glyphicon glyphicon-star-empty"></span> '.repeat(5 - rate);
+        let rateHTML = '';
+        for (let i = 0; i < rate; ++i) {
+            rateHTML += '<span class="glyphicon glyphicon-star"></span> ';
+        }
+        for (let i = 0; i < (5 - rate); ++i) {
+            rateHTML += '<span class="glyphicon glyphicon-star-empty"></span> ';
+        }
         $.ajax({
             url: $('#restaurant-details').data('add-comment-url'),
             type: 'POST',
