@@ -44,7 +44,7 @@
                         <ul class="media-date text-uppercase reviews list-inline">
                             <li>{{ comment.getPostingDate() | date("d") }}</li>
                             <li>{{ comment.getPostingDate() | date("m") }}</li>
-                            <li>{{ comment.getPostingDate() | date("Y") }}</li>
+                            <li>{{ comment.getPostingDate() | date("Y H:i") }}</li>
                         </ul>
                         <p class="media-comment">{{ comment.getContent() }}</p>
                         <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span
