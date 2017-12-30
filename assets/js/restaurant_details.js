@@ -29,7 +29,7 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#commentForm').replaceWith('<div id="new-comment-msg" class="alert alert-info" role="alert">Komentarz został dodany</div>');
+                $('#add-comment-row').replaceWith('<div id="new-comment-msg" class="alert alert-info row" role="alert">Komentarz został dodany</div>');
                 $(`
                     <li class="media">
                         <a class="pull-left" href="#">
@@ -48,7 +48,7 @@ $(document).ready(function () {
                             <p class="media-comment">${content}</p>
                         </div>
                     </li>
-                    `).hide().prependTo('#comments-list').slideDown();
+                    `).hide().prependTo('#comment-list').slideDown('slow');
             }
         });
     });
