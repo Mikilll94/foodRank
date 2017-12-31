@@ -26,3 +26,6 @@ services:
 
     email_sender:
       class: App\Service\EmailSender
+    logout:
+      class: App\Service\Logout
+

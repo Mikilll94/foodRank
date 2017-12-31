@@ -18,3 +18,4 @@ security:
           provider: user_provider
           logout:
             path: logout
+            success_handler: logout
