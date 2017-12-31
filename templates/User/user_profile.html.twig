@@ -14,11 +14,11 @@
                     <div class="sidebar">
                         <div class="widget user-dashboard-profile">
                             <div class="profile-thumb">
-                                <img src="{{ asset('build/images/user-thumb.jpg') }}" alt="" class="rounded-circle">
+                                <img src="{{ asset('build/images/' ~ app.user.getAvatarName()) }}" class="rounded-circle">
                             </div>
                             <h5 class="text-center">{{ app.user.username }}</h5>
                             <p>Nowicjusz</p>
-                            <a href="user-profile.html" class="btn btn-main-sm">Edytuj profil</a>
+                            <a href="user-profile.html" class="btn btn-main-sm">Zmień awatar</a>
                         </div>
                         <div class="widget user-dashboard-menu">
                             <ul>

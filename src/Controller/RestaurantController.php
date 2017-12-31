@@ -71,7 +71,7 @@ class RestaurantController extends Controller
                 return new JsonResponse(['errors' => ['Tylko zalogowani użytkownicy mogą dodawać komentarze']]);
             }
             $comment = new Comment();
-            $comment->setAuthor($user->getUsername());
+            $comment->setAuthor($user);
             $comment->setRate($request->get('rate'));
             $comment->setContent($request->get('content'));
             $comment->setPostingDate(new \DateTime('now'));

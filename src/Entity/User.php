@@ -56,9 +56,19 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $avatar_name;
+
+    /**
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
 
     public function __construct()
     {
@@ -93,6 +103,16 @@ class User implements UserInterface, \Serializable
     public function setIsActive($isActive): void
     {
         $this->isActive = $isActive;
+    }
+
+    public function getAvatarName()
+    {
+        return $this->avatar_name;
+    }
+
+    public function setAvatarName($avatar_name): void
+    {
+        $this->avatar_name = $avatar_name;
     }
 
     public function getSalt()

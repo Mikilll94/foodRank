@@ -27,8 +27,13 @@
         {% for comment in restaurant.comments %}
             <li class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object img-circle"
-                         src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
+                    {% if comment.author.getAvatarName() == null %}
+                        <img class="media-object img-circle"
+                             src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg">
+                    {% else %}
+                        <img class="media-object img-circle"
+                             src="{{ asset('build/images/' ~ comment.author.getAvatarName()) }}">
+                    {% endif %}
                 </a>
                 <div class="media-body">
                     <div class="well well-lg">
@@ -40,7 +45,7 @@
                         {% for i in star_index + 1..5 if star_index < 5 %}
                             <span class="glyphicon glyphicon-star-empty"></span>
                         {% endfor %}
-                        <h4 class="media-heading reviews">{{ comment.author }}</h4>
+                        <h4 class="media-heading reviews">{{ comment.author.username }}</h4>
                         <ul class="media-date text-uppercase reviews list-inline">
                             <li>{{ comment.getPostingDate() | date("d") }}</li>
                             <li>{{ comment.getPostingDate() | date("m") }}</li>

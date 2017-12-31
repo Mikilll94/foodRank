@@ -34,7 +34,7 @@ $(document).ready(function () {
                     <li class="media">
                         <a class="pull-left" href="#">
                         <img class="media-object img-circle"
-                            src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
+                            src="${$('#restaurant-details').data('avatar-name')}">
                         </a>
                         <div class="media-body">
                             <div class="well well-lg newly-added">

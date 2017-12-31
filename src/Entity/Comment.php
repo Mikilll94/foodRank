@@ -24,7 +24,7 @@ class Comment
     private $restaurant;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      */
     private $author;
 
