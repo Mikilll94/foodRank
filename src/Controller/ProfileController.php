@@ -17,12 +17,14 @@ class ProfileController extends Controller
 {
     /**
      * @Route("/profile", name="profile")
+     * @param UserInterface $user
+     * @return Response
      */
     public function index(UserInterface $user)
     {
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
-            ->findCommentsPostedByUserFromNewest($user->getUsername());
+            ->findCommentsPostedByUserFromNewest($user);
 
         return $this->render('User/user_profile.html.twig', ['comments' => $comments]);
     }
