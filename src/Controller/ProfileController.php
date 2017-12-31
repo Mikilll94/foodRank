@@ -24,6 +24,6 @@ class ProfileController extends Controller
             ->getRepository(Comment::class)
             ->findCommentsPostedByUserFromNewest($user->getUsername());
 
-        return $this->render('User/user-profile.html.twig', ['comments' => $comments]);
+        return $this->render('User/user_profile.html.twig', ['comments' => $comments]);
     }
 }
