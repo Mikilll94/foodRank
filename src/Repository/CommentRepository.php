@@ -13,16 +13,13 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function findCommentsPostedByUserFromNewest($user)
     {
         return $this->createQueryBuilder('c')
-            ->where('c.something = :value')->setParameter('value', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('c.author = :value')->setParameter('value', $user)
+            ->orderBy('c.posting_date', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 }
