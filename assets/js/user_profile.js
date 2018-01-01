@@ -13,9 +13,9 @@ $(document).ready(function () {
             showRemove: false,
             showCancel: false,
             removeLabel: '',
-            elErrorContainer: '#kv-avatar-errors-2',
+            elErrorContainer: '#avatar-errors',
             msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: `<img src="${$('#avatar_img').prop('src')}"><h6 class="text-muted">Kliknij aby wybrać</h6>`,
+            defaultPreviewContent: `<img src="${$('#avatar_img').prop('src')}">`,
             allowedFileExtensions: ["jpg", "png", "gif"]
         });
     });

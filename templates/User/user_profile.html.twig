@@ -19,12 +19,9 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+                            <div id="avatar-errors" class="center-block" style="width:800px;display:none"></div>
                             <form action="{{ path('change_avatar') }}" method="post" enctype="multipart/form-data">
-                                {#<div class="form-group">#}
-                                {#<div class="file-loading">#}
                                 <input id="avatar-input" name="file" type="file">
-                                {#</div>#}
                             </form>
                         </div>
                     </div>
@@ -41,7 +38,7 @@
                             </div>
                             <h5 class="text-center">{{ app.user.username }}</h5>
                             <p>Nowicjusz</p>
-                            <a href="user-profile.html" id="change-avatar-btn" class="btn btn-main-sm"
+                            <a id="change-avatar-btn" class="btn btn-main-sm"
                                data-toggle="modal"
                                data-target="#myModal">Zmień awatar</a>
                         </div>
