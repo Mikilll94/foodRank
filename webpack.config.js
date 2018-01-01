@@ -12,6 +12,7 @@ Encore
         'jquery',
         'bootstrap',
         'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+        'bootstrap-fileinput',
         'alertifyjs/build/alertify.min.js',
         'alertifyjs/build/css/alertify.min.css',
         'alertifyjs/build/css/themes/bootstrap.min.css',

@@ -9,16 +9,112 @@
 {% block content %}
     <section class="dashboard section">
         <div class="container">
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <style>
+                                .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+                                    margin: 0;
+                                    padding: 0;
+                                    border: none;
+                                    box-shadow: none;
+                                    text-align: center;
+                                }
+                                .kv-avatar {
+                                    display: inline-block;
+                                }
+                                .kv-avatar .file-input {
+                                    display: table-cell;
+                                    width: 213px;
+                                }
+                                .kv-reqd {
+                                    color: red;
+                                    font-family: monospace;
+                                    font-weight: normal;
+                                }
+                            </style>
+
+                            <!-- markup -->
+                            <!-- note: your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
+                            <!-- the avatar markup -->
+                            <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+                            <form class="form form-vertical" action="/avatar_upload.php" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-sm-4 text-center">
+                                        <div class="kv-avatar">
+                                            <div class="file-loading">
+                                                <input id="avatar-2" name="avatar-2" type="file" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="email">Email Address<span class="kv-reqd">*</span></label>
+                                                    <input type="email" class="form-control" name="email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="pwd">Password<span class="kv-reqd">*</span></label>
+                                                    <input type="password" class="form-control" name="pwd" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="fname">First Name</label>
+                                                    <input type="text" class="form-control" name="fname" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="lname">Last Name</label>
+                                                    <input type="text" class="form-control" name="lname" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <hr>
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" title="Your custom upload logic">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
                     <div class="sidebar">
                         <div class="widget user-dashboard-profile">
                             <div class="profile-thumb">
-                                <img src="{{ asset('build/images/' ~ app.user.getAvatarName()) }}" class="rounded-circle">
+                                <img src="{{ asset('build/images/' ~ app.user.getAvatarName()) }}"
+                                     class="rounded-circle">
                             </div>
                             <h5 class="text-center">{{ app.user.username }}</h5>
                             <p>Nowicjusz</p>
-                            <a href="user-profile.html" class="btn btn-main-sm">Zmień awatar</a>
+                            <a href="user-profile.html" id="change-avatar-btn" class="btn btn-main-sm" data-toggle="modal"
+                               data-target="#myModal">Zmień awatar</a>
                         </div>
                         <div class="widget user-dashboard-menu">
                             <ul>
@@ -44,18 +140,20 @@
                             </thead>
                             <tbody>
                             {% for comment in comments %}
-                            <tr>
-                                <td class="product-thumb">
-                                    <img width="80px" height="auto" src="{{ asset('build/images/' ~ comment.getRestaurant().getImageUrl()) }}"
-                                         alt="image description"></td>
-                                <td class="product-category"><span class="categories">{{ comment.getRestaurant().getName() }}</span></td>
-                                <td class="product-details">
-                                    {{ comment.getContent() }}
-                                </td>
-                                <td class="action" data-title="Action">
-                                    {{ comment.getPostingDate() | date("d/m/Y H:i:s") }}
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="product-thumb">
+                                        <img width="80px" height="auto"
+                                             src="{{ asset('build/images/' ~ comment.getRestaurant().getImageUrl()) }}"
+                                             alt="image description"></td>
+                                    <td class="product-category"><span
+                                                class="categories">{{ comment.getRestaurant().getName() }}</span></td>
+                                    <td class="product-details">
+                                        {{ comment.getContent() }}
+                                    </td>
+                                    <td class="action" data-title="Action">
+                                        {{ comment.getPostingDate() | date("d/m/Y H:i:s") }}
+                                    </td>
+                                </tr>
                             {% endfor %}
                             </tbody>
                         </table>
@@ -65,4 +163,8 @@
         </div>
     </section>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/user_profile.js') }}"></script>
 {% endblock %}
