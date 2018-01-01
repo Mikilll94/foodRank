@@ -6,6 +6,7 @@ $(document).ready(function () {
     $('#myModal').on('show.bs.modal', function () {
         $("#avatar-input").fileinput({
             language: 'pl',
+            required: true,
             overwriteInitial: true,
             maxFileSize: 1500,
             showClose: false,
