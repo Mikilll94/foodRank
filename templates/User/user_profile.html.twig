@@ -47,22 +47,25 @@
                             <!-- note: your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
                             <!-- the avatar markup -->
                             <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
-                            <form class="form form-vertical" action="/avatar_upload.php" method="post" enctype="multipart/form-data">
+                            <form class="form form-vertical" action="{{ path('change_avatar') }}" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="text-center">
                                         <div class="kv-avatar">
                                             <div class="file-loading">
-                                                <input id="avatar-2" name="avatar-2" type="file" required>
+                                                <input id="avatar-2" name="file" type="file" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <button type="submit" class="btn btn-primary pull-right" title="Your custom upload logic">Save</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" title="Your custom upload logic">Save</button>
-                        </div>
+                        {#<div class="modal-footer">#}
+                            {#<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+                            {#<button type="submit" class="btn btn-primary" title="Your custom upload logic">Save</button>#}
+                        {#</div>#}
                     </div>
                 </div>
             </div>
@@ -72,7 +75,7 @@
                     <div class="sidebar">
                         <div class="widget user-dashboard-profile">
                             <div class="profile-thumb">
-                                <img id="avatar_img" src="{{ asset('build/images/' ~ app.user.getAvatarName()) }}"
+                                <img id="avatar_img" src="{{ asset(app.user.getAvatarPath()) }}"
                                      class="rounded-circle">
                             </div>
                             <h5 class="text-center">{{ app.user.username }}</h5>

@@ -8,21 +8,21 @@ $(document).ready(function () {
             'onclick="alert(\'Call your custom code here.\')">' +
             '<i class="glyphicon glyphicon-tag"></i>' +
             '</button>';
-        $("#avatar-2").fileinput({
-            overwriteInitial: true,
-            maxFileSize: 1500,
-            showClose: false,
-            showCaption: false,
-            showBrowse: false,
-            browseOnZoneClick: true,
-            removeLabel: '',
-            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-            removeTitle: 'Cancel or reset changes',
-            elErrorContainer: '#kv-avatar-errors-2',
-            msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: `<img src="${$('#avatar_img').prop('src')}"><h6 class="text-muted">Kliknij aby wybrać</h6>`,
-            layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-            allowedFileExtensions: ["jpg", "png", "gif"]
-        });
+        // $("#avatar-2").fileinput({
+        //     overwriteInitial: true,
+        //     maxFileSize: 1500,
+        //     showClose: false,
+        //     showCaption: false,
+        //     showBrowse: false,
+        //     browseOnZoneClick: true,
+        //     removeLabel: '',
+        //     removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        //     removeTitle: 'Cancel or reset changes',
+        //     elErrorContainer: '#kv-avatar-errors-2',
+        //     msgErrorClass: 'alert alert-block alert-danger',
+        //     defaultPreviewContent: `<img src="${$('#avatar_img').prop('src')}"><h6 class="text-muted">Kliknij aby wybrać</h6>`,
+        //     layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        //     allowedFileExtensions: ["jpg", "png", "gif"]
+        // });
     });
 });

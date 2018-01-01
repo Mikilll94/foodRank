@@ -115,6 +115,15 @@ class User implements UserInterface, \Serializable
         $this->avatar_name = $avatar_name;
     }
 
+    public function getAvatarPath()
+    {
+        if ($this->avatar_name) {
+            return 'uploads/avatars/' . $this->avatar_name;
+        } else {
+            return 'build/images/default_avatar_male.jpg';
+        }
+    }
+
     public function getSalt()
     {
         return null;

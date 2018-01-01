@@ -9,8 +9,7 @@
 {% block content %}
     <div id="restaurant-details" data-logged-user="{{ app.user ? app.user.username : null }}"
          data-add-comment-url="{{ path('restaurant_details', { restaurant_id: app.request.get('restaurant_id') }) }}"
-         data-avatar-name="{{ app.user and app.user.getAvatarName() ? asset('build/images/' ~ app.user.getAvatarName()) :
-            "https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" }}"
+         data-avatar-name="{{ app.user ? asset(app.user.getAvatarPath()) : '' }}"
          class="row">
 
         <div class="col-md-3">
