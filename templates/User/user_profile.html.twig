@@ -72,7 +72,7 @@
                     <div class="sidebar">
                         <div class="widget user-dashboard-profile">
                             <div class="profile-thumb">
-                                <img src="{{ asset('build/images/' ~ app.user.getAvatarName()) }}"
+                                <img id="avatar_img" src="{{ asset('build/images/' ~ app.user.getAvatarName()) }}"
                                      class="rounded-circle">
                             </div>
                             <h5 class="text-center">{{ app.user.username }}</h5>
