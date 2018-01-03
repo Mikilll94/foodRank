@@ -9,11 +9,7 @@ doctrine:
     dbal:
       connections:
         foodrank:
-          driver:   pdo_pgsql
-          port:     5432
-          dbname:   foodrank
-          user:     postgres
-          password: postgres
+          url: '%env(resolve:DATABASE_URL)%'
           charset:  UTF8
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
