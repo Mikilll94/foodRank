@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.17.0",
     "bootstrap-sass": "^3.3.7",
     "jquery": "^3.2.1",
     "node-sass": "^4.7.2",
@@ -8,6 +7,7 @@
     "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
+    "@symfony/webpack-encore": "^0.17.1",
     "alertifyjs": "^1.11.0",
     "bootstrap": "^3.3.7",
     "bootstrap-fileinput": "^4.4.6"
