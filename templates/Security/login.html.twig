@@ -1,26 +1,36 @@
-<div id="login-error"></div>
+{% extends 'base.html.twig' %}
 
-<form class="form" id="login-nav">
-    <div class="form-group">
-        <label class="sr-only" for="username">Login</label>
-        <input id="username" class="form-control" placeholder="Login" required
-            autocomplete="username">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/register.css') }}">
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="container container-small">
+        <h1 id="registration-header">Zaloguj się do serwisu foodRank</h1>
+        <form action="{{ path('login_form') }}" method="post">
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <div class="form-group">
+                <label class="control-label required" for="registration_form_username">Login</label>
+                <input type="text" id="registration_form_username" name="_username" value="{{ last_username }}"
+                       required="required" class="form-control" autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label class="control-label required" for="registration_form_plainPassword_first">Hasło</label>
+                <input type="password" id="registration_form_plainPassword_first" name="_password" required="required"
+                       class="form-control" autocomplete="current-password">
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label for="registration_form_termsAccepted" class="required">
+                        <input type="checkbox" name="remember_me"> Pamiętaj mnie
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Zaloguj się</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label class="sr-only" for="password">Hasło</label>
-        <input type="password" class="form-control" id="password" placeholder="Hasło" required
-            autocomplete="current-password">
-        <div class="help-block text-right">
-            <a id="forgot-password">Zapomniałeś hasła?</a>
-        </div>
-    </div>
-    <input type="hidden" name="_failure_path" value="{{ path('all_restaurants') }}"/>
-    <div class="form-group">
-        <button id="login-button" type="button" class="btn btn-primary btn-block">Zaloguj się</button>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> pamiętaj mnie
-        </label>
-    </div>
-</form>
+{% endblock %}

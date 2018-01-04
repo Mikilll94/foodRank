@@ -8,7 +8,7 @@ $('#login-button').click(function() {
         password: password
     };
     $.ajax({
-        url: '/login',
+        url: '/login_json',
         type: 'POST',
         contentType: 'application/json',
         dataType: 'json',

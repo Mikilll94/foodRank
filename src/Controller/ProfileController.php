@@ -20,7 +20,7 @@ class ProfileController extends Controller
      * @param UserInterface $user
      * @return Response
      */
-    public function index(UserInterface $user)
+    public function index(UserInterface $user = null)
     {
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
