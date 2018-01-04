@@ -11,7 +11,13 @@
         <h1 id="registration-header">Zaloguj się do serwisu foodRank</h1>
         <form action="{{ path('login_form') }}" method="post">
             {% if error %}
-                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <span id="login-error-msg" class="help-block">
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="glyphicon glyphicon-exclamation-sign"></span> {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </li>
+                    </ul>
+                </span>
             {% endif %}
             <div class="form-group">
                 <label class="control-label required" for="registration_form_username">Login</label>
