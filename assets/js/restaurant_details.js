@@ -52,4 +52,9 @@ $(document).ready(function () {
             }
         });
     });
+
+
+    $('#edit-comment-btn').click(function () {
+        alert('edit');
+    });
 });

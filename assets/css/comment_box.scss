@@ -9,7 +9,7 @@
 .reviews {
   color: #555;
   font-weight: bold;
-  margin: 10px auto 20px;
+  margin: 0 auto 20px;
 }
 .notes {
   color: #999;
@@ -17,11 +17,7 @@
 }
 .media .media-object { max-width: 120px; }
 .media-body { position: relative; }
-.media-date {
-  position: absolute;
-  right: 25px;
-  top: 25px;
-}
+
 .media-date li { padding: 0; }
 .media-date li:first-child:before { content: ''; }
 .media-date li:before {
