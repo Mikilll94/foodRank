@@ -30,7 +30,7 @@
                     <img class="media-object img-circle" src="{{ asset(comment.author.getAvatarPath()) }}">
                 </a>
                 <div class="media-body">
-                    <div class="well well-lg comment-well">
+                    <div data-post-id="{{ comment.getId() }}" class="well well-lg comment-well">
                         <div class="comment-header">
                             <div class="star-rate">
                                 {% set star_index = 0 %}

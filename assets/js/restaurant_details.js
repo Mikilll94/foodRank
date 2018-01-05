@@ -36,16 +36,27 @@ $(document).ready(function () {
                         <img class="media-object img-circle"
                             src="${$('#restaurant-details').data('avatar-name')}">
                         </a>
+                        
                         <div class="media-body">
                             <div class="well well-lg newly-added">
-                            ${rateHTML}
-                            <h4 class="media-heading reviews">
-                                ${$('#restaurant-details').data('logged-user')}
-                            </h4>
-                            <div class="media-date reviews list-inline">
-                                przed chwilą
+                                <div class="comment-header">
+                                     <div class="star-rate">
+                                        ${rateHTML}
+                                    </div>
+                                    <div class="media-date reviews">
+                                        przed chwilą
+                                    </div>
+                                </div>
+                                <h4 class="media-heading reviews">
+                                    ${$('#restaurant-details').data('logged-user')}
+                                </h4>
+                                <p class="media-comment">${content}</p>
+                                <div class="button-section">
+                                    <button type="button" class="btn btn-danger btn-circle text-uppercase
+                                        edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
+                                    </button>
+                                </div>
                             </div>
-                            <p class="media-comment">${content}</p>
                         </div>
                     </li>
                     `).hide().prependTo('#comment-list').slideDown('slow');
@@ -56,18 +67,19 @@ $(document).ready(function () {
 
     $('.edit-comment-btn').click(function () {
         let $commentWell = $(this).closest('.comment-well');
+        let postId = $commentWell.data('post-id');
         $commentWell.find('.star-rate').replaceWith(`
             <div class="form_rate">
-               <input type="radio" id="form_rate_5" name="randNo" value="5">
-               <label for="randNo123_5" class="required"></label>
-               <input type="radio" id="randNo123_4" name="randNo123" value="4">
-               <label for="randNo123_4" class="required"></label>
-               <input type="radio" id="randNo123_3" name="randNo123" value="3">
-               <label for="randNo123_3" class="required"></label>
-               <input type="radio" id="randNo123_2" name="randNo123" value="2">
-               <label for="randNo123_2" class="required"></label>
-               <input type="radio" id="randNo123_1" name="randNo123" value="1">
-               <label for="randNo123_1" class="required"></label>
+               <input type="radio" id="star_${postId}_5" name="star_${postId}" value="5">
+               <label for="star_${postId}_5" class="required"></label>
+               <input type="radio" id="star_${postId}_4" name="star_${postId}" value="4">
+               <label for="star_${postId}_4" class="required"></label>
+               <input type="radio" id="star_${postId}_3" name="star_${postId}" value="3">
+               <label for="star_${postId}_3" class="required"></label>
+               <input type="radio" id="star_${postId}_2" name="star_${postId}" value="2">
+               <label for="star_${postId}_2" class="required"></label>
+               <input type="radio" id="star_${postId}_1" name="star_${postId}" value="1">
+               <label for="star_${postId}_1" class="required"></label>
             </div>
         `);
 
