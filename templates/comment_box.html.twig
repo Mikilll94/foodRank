@@ -4,7 +4,7 @@
 <div id="add-comment-row">
     <form id="commentForm" role="form">
         {% block choice_widget_expanded -%}
-            <div id="form_rate">
+            <div class="form_rate">
                 {%- for child in form.rate %}
                     <input type="radio" id="form_rate_{{ child.vars.value }}" name="form-rate"
                            value="{{ child.vars.value }}">
@@ -30,7 +30,7 @@
                     <img class="media-object img-circle" src="{{ asset(comment.author.getAvatarPath()) }}">
                 </a>
                 <div class="media-body">
-                    <div class="well well-lg">
+                    <div class="well well-lg comment-well">
                         <div class="comment-header">
                             <div class="star-rate">
                                 {% set star_index = 0 %}
@@ -50,17 +50,19 @@
                         </div>
                         <h4 class="media-heading reviews">{{ comment.author.username }}</h4>
                         <p class="media-comment">{{ comment.getContent() }}</p>
-                        <a class="btn btn-primary btn-circle text-uppercase" href="#" id="reply"><span
-                                    class="glyphicon glyphicon-share-alt"></span> Odpowiedz
-                        </a>
-                        {% if app.user and app.user.username == comment.author.username %}
-                            <button type="button" class="btn btn-danger btn-circle text-uppercase edit-comment-btn"
-                                    ><span class="glyphicon glyphicon-edit"></span> Edytuj
+                        <div class="button-section">
+                            <button type="button" class="btn btn-primary btn-circle text-uppercase"
+                                    id="reply"><span class="glyphicon glyphicon-share-alt"></span> Odpowiedz
                             </button>
-                        {% endif %}
-                        <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
-                           href="#"><span class="glyphicon glyphicon-comment"></span> 0 komentarzy
-                        </a>
+                            {% if app.user and app.user.username == comment.author.username %}
+                                <button type="button" class="btn btn-danger btn-circle text-uppercase
+                                    edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
+                                </button>
+                            {% endif %}
+                            <button type="button" class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
+                               href="#"><span class="glyphicon glyphicon-comment"></span> 0 komentarzy
+                            </button>
+                        </div>
                     </div>
                 </div>
             </li>

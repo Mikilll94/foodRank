@@ -1,11 +1,11 @@
-#form_rate {
+.form_rate {
   display: inline-block;
 }
-#form_rate input {
+.form_rate input {
   display: none;
 }
 
-#form_rate label {
+.form_rate label {
   float: right;
   padding: 2px;
   font-size: 24px;
@@ -13,15 +13,15 @@
   transition: all .2s;
 }
 
-#form_rate label:before {
+.form_rate label:before {
   content: '\2605';
 }
 
-#form_rate input:checked ~ label:before {
+.form_rate input:checked ~ label:before {
   color: gold;
   transition: all .25s;
 }
 
-#form_rate label:hover {
+.form_rate label:hover {
   transform: scale(1.3);
 }

@@ -39,6 +39,10 @@ class RestaurantController extends Controller
 
     /**
      * @Route("restaurants/{restaurant_id}", name="restaurant_details", requirements={"restaurant_id"="\d+"})
+     * @param $restaurant_id
+     * @param Request $request
+     * @param UserInterface|null $user
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function Details($restaurant_id, Request $request, UserInterface $user = null)
     {

@@ -25,7 +25,7 @@ $(document).ready(function () {
             },
             success: function (data, status) {
                 if (data.errors.length > 0) {
-                    alertify.set('notifier','position', 'bottom-center');
+                    alertify.set('notifier', 'position', 'bottom-center');
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
@@ -55,6 +55,33 @@ $(document).ready(function () {
 
 
     $('.edit-comment-btn').click(function () {
-        alert('edit');
+        let $commentWell = $(this).closest('.comment-well');
+        $commentWell.find('.star-rate').replaceWith(`
+            <div class="form_rate">
+               <input type="radio" id="form_rate_5" name="randNo" value="5">
+               <label for="randNo123_5" class="required"></label>
+               <input type="radio" id="randNo123_4" name="randNo123" value="4">
+               <label for="randNo123_4" class="required"></label>
+               <input type="radio" id="randNo123_3" name="randNo123" value="3">
+               <label for="randNo123_3" class="required"></label>
+               <input type="radio" id="randNo123_2" name="randNo123" value="2">
+               <label for="randNo123_2" class="required"></label>
+               <input type="radio" id="randNo123_1" name="randNo123" value="1">
+               <label for="randNo123_1" class="required"></label>
+            </div>
+        `);
+
+        $commentWell.find('.media-comment')
+            .replaceWith(`<textarea class="media-comment form-control">${$commentWell.find('.media-comment').text()}</textarea>`);
+
+        $commentWell.find('.button-section')
+            .replaceWith(`
+                <div class="button-section">
+                    <button type="button" class="btn btn-success btn-circle text-uppercase"
+                        id="reply"><span class="glyphicon glyphicon-ok"></span> Zatwierdź zmiany</button>
+                    <button type="button" class="btn btn-danger btn-circle text-uppercase" 
+                        id="reply"><span class="glyphicon glyphicon-remove"></span> Porzuć</button>
+                </div>
+            `);
     });
 });
