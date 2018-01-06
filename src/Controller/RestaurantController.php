@@ -104,4 +104,19 @@ class RestaurantController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/edit_comment", name="edit_comment")
+     */
+    public function EditComment(Request $request, UserInterface $user = null)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commentToUpdate = $em->getRepository(Comment::class)->find($request->get('postId'));
+        $commentToUpdate->setContent($request->get('newContent'));
+        $commentToUpdate->setRate($request->get('newRate'));
+        $em->flush();
+        return new JsonResponse(['errors' => []]);
+    }
+
+
 }

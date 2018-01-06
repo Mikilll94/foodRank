@@ -90,4 +90,50 @@ $(document).ready(function () {
         $commentWell.find('.button-section-edit').hide();
         $commentWell.find('.button-section').show();
     });
+
+    $('.submit-edit-btn').click(function () {
+        let $commentWell = $(this).parents('.comment-well');
+        let postId = $commentWell.data('post-id');
+        let content = $commentWell.find('.media-comment-edit').val();
+        let rate = $commentWell.find('.star-rate-edit input[type=radio]:checked').val();
+
+
+        $.ajax({
+            url: '/edit_comment',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                postId: postId,
+                newRate: rate,
+                newContent: content
+            },
+            success: function (data, status) {
+                if (data.errors.length > 0) {
+                    alertify.set('notifier', 'position', 'bottom-center');
+                    alertify.notify('Coś poszło nie tak');
+                    return;
+                }
+
+                $commentWell.find('.media-comment').text(content);
+                $commentWell.find('.star').removeClass('glyphicon-star');
+                $commentWell.find('.star').removeClass('glyphicon-star-empty');
+                let stars = $commentWell.find('.star-rate').children();
+                for (let i = 0; i < rate; ++i) {
+                    stars.eq(i).addClass('glyphicon-star');
+                }
+                for (let i = rate; i < 5; ++i) {
+                    stars.eq(i).addClass('glyphicon-star-empty');
+                }
+
+                $commentWell.find('.star-rate-edit').hide();
+                $commentWell.find('.star-rate').show();
+
+                $commentWell.find('.media-comment-edit').hide();
+                $commentWell.find('.media-comment').show();
+
+                $commentWell.find('.button-section-edit').hide();
+                $commentWell.find('.button-section').show();
+            }
+        });
+    });
 });
