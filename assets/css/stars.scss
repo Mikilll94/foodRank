@@ -25,3 +25,7 @@
 .form_rate label:hover {
   transform: scale(1.3);
 }
+
+.form_rate.star-rate-edit {
+  display: none;
+}

@@ -42,6 +42,13 @@
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 {% endfor %}
                             </div>
+                            <div class="form_rate star-rate-edit">
+                                {%- for child in form.rate %}
+                                    <input type="radio" id="star_{{ comment.getId() }}_{{ child.vars.value }}" name="star_{{ comment.getId() }}"
+                                           value="{{ child.vars.value }}" {{ child.vars.value == comment.getRate() ? "checked" : ''  }}>
+                                    <label for="star_{{ comment.getId() }}_{{ child.vars.value }}" class="required"></label>
+                                {% endfor -%}
+                            </div>
                             <ul class="media-date text-uppercase reviews list-inline">
                                 <li>{{ comment.getPostingDate() | date("d") }}</li>
                                 <li>{{ comment.getPostingDate() | date("m") }}</li>
@@ -50,6 +57,7 @@
                         </div>
                         <h4 class="media-heading reviews">{{ comment.author.username }}</h4>
                         <p class="media-comment">{{ comment.getContent() }}</p>
+                        <textarea class="media-comment-edit form-control">{{ comment.getContent() }}</textarea>
                         <div class="button-section">
                             <button type="button" class="btn btn-primary btn-circle text-uppercase"
                                     id="reply"><span class="glyphicon glyphicon-share-alt"></span> Odpowiedz
@@ -62,6 +70,12 @@
                             <button type="button" class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
                                href="#"><span class="glyphicon glyphicon-comment"></span> 0 komentarzy
                             </button>
+                        </div>
+                        <div class="button-section-edit">
+                            <button type="button" class="submit-edit-btn btn btn-success btn-circle text-uppercase"
+                                    id="reply"><span class="glyphicon glyphicon-ok"></span> Zatwierdź zmiany</button>
+                            <button type="button" class="abort-edit-btn btn btn-danger btn-circle text-uppercase"
+                                    id="reply"><span class="glyphicon glyphicon-remove"></span> Porzuć</button>
                         </div>
                     </div>
                 </div>

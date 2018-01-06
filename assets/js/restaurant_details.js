@@ -66,34 +66,28 @@ $(document).ready(function () {
 
 
     $('.edit-comment-btn').click(function () {
-        let $commentWell = $(this).closest('.comment-well');
-        let postId = $commentWell.data('post-id');
-        $commentWell.find('.star-rate').replaceWith(`
-            <div class="form_rate">
-               <input type="radio" id="star_${postId}_5" name="star_${postId}" value="5">
-               <label for="star_${postId}_5" class="required"></label>
-               <input type="radio" id="star_${postId}_4" name="star_${postId}" value="4">
-               <label for="star_${postId}_4" class="required"></label>
-               <input type="radio" id="star_${postId}_3" name="star_${postId}" value="3">
-               <label for="star_${postId}_3" class="required"></label>
-               <input type="radio" id="star_${postId}_2" name="star_${postId}" value="2">
-               <label for="star_${postId}_2" class="required"></label>
-               <input type="radio" id="star_${postId}_1" name="star_${postId}" value="1">
-               <label for="star_${postId}_1" class="required"></label>
-            </div>
-        `);
+        let $commentWell = $(this).parents('.comment-well');
 
-        $commentWell.find('.media-comment')
-            .replaceWith(`<textarea class="media-comment form-control">${$commentWell.find('.media-comment').text()}</textarea>`);
+        $commentWell.find('.star-rate').hide();
+        $commentWell.find('.star-rate-edit').show();
 
-        $commentWell.find('.button-section')
-            .replaceWith(`
-                <div class="button-section">
-                    <button type="button" class="btn btn-success btn-circle text-uppercase"
-                        id="reply"><span class="glyphicon glyphicon-ok"></span> Zatwierdź zmiany</button>
-                    <button type="button" class="btn btn-danger btn-circle text-uppercase" 
-                        id="reply"><span class="glyphicon glyphicon-remove"></span> Porzuć</button>
-                </div>
-            `);
+        $commentWell.find('.media-comment').hide();
+        $commentWell.find('.media-comment-edit').show();
+
+        $commentWell.find('.button-section').hide();
+        $commentWell.find('.button-section-edit').show();
+    });
+
+    $('.abort-edit-btn').click(function () {
+        let $commentWell = $(this).parents('.comment-well');
+
+        $commentWell.find('.star-rate-edit').hide();
+        $commentWell.find('.star-rate').show();
+
+        $commentWell.find('.media-comment-edit').hide();
+        $commentWell.find('.media-comment').show();
+
+        $commentWell.find('.button-section-edit').hide();
+        $commentWell.find('.button-section').show();
     });
 });
