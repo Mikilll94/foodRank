@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: '/edit_comment',
+            url: '/comment/edit',
             type: 'POST',
             dataType: 'json',
             data: {
