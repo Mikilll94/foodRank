@@ -8,13 +8,6 @@ $(document).ready(function () {
     $("#add-review").click(function () {
         let content = $('#addComment').val();
         let rate = $('input[name=form-rate]:checked').val();
-        let rateHTML = '';
-        for (let i = 0; i < rate; ++i) {
-            rateHTML += '<span class="glyphicon glyphicon-star"></span> ';
-        }
-        for (let i = 0; i < (5 - rate); ++i) {
-            rateHTML += '<span class="glyphicon glyphicon-star-empty"></span> ';
-        }
         $.ajax({
             url: $('#restaurant-details').data('add-comment-url'),
             type: 'POST',
@@ -29,37 +22,19 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#add-comment-row').replaceWith('<div id="new-comment-msg" class="alert alert-info row" role="alert">Komentarz został dodany</div>');
-                $(`
-                    <li class="media">
-                        <a class="pull-left" href="#">
-                        <img class="media-object img-circle"
-                            src="${$('#restaurant-details').data('avatar-name')}">
-                        </a>
-                        
-                        <div class="media-body">
-                            <div class="well well-lg newly-added">
-                                <div class="comment-header">
-                                     <div class="star-rate">
-                                        ${rateHTML}
-                                    </div>
-                                    <div class="media-date reviews">
-                                        przed chwilą
-                                    </div>
-                                </div>
-                                <h4 class="media-heading reviews">
-                                    ${$('#restaurant-details').data('logged-user')}
-                                </h4>
-                                <p class="media-comment">${content}</p>
-                                <div class="button-section">
-                                    <button type="button" class="btn btn-danger btn-circle text-uppercase
-                                        edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    `).hide().prependTo('#comment-list').slideDown('slow');
+                $('#add-comment-row').hide();
+                $('#new-comment-msg').css('display', 'flex');
+
+                let stars = $('#star-rate-new-added').children();
+                for (let i = 0; i < rate; ++i) {
+                    stars.eq(i).addClass('glyphicon-star');
+                }
+                for (let i = rate; i < 5; ++i) {
+                    stars.eq(i).addClass('glyphicon-star-empty');
+                }
+                $('#content-new-added').text(content);
+
+                $(`#new-added-comment`).slideDown('slow');
             }
         });
     });

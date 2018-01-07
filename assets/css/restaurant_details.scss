@@ -29,7 +29,6 @@
   margin: 50.6px 0;
   font-size: 24px;
   text-align: center;
-  display: flex;
   justify-content: center;
   align-items: center;
   background-color: #e7b359;
@@ -43,4 +42,12 @@
 .comment-header {
   display: flex;
   justify-content: space-between;
+}
+
+#new-comment-msg {
+  display: none;
+}
+
+#new-added-comment {
+  display: none;
 }

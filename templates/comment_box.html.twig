@@ -22,8 +22,37 @@
         </button>
     </form>
 </div>
+<div id="new-comment-msg" class="alert alert-info row" role="alert">Komentarz został dodany</div>
 <div class="row">
     <ul id="comment-list" class="media-list">
+        <li id="new-added-comment" class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object img-circle" src="{{ app.user ? asset(app.user.getAvatarPath()) : '' }}">
+            </a>
+            <div class="media-body">
+                <div class="well well-lg newly-added">
+                    <div class="comment-header">
+                        <div id="star-rate-new-added" class="star-rate">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="media-date reviews">
+                            przed chwilą
+                        </div>
+                    </div>
+                    <h4 class="media-heading reviews">{{ app.user ? app.user.username : null }}</h4>
+                    <p id="content-new-added" class="media-comment"></p>
+                    <div class="button-section">
+                        <button type="button" class="btn btn-danger btn-circle text-uppercase
+                                        edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
         {% for comment in restaurant.comments %}
             <li class="media">
                 <a class="pull-left" href="#">
