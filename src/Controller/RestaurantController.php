@@ -41,10 +41,9 @@ class RestaurantController extends Controller
      * @Route("restaurants/{restaurant_id}", name="restaurant_details", requirements={"restaurant_id"="\d+"})
      * @param $restaurant_id
      * @param Request $request
-     * @param UserInterface|null $user
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function Details($restaurant_id, Request $request, UserInterface $user = null)
+    public function Details($restaurant_id, Request $request)
     {
         $restaurant = $this->getDoctrine()
             ->getRepository(Restaurant::class)
@@ -70,40 +69,50 @@ class RestaurantController extends Controller
 
         $form->handleRequest($request);
 
-        if ($request->isXmlHttpRequest()) {
-            if ($user == null) {
-                return new JsonResponse(['errors' => ['Tylko zalogowani użytkownicy mogą dodawać komentarze']]);
-            }
-            $comment = new Comment();
-            $comment->setAuthor($user);
-            $comment->setRate($request->get('rate'));
-            $comment->setContent($request->get('content'));
-            $comment->setPostingDate(new \DateTime('now'));
-            $comment->setRestaurant($restaurant);
-
-            $errors = [];
-            $validator = $this->get('validator');
-            $errorsValidator = $validator->validate($comment);
-            foreach ($errorsValidator as $error) {
-                array_push($errors, $error->getMessage());
-            }
-
-            if (count($errors) == 0) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($comment);
-                $em->flush();
-
-                return new JsonResponse(['errors' => []]);
-            } else {
-                return new JsonResponse(['errors' => $errors]);
-            }
-        }
-
         return $this->render('Restaurant/details.html.twig', [
             'restaurant' => $restaurant,
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/comment/add", name="add_comment")
+     * @param Request $request
+     * @param UserInterface|null $user
+     * @return JsonResponse
+     */
+    public function AddComment(Request $request, UserInterface $user = null)
+    {
+        if ($user == null) {
+            return new JsonResponse(['errors' => ['Tylko zalogowani użytkownicy mogą dodawać komentarze']]);
+        }
+        $comment = new Comment();
+        $comment->setAuthor($user);
+        $comment->setRate($request->get('rate'));
+        $comment->setContent($request->get('content'));
+        $comment->setPostingDate(new \DateTime('now'));
+
+        $em = $this->getDoctrine()->getManager();
+        $restaurant = $em->getRepository(Restaurant::class)->find($request->get('restautantId'));
+        $comment->setRestaurant($restaurant);
+
+        $errors = [];
+        $validator = $this->get('validator');
+        $errorsValidator = $validator->validate($comment);
+        foreach ($errorsValidator as $error) {
+            array_push($errors, $error->getMessage());
+        }
+
+        if (count($errors) == 0) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+            return new JsonResponse(['errors' => []]);
+        } else {
+            return new JsonResponse(['errors' => $errors]);
+        }
+    }
+
 
     /**
      * @Route("/edit_comment", name="edit_comment")

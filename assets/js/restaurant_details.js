@@ -8,13 +8,15 @@ $(document).ready(function () {
     $("#add-review").click(function () {
         let content = $('#addComment').val();
         let rate = $('input[name=form-rate]:checked').val();
+        let $dataDiv = $('#restaurant-details');
         $.ajax({
-            url: $('#restaurant-details').data('add-comment-url'),
+            url: '/comment/add',
             type: 'POST',
             dataType: 'json',
             data: {
                 rate: rate,
-                content: content
+                content: content,
+                restautantId: $dataDiv.data('restaurant-id')
             },
             success: function (data, status) {
                 if (data.errors.length > 0) {
