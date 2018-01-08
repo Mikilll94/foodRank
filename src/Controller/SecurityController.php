@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -53,19 +54,18 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/register", name="registration")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function register(Request $request,  UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
@@ -77,6 +77,9 @@ class SecurityController extends Controller
                 $this->renderView('Emails/registration.html.twig', ['name' => $user->getUsername()]),
                 $user->getEmail());
 
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->get('security.token_storage')->setToken($token);
+            $this->get('session')->set('_security_main', serialize($token));
             return $this->redirect('/');
         }
 
