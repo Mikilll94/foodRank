@@ -55,13 +55,16 @@ class CommentController extends Controller
     /**
      * @Route("/comment/edit", name="edit_comment")
      * @param Request $request
-     * @param UserInterface|null $user
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function EditComment(Request $request, UserInterface $user = null)
+    public function EditComment(Request $request, UserInterface $user)
     {
         $em = $this->getDoctrine()->getManager();
         $commentToUpdate = $em->getRepository(Comment::class)->find($request->get('postId'));
+        if ($commentToUpdate->getAuthor()->getId() != $user->getId()) {
+            return new JsonResponse(['errors' => ['Możesz edytować tylko swoje komentarze']]);
+        }
         $commentToUpdate->setContent($request->get('newContent'));
         $commentToUpdate->setRate($request->get('newRate'));
         $em->flush();

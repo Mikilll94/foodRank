@@ -88,10 +88,13 @@
                         <p class="media-comment">{{ comment.getContent() }}</p>
                         <textarea class="media-comment-edit form-control">{{ comment.getContent() }}</textarea>
                         <div class="button-section">
-                            <button type="button" class="btn btn-primary btn-circle text-uppercase"
-                                    id="reply"><span class="glyphicon glyphicon-share-alt"></span> Odpowiedz
-                            </button>
-                            {% if app.user and app.user.username == comment.author.username %}
+                            {% if app.user and app.user.username != comment.author.username %}
+                                <button type="button" class="btn btn-primary btn-circle text-uppercase"
+                                        id="reply"><span class="glyphicon glyphicon-share-alt"></span> Odpowiedz
+                                </button>
+                            {% endif %}
+                            {% if app.user and app.user.username == comment.author.username
+                                and comment.getPostingDate().timestamp > date().timestamp - 60 %}
                                 <button type="button" class="btn btn-danger btn-circle text-uppercase
                                     edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
                                 </button>

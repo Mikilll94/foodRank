@@ -74,7 +74,6 @@ $(document).ready(function () {
         let content = $commentWell.find('.media-comment-edit').val();
         let rate = $commentWell.find('.star-rate-edit input[type=radio]:checked').val();
 
-
         $.ajax({
             url: '/comment/edit',
             type: 'POST',
@@ -87,7 +86,7 @@ $(document).ready(function () {
             success: function (data, status) {
                 if (data.errors.length > 0) {
                     alertify.set('notifier', 'position', 'bottom-center');
-                    alertify.notify('Coś poszło nie tak');
+                    alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
 
