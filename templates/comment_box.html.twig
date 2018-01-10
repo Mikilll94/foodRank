@@ -64,7 +64,7 @@
                 <div class="media-body">
                     <div data-post-id="{{ comment.getId() }}" class="well well-lg comment-well">
                         <div class="comment-header">
-                            <div class="star-rate">
+                            <div class="star-rate" style="white-space: nowrap">
                                 {% set star_index = 0 %}
                                 {% for i in 1..comment.getRate() %}
                                     {% set star_index = i %}
@@ -82,7 +82,12 @@
                                 {% endfor -%}
                             </div>
                             <div class="media-date text-uppercase reviews list-inline">
-                                {{ comment.getPostingDate() | date("d-m-Y H:i") }}
+                                <span class="posting-date">
+                                    {{ comment.getPostingDate() | date("d-m-Y") }}
+                                </span>
+                                <span class="posting-date">
+                                    {{ comment.getPostingDate() | date("H:i") }}
+                                </span>
                             </div>
                         </div>
                         <h4 class="media-heading reviews">{{ comment.author.username }}</h4>

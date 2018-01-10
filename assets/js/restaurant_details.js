@@ -46,7 +46,7 @@ $(document).ready(function () {
         let $commentWell = $(this).parents('.comment-well');
 
         $commentWell.find('.star-rate').hide();
-        $commentWell.find('.star-rate-edit').show();
+        $commentWell.find('.star-rate-edit').css('display', 'flex');
 
         $commentWell.find('.media-comment').hide();
         $commentWell.find('.media-comment-edit').show();

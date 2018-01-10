@@ -81,3 +81,21 @@ input[type="file"]{
 .button-section-edit {
   display: none;
 }
+
+.media-date {
+  text-align: right;
+}
+
+.media-date .posting-date {
+  white-space: nowrap;
+}
+
+.star-rate {
+  white-space: nowrap;
+}
+
+.star-rate-edit {
+  flex-direction: row-reverse;
+  position: relative;
+  bottom: 8px;
+}
