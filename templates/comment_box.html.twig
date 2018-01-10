@@ -81,11 +81,9 @@
                                     <label for="star_{{ comment.getId() }}_{{ child.vars.value }}" class="required"></label>
                                 {% endfor -%}
                             </div>
-                            <ul class="media-date text-uppercase reviews list-inline">
-                                <li>{{ comment.getPostingDate() | date("d") }}</li>
-                                <li>{{ comment.getPostingDate() | date("m") }}</li>
-                                <li>{{ comment.getPostingDate() | date("Y H:i") }}</li>
-                            </ul>
+                            <div class="media-date text-uppercase reviews list-inline">
+                                {{ comment.getPostingDate() | date("d-m-Y H:i") }}
+                            </div>
                         </div>
                         <h4 class="media-heading reviews">{{ comment.author.username }}</h4>
                         <p class="media-comment">{{ comment.getContent() }}</p>
