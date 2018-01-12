@@ -16,7 +16,7 @@ $(document).ready(function () {
             data: {
                 rate: rate,
                 content: content,
-                restautantId: $dataDiv.data('restaurant-id')
+                restaurantId: $dataDiv.data('restaurant-id')
             },
             success: function (data, status) {
                 if (data.errors.length > 0) {
@@ -24,9 +24,8 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                $('#add-comment-row').hide();
-                $('#new-comment-msg').css('display', 'flex');
 
+                $('.newly-added.comment-well').data('post-id', data.id);
                 let stars = $('#star-rate-new-added').children();
                 for (let i = 0; i < rate; ++i) {
                     stars.eq(i).addClass('glyphicon-star');
@@ -34,8 +33,21 @@ $(document).ready(function () {
                 for (let i = rate; i < 5; ++i) {
                     stars.eq(i).addClass('glyphicon-star-empty');
                 }
-                $('#content-new-added').text(content);
+                $('#content-new-added, #content-new-added-edit').text(content);
 
+                let $starRateMewAddedEdit = $('#star-rate-new-added-edit');
+                $starRateMewAddedEdit.children('input').each(function (index, element) {
+                    element.setAttribute('id', element.getAttribute('id').replace('{id}', data.id));
+                    element.setAttribute('name', element.getAttribute('name').replace('{id}', data.id));
+                });
+                $starRateMewAddedEdit.children('label').each(function (index, element) {
+                    element.setAttribute('for', element.getAttribute('for').replace('{id}', data.id));
+                });
+
+                $starRateMewAddedEdit.children(`input[value=${rate}]`).prop('checked', true);
+
+                $('#add-comment-row').hide();
+                $('#new-comment-msg').css('display', 'flex');
                 $(`#new-added-comment`).slideDown('slow');
             }
         });

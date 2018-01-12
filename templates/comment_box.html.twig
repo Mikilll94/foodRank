@@ -30,14 +30,20 @@
                 <img class="media-object img-circle" src="{{ app.user ? asset(app.user.getAvatarPath()) : '' }}">
             </a>
             <div class="media-body">
-                <div class="well well-lg newly-added">
+                <div class="well well-lg newly-added comment-well">
                     <div class="comment-header">
                         <div id="star-rate-new-added" class="star-rate">
-                            <span class="glyphicon"></span>
-                            <span class="glyphicon"></span>
-                            <span class="glyphicon"></span>
-                            <span class="glyphicon"></span>
-                            <span class="glyphicon"></span>
+                            <span class="star glyphicon"></span>
+                            <span class="star glyphicon"></span>
+                            <span class="star glyphicon"></span>
+                            <span class="star glyphicon"></span>
+                            <span class="star glyphicon"></span>
+                        </div>
+                        <div id="star-rate-new-added-edit" class="form_rate star-rate-edit">
+                            {%- for i in 5..1 %}
+                                <input type="radio" id="star_{id}_{{ i }}" name="star_{id}" value="{{ i }}">
+                                <label for="star_{id}_{{ i }}" class="required"></label>
+                            {% endfor -%}
                         </div>
                         <div class="media-date reviews">
                             przed chwilą
@@ -45,13 +51,20 @@
                     </div>
                     <h4 class="media-heading reviews">{{ app.user ? app.user.username : null }}</h4>
                     <p id="content-new-added" class="media-comment"></p>
+                    <textarea id="content-new-added-edit" class="media-comment-edit form-control"></textarea>
                     <div class="button-section">
-                        <button type="button" class="btn btn-danger btn-circle text-uppercase
-                                        edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
+                        <button type="button" class="btn btn-danger btn-circle text-uppercase edit-comment-btn">
+                            <span class="glyphicon glyphicon-edit"></span> Edytuj
                         </button>
                         <button type="button" class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
                                 href="#"><span class="glyphicon glyphicon-comment"></span> 0 komentarzy
                         </button>
+                    </div>
+                    <div class="button-section-edit">
+                        <button type="button" class="submit-edit-btn btn btn-success btn-circle text-uppercase"
+                                id="reply"><span class="glyphicon glyphicon-ok"></span> Zatwierdź zmiany</button>
+                        <button type="button" class="abort-edit-btn btn btn-danger btn-circle text-uppercase"
+                                id="reply"><span class="glyphicon glyphicon-remove"></span> Porzuć</button>
                     </div>
                 </div>
             </div>

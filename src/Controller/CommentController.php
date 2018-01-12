@@ -31,7 +31,7 @@ class CommentController extends Controller
         $comment->setPostingDate(new \DateTime('now'));
 
         $em = $this->getDoctrine()->getManager();
-        $restaurant = $em->getRepository(Restaurant::class)->find($request->get('restautantId'));
+        $restaurant = $em->getRepository(Restaurant::class)->find($request->get('restaurantId'));
         $comment->setRestaurant($restaurant);
 
         $errors = [];
@@ -45,7 +45,7 @@ class CommentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
-            return new JsonResponse(['errors' => []]);
+            return new JsonResponse(['errors' => [], 'id' => $comment->getId()]);
         } else {
             return new JsonResponse(['errors' => $errors]);
         }
