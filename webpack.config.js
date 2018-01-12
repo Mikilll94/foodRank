@@ -4,8 +4,8 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('global', './assets/js/global.js')
-    .addEntry('restaurant_index', './assets/js/restaurant_index.js')
-    .addEntry('restaurant_details', './assets/js/restaurant_details.js')
+    .addEntry('all_restaurants', './assets/js/all_restaurants.js')
+    .addEntry('restaurant', './assets/js/restaurant.js')
     .addEntry('register', './assets/js/register.js')
     .addEntry('user_profile', './assets/js/user_profile.js')
     .createSharedEntry('vendor', [

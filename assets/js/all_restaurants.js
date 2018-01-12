@@ -1,4 +1,4 @@
-require('../css/restaurant_index.scss');
+require('../css/all_restaurants.scss');
 require('../images/image1.jpg');
 require('../images/image2.jpg');
 require('../images/image3.jpg');
