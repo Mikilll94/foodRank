@@ -1,3 +1,6 @@
+#user-profile-section {
+  margin-top: 30px; }
+
 #user-rank {
   color: #888; }
 
@@ -75,7 +78,7 @@
 .widget {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  padding: 25px 30px 30px;
+  padding: 0 30px 30px;
   margin-bottom: 30px;
   border-radius: 2px; }
 
@@ -88,10 +91,16 @@
   display: none; }
 
 .restaurant-thumb-img {
-  width: 80px;
+  width: 200px;
   height: auto; }
 
 #change-avatar-btn {
   background-color: #5672f9; }
+
+#comments-table_filter {
+  text-align: center; }
+
+#my-comments-header {
+  margin-bottom: 40px; }
 
 /*# sourceMappingURL=user_profile.css.map */

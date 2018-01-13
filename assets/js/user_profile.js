@@ -1,3 +1,7 @@
+require('datatables.net-bs/css/dataTables.bootstrap.css');
+require('datatables.net');
+require('datatables.net-bs');
+
 require('../css/user_profile.scss');
 require('../images/logo.png');
 require('../images/user-thumb.jpg');
@@ -19,5 +23,17 @@ $(document).ready(function () {
             defaultPreviewContent: `<img src="${$('#avatar_img').prop('src')}">`,
             allowedFileExtensions: ["jpg", "png", "gif"]
         });
+    });
+
+    $('#comments-table').DataTable({
+        language: require('../json/pl.datatables.json'),
+        paging: false,
+        dom: '<"#table-filter-row"f>rt<"bottom"il><"clear">',
+        columnDefs: [
+            {
+                targets: 3,
+                orderable: false
+            }
+        ]
     });
 });

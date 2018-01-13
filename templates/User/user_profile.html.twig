@@ -7,7 +7,7 @@
 {% block title %}Mój profil{% endblock %}
 
 {% block content %}
-    <section class="dashboard section">
+    <section id="user-profile-section">
         <div id="upload-avatar-modal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -36,7 +36,7 @@
                         <h5 class="text-center">{{ app.user.username }}</h5>
                         <p id="user-rank">Nowicjusz</p>
                         <button type="button" id="change-avatar-btn" class="btn btn-primary"
-                           data-toggle="modal" data-target="#upload-avatar-modal">Zmień awatar
+                                data-toggle="modal" data-target="#upload-avatar-modal">Zmień awatar
                         </button>
                     </div>
                     <div class="widget user-dashboard-menu">
@@ -64,35 +64,36 @@
                 </div>
             </div>
             <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-                <div class="widget dashboard-container">
-                    <table class="table table-responsive comments-table">
+                <h1 id="my-comments-header" class="text-center">Moje komentarze</h1>
+                <div class="table-responsive">
+                    <table id="comments-table" class="table">
                         <thead>
-                            <tr>
-                                <th>Zdjęcie</th>
-                                <th>Restauracja</th>
-                                <th>Treść komentarza</th>
-                                <th>Czas dodania</th>
-                            </tr>
+                        <tr>
+                            <th class="text-center">Treść komentarza</th>
+                            <th class="text-center">Czas dodania</th>
+                            <th class="text-center">Restauracja</th>
+                            <th class="text-center">Zdjęcie</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            {% for comment in comments %}
-                                <tr>
-                                    <td>
-                                        <img class="restaurant-thumb-img"
-                                             src="{{ asset('build/images/' ~ comment.getRestaurant().getImageUrl()) }}"
-                                             alt="cannot load image">
-                                    </td>
-                                    <td>
-                                        {{ comment.getRestaurant().getName() }}
-                                    </td>
-                                    <td>
-                                        {{ comment.getContent() }}
-                                    </td>
-                                    <td>
-                                        {{ comment.getPostingDate() | date("d/m/Y H:i:s") }}
-                                    </td>
-                                </tr>
-                            {% endfor %}
+                        {% for comment in comments %}
+                            <tr>
+                                <td>
+                                    {{ comment.getContent() }}
+                                </td>
+                                <td class="text-center">
+                                    {{ comment.getPostingDate() | date("d/m/Y H:i:s") }}
+                                </td>
+                                <td class="text-center">
+                                    {{ comment.getRestaurant().getName() }}
+                                </td>
+                                <td>
+                                    <img class="restaurant-thumb-img center-block"
+                                         src="{{ asset('build/images/' ~ comment.getRestaurant().getImageUrl()) }}"
+                                         alt="cannot load image">
+                                </td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
