@@ -3,7 +3,7 @@ require('../images/logo.png');
 require('../images/user-thumb.jpg');
 
 $(document).ready(function () {
-    $('#myModal').on('show.bs.modal', function () {
+    $('#upload-avatar-modal').on('show.bs.modal', function () {
         $("#avatar-input").fileinput({
             language: 'pl',
             required: true,

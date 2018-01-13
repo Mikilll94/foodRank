@@ -12,6 +12,7 @@ Encore
         'jquery',
         'bootstrap',
         'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+        'font-awesome/scss/font-awesome.scss',
         'bootstrap-fileinput/css/fileinput.min.css',
         'bootstrap-fileinput',
         'bootstrap-fileinput/js/locales/pl.js',

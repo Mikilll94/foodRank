@@ -8,87 +8,97 @@
 
 {% block content %}
     <section class="dashboard section">
-        <div class="container">
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div id="avatar-errors" class="center-block" style="width:800px;display:none"></div>
-                            <form action="{{ path('change_avatar') }}" method="post" enctype="multipart/form-data">
-                                <input id="avatar-input" name="file" type="file">
-                            </form>
-                        </div>
+        <div id="upload-avatar-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div id="avatar-errors" class="center-block"></div>
+                        <form action="{{ path('change_avatar') }}" method="post" enctype="multipart/form-data">
+                            <input id="avatar-input" name="file" type="file">
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
-                    <div class="sidebar">
-                        <div class="widget user-dashboard-profile">
-                            <div class="profile-thumb">
-                                <img id="avatar_img" src="{{ asset(app.user.getAvatarPath()) }}"
-                                     class="rounded-circle">
-                            </div>
-                            <h5 class="text-center">{{ app.user.username }}</h5>
-                            <p>Nowicjusz</p>
-                            <a id="change-avatar-btn" class="btn btn-main-sm"
-                               data-toggle="modal" data-target="#myModal">Zmień awatar</a>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
+                <div>
+                    <div class="widget user-dashboard-profile">
+                        <div class="profile-thumb">
+                            <img id="avatar_img" src="{{ asset(app.user.getAvatarPath()) }}" class="rounded-circle">
                         </div>
-                        <div class="widget user-dashboard-menu">
-                            <ul>
-                                <li class="active"><a href=""><i class="fa fa-user"></i>Moje opinie<span>34</span></a></li>
-                                <li><a href=""><i class="fa fa-bookmark-o"></i>Preferencje</a></li>
-                                <li><a href=""><i class="fa fa-file-archive-o"></i>Ustawienia</a></li>
-                                <li><a href=""><i class="fa fa-file-archive-o"></i>Zmień hasło</a></li>
-                                <li><a href=""><i class="fa fa-cog"></i> Wyloguj się</a></li>
-                                <li><a href=""><i class="fa fa-power-off"></i>Usuń konto</a></li>
-                            </ul>
-                        </div>
+                        <h5 class="text-center">{{ app.user.username }}</h5>
+                        <p id="user-rank">Nowicjusz</p>
+                        <button type="button" id="change-avatar-btn" class="btn btn-primary"
+                           data-toggle="modal" data-target="#upload-avatar-modal">Zmień awatar
+                        </button>
+                    </div>
+                    <div class="widget user-dashboard-menu">
+                        <ul id="user-profile-menu">
+                            <li class="active">
+                                <a href=""><i class="fa fa-user"></i>Moje opinie<span>34</span></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-bookmark-o"></i>Preferencje</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-file-archive-o"></i>Ustawienia</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-file-archive-o"></i>Zmień hasło</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-cog"></i> Wyloguj się</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-power-off"></i>Usuń konto</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-                    <div class="widget dashboard-container my-adslist">
-                        <table class="table table-responsive product-dashboard-table">
-                            <thead>
+            </div>
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+                <div class="widget dashboard-container">
+                    <table class="table table-responsive comments-table">
+                        <thead>
                             <tr>
                                 <th>Zdjęcie</th>
                                 <th>Restauracja</th>
                                 <th>Treść komentarza</th>
                                 <th>Czas dodania</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
                             {% for comment in comments %}
                                 <tr>
-                                    <td class="product-thumb">
-                                        <img width="80px" height="auto"
+                                    <td>
+                                        <img class="restaurant-thumb-img"
                                              src="{{ asset('build/images/' ~ comment.getRestaurant().getImageUrl()) }}"
-                                             alt="image description"></td>
-                                    <td class="product-category"><span
-                                                class="categories">{{ comment.getRestaurant().getName() }}</span></td>
-                                    <td class="product-details">
+                                             alt="cannot load image">
+                                    </td>
+                                    <td>
+                                        {{ comment.getRestaurant().getName() }}
+                                    </td>
+                                    <td>
                                         {{ comment.getContent() }}
                                     </td>
-                                    <td class="action" data-title="Action">
+                                    <td>
                                         {{ comment.getPostingDate() | date("d/m/Y H:i:s") }}
                                     </td>
                                 </tr>
                             {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
-
 {% endblock %}
 
 {% block javascripts %}

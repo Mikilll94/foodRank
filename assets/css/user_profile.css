@@ -1,12 +1,10 @@
 #user-rank {
-  color: #888;
-}
+  color: #888; }
 
 #user-profile-menu {
   margin: 0;
   padding: 0;
-  list-style: none;
-}
+  list-style: none; }
 
 .main-nav .search .nav-link i {
   font-size: 15px;
@@ -16,42 +14,34 @@
   color: #5672f9;
   border: 1px solid #5672f9;
   border-radius: 3px;
-  text-align: center;
-}
+  text-align: center; }
 
 .user-dashboard-menu li {
-  margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
 
 .user-dashboard-menu li.active a {
   background: #5672f9;
-  color: #fff;
-}
+  color: #fff; }
 
 .user-dashboard-menu li.active a:hover {
-  color: #fff;
-}
+  color: #fff; }
 
 .user-dashboard-menu li a {
   padding: 10px;
   font-size: 15px;
   display: block;
   font-weight: 600;
-  color: #555;
-}
+  color: #555; }
 
 .user-dashboard-menu li a:hover {
-  color: #5672f9;
-}
+  color: #5672f9; }
 
 .user-dashboard-menu li a:hover span {
   background: #5672f9;
-  color: #fff;
-}
+  color: #fff; }
 
 .user-dashboard-menu li a i {
-  margin-right: 5px;
-}
+  margin-right: 5px; }
 
 .user-dashboard-menu li a span {
   float: right;
@@ -59,58 +49,49 @@
   font-size: 10px;
   border-radius: 8px;
   padding: 3px 8px;
-  color: #84919B;
-}
+  color: #84919B; }
 
 .user-dashboard-profile {
-  text-align: center;
-}
+  text-align: center; }
 
 .user-dashboard-profile .profile-thumb img {
   width: 130px;
   height: auto;
-  border: 5px solid #F4F7F9;
-}
+  border: 5px solid #F4F7F9; }
 
 .user-dashboard-profile h4 {
   margin-top: 10px;
   font-size: 18px;
-  font-weight: 600;
-}
+  font-weight: 600; }
 
 .dashboard-container .comments-table thead th {
   font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: .4px;
-}
+  letter-spacing: .4px; }
 
 .dashboard-container .comments-table td {
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
 .widget {
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   padding: 25px 30px 30px;
   margin-bottom: 30px;
-  border-radius: 2px;
-}
+  border-radius: 2px; }
 
 .modal-open {
   overflow-y: inherit;
-  padding-right: 0 !important;
-}
+  padding-right: 0 !important; }
 
 .avatar-errors {
   width: 800px;
-  display: none;
-}
+  display: none; }
 
 .restaurant-thumb-img {
   width: 80px;
-  height: auto;
-}
+  height: auto; }
 
 #change-avatar-btn {
-  background-color: #5672f9;
-}
+  background-color: #5672f9; }
+
+/*# sourceMappingURL=user_profile.css.map */
