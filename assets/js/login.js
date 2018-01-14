@@ -1,6 +1,8 @@
 const alertify = require('alertifyjs');
 
-$('#login-button').click(function() {
+$('#login-nav').submit(function(e) {
+    e.preventDefault();
+
     let username = $('#username').val();
     let password = $('#password').val();
     let loginData = {
