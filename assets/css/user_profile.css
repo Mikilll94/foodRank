@@ -95,4 +95,12 @@
 #my-comments-header {
   margin-bottom: 40px; }
 
+#delete-account-warning {
+  font-size: 16px; }
+
+#delete-account-link {
+  display: inline-block;
+  text-decoration: none;
+  color: white; }
+
 /*# sourceMappingURL=user_profile.css.map */
