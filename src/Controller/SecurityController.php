@@ -92,4 +92,32 @@ class SecurityController extends Controller
     public function logout()
     {
     }
+
+    /**
+     * @Route("/forgot_password", name="forgot_password")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function forgotPassword(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(
+            ['email' => $request->get('email')]
+        );
+        if (!$user) {
+            return new JsonResponse(['errors' => ['Niepoprawny adres email']]);
+        }
+
+        $random_password = bin2hex(random_bytes(5));
+        $encoded = $encoder->encodePassword($user, $random_password);
+        $user->setPassword($encoded);
+        $this->getDoctrine()->getManager()->flush();
+
+        $this->email_sender->sendMail('Odzyskiwanie hasła w serwisie FoodRank',
+            $this->renderView('Emails/forgot_password.html.twig', ['new_password' => $random_password]),
+            $user->getEmail());
+
+        return new JsonResponse(['errors' => []]);
+    }
 }

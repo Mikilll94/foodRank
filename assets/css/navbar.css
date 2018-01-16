@@ -1,0 +1,78 @@
+#login-dp {
+  min-width: 250px;
+  padding: 14px 14px 0; }
+
+#login-dp .help-block {
+  font-size: 12px; }
+
+#login-dp .bottom {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid #ddd;
+  clear: both;
+  padding: 14px; }
+
+#login-dp .social-buttons {
+  margin: 12px 0; }
+
+#login-dp .social-buttons a {
+  width: 49%; }
+
+#login-dp .form-group {
+  margin-bottom: 10px; }
+
+.btn-fb {
+  color: #fff;
+  background-color: #3b5998; }
+
+.btn-fb:hover {
+  color: #fff;
+  background-color: #496ebc; }
+
+.btn-tw {
+  color: #fff;
+  background-color: #55acee; }
+
+.btn-tw:hover {
+  color: #fff;
+  background-color: #59b5fa; }
+
+.navbar-have-account {
+  padding-left: 15px; }
+
+@media (max-width: 768px) {
+  #login-dp {
+    background-color: inherit;
+    color: #fff; }
+
+  #login-dp .bottom {
+    background-color: inherit;
+    border-top: 0 none; } }
+#navbar {
+  max-height: none;
+  overflow-x: hidden; }
+
+.navbar-brand {
+  font-size: 25px; }
+
+.navbar-brand:hover {
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, 0.6) 30%, #000 50%, rgba(0, 0, 0, 0.6) 70%);
+  -webkit-mask-size: 200%;
+  animation: shine 1.5s infinite; }
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%; }
+  to {
+    -webkit-mask-position: -50%; } }
+.navbar-inverse .nav > li > a {
+  font-size: 18px; }
+
+.navbar-inverse .nav > li > a:hover,
+.navbar-inverse .nav > li > a:focus {
+  color: #efefef;
+  background: #353549; }
+
+#forgot-password-modal {
+  font-size: 16px; }
+
+/*# sourceMappingURL=navbar.css.map */

@@ -74,10 +74,6 @@
   margin-bottom: 30px;
   border-radius: 2px; }
 
-.modal-open {
-  overflow-y: inherit;
-  padding-right: 0 !important; }
-
 .avatar-errors {
   width: 800px;
   display: none; }

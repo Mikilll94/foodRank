@@ -59,3 +59,34 @@
         </div>
     </div>
 </nav>
+
+<div class="modal fade" id="forgot-password-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Odzyskiwanie hasła</h2>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="registration-email">Podaj adres email którego użyłeś do zarejestrowania się w serwisie.</p>
+                <form method="post" action="{{ path('forgot_password') }}">
+                    <div class="form-group">
+                        <label for="email_address_forgot">Adres email</label>
+                        <input type="email" class="form-control" id="email_address_forgot" placeholder="Email">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                <button type="submit" id="reset-password-btn" class="btn btn-success">
+                    <div id="reset-password">Zresetuj hasło</div>
+                    <div id="reset-password-throbber">
+                        <span class="glyphicon glyphicon-refresh spinning"></span> Proszę czekać
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
