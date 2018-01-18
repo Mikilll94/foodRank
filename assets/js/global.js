@@ -19,8 +19,8 @@ $(window).on('load', function() {
 $(document).ready(function() {
 
     $('#reset-password-btn').click(function () {
-        $('#reset-password').hide();
-        $('#reset-password-throbber').show();
+        let $resetPasswordBtn = $(this);
+        $resetPasswordBtn.button('loading');
         $.ajax({
             url: '/forgot_password',
             type: 'POST',
@@ -29,8 +29,7 @@ $(document).ready(function() {
                 email: $('#email_address_forgot').val()
             },
             success: function (data) {
-                $('#reset-password-throbber').hide();
-                $('#reset-password').show();
+                $resetPasswordBtn.button('reset');
                 if (data.errors.length > 0) {
                     alertify.set('notifier', 'position', 'top-left');
                     alertify.notify(data.errors.join('\n'), 'error', 5);
