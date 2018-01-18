@@ -99,4 +99,10 @@
   text-decoration: none;
   color: white; }
 
+.tab {
+  display: none; }
+
+.tab.active {
+  display: block; }
+
 /*# sourceMappingURL=user_profile.css.map */

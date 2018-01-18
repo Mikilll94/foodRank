@@ -41,20 +41,20 @@
                     </div>
                     <div class="widget user-dashboard-menu">
                         <ul id="user-profile-menu">
-                            <li class="active">
-                                <a href=""><i class="fa fa-user"></i>Moje opinie<span>34</span></a>
+                            <li id="tab-my-comments" class="active">
+                                <a href="javascript:void(0)"><i class="fa fa-user"></i>Moje komentarze<span>34</span></a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-bookmark-o"></i>Preferencje</a>
+                                <a href="javascript:void(0)"><i class="fa fa-bookmark-o"></i>Preferencje</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-file-archive-o"></i>Ustawienia</a>
+                                <a href="javascript:void(0)"><i class="fa fa-file-archive-o"></i>Ustawienia</a>
+                            </li>
+                            <li id="tab-change-password">
+                                <a href="javascript:void(0)"><i class="fa fa-file-archive-o"></i>Zmień hasło</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-file-archive-o"></i>Zmień hasło</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-cog"></i> Wyloguj się</a>
+                                <a href="javascript:void(0)"><i class="fa fa-cog"></i> Wyloguj się</a>
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#delete-account-modal"><i class="fa fa-power-off"></i>Usuń konto</a>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="tab active tab-my-comments col-lg-8">
                 <h1 id="my-comments-header" class="text-center">Moje komentarze</h1>
                 <div class="table-responsive">
                     <table id="comments-table" class="table">
@@ -116,6 +116,20 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="tab tab-change-password col-lg-8">
+                <form id="change-password-form" class="form">
+                    <h1>Zmiana hasła do serwisu FoodRank</h1>
+                    <div class="form-group">
+                        <label for="old-password">Podaj stare hasło</label>
+                        <input type="password" class="form-control" id="old-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">Podaj nowe hasło</label>
+                        <input type="password" class="form-control" id="new-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Zmień hasło</button>
+                </form>
             </div>
         </div>
     </section>
