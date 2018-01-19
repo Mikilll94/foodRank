@@ -62,7 +62,7 @@ class RestaurantController extends Controller
 
         return $this->render('Restaurant/restaurant.html.twig', [
             'restaurant' => $restaurant,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }

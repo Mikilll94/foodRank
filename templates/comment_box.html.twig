@@ -27,7 +27,7 @@
     <ul id="comment-list" class="media-list">
         <li id="new-added-comment" class="media">
             <a class="pull-left" href="#">
-                <img class="media-object img-circle" src="{{ app.user ? asset(app.user.getAvatarPath()) : '' }}">
+                <img class="media-object img-circle" src="{{ app.user ? app.user.getAvatarImageSrc() : '' }}">
             </a>
             <div class="media-body">
                 <div class="well well-lg newly-added comment-well">
@@ -72,7 +72,7 @@
         {% for comment in restaurant.comments %}
             <li class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object img-circle" src="{{ asset(comment.author.getAvatarPath()) }}">
+                    <img class="media-object img-circle" src="{{ comment.author.getAvatarImageSrc() }}">
                 </a>
                 <div class="media-body">
                     <div data-post-id="{{ comment.getId() }}" class="well well-lg comment-well">

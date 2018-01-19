@@ -22,19 +22,11 @@ class FileUploadController extends Controller
     {
         $fs = new Filesystem();
 
-        if ($user->getAvatarName()) {
-            $fs->remove('uploads/avatars/' . $user->getAvatarName());
-        }
-
         $file = $request->files->get('file');
-        $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+        $stream = fopen($file->getRealPath(),'rb');
 
-        $file->move($this->getParameter('avatars_directory'), $fileName);
-
-        $user->setAvatarName($fileName);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+        $user->setAvatar(stream_get_contents($stream));
+        $this->getDoctrine()->getManager()->flush();
 
         return $this->redirectToRoute('profile');
     }

@@ -2,7 +2,7 @@ require('../css/global.scss');
 require('../css/footer.scss');
 require('../css/navbar.scss');
 require('../images/throbber.gif');
-require('../images/default_avatar_male.jpg');
+require('../images/default_avatar.jpg');
 require('../js/login.js');
 
 const $ = require('jquery');

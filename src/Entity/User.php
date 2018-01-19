@@ -56,9 +56,9 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="blob", nullable=true)
      */
-    private $avatar_name;
+    private $avatar;
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
@@ -100,7 +100,7 @@ class User implements UserInterface, \Serializable
         $this->email = $email;
     }
 
-    public function getisActive()
+    public function getIsActive()
     {
         return $this->isActive;
     }
@@ -110,23 +110,25 @@ class User implements UserInterface, \Serializable
         $this->isActive = $isActive;
     }
 
-    public function getAvatarName()
+    public function getAvatar()
     {
-        return $this->avatar_name;
+        return $this->avatar;
     }
 
-    public function setAvatarName($avatar_name): void
+    public function getAvatarImageSrc()
     {
-        $this->avatar_name = $avatar_name;
-    }
-
-    public function getAvatarPath()
-    {
-        if ($this->avatar_name) {
-            return 'uploads/avatars/' . $this->avatar_name;
-        } else {
-            return 'build/images/default_avatar_male.jpg';
+        if ($this->avatar == null) {
+            $default_avatar = fopen('build/images/default_avatar.3e69d503.jpg', 'rb');
+            return 'data:image/jpeg;base64,' . base64_encode(stream_get_contents($default_avatar));
         }
+
+        rewind($this->avatar);
+        return 'data:image/jpeg;base64,' . base64_encode(stream_get_contents($this->avatar));
+    }
+
+    public function setAvatar($avatar): void
+    {
+        $this->avatar = $avatar;
     }
 
     public function getSalt()

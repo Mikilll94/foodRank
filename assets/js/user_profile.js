@@ -4,7 +4,6 @@ require('datatables.net-bs');
 
 require('../css/user_profile.scss');
 require('../images/logo.png');
-require('../images/user-thumb.jpg');
 
 $(document).ready(function () {
     $('#upload-avatar-modal').on('show.bs.modal', function () {
