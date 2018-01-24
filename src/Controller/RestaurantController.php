@@ -60,9 +60,16 @@ class RestaurantController extends Controller
 
         $form->handleRequest($request);
 
+        $comment_repository = $this->getDoctrine()->getRepository(Comment::class);
+
+        $restaurant_statistics = $comment_repository->getAverageRateAndCommentsCountForRestaurant($restaurant_id);
+        $rate_counts = $comment_repository->getGroupedCommentsRatesForRestaurant($restaurant_id);
+
         return $this->render('Restaurant/restaurant.html.twig', [
             'restaurant' => $restaurant,
             'form' => $form->createView(),
+            'statistics' => $restaurant_statistics,
+            'rate_counts' => $rate_counts,
         ]);
     }
 }

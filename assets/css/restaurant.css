@@ -1,28 +1,22 @@
 .restaurant-details-thumbnail {
-  background-color: #f5f5f5;
-}
+  background-color: #f5f5f5; }
 
 .restaurant-description {
   font-size: 18px;
   margin: 0 0 0 4px;
-  padding: 0 0 4px 0;
-}
+  padding: 0 0 4px 0; }
 
 .well.comments-well {
-  background-color: #fff4e9;
-}
+  background-color: #fff4e9; }
 
 #restaurant-lead {
-  font-size: 48px;
-}
+  font-size: 48px; }
 
 #restaurant-details {
-  margin-top: 15px;
-}
+  margin-top: 15px; }
 
 .newly-added {
-  background-color: #eaea8780;
-}
+  background-color: #eaea8780; }
 
 #new-comment-msg {
   height: 101.2px;
@@ -32,22 +26,19 @@
   justify-content: center;
   align-items: center;
   background-color: #e7b359;
-  color: #FFFFFF;
-}
+  color: #FFFFFF; }
 
 #add-comment-row {
-  margin-bottom: 50px;
-}
+  margin-bottom: 50px; }
 
 .comment-header {
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 #new-comment-msg {
-  display: none;
-}
+  display: none; }
 
 #new-added-comment {
-  display: none;
-}
+  display: none; }
+
+/*# sourceMappingURL=restaurant.css.map */
