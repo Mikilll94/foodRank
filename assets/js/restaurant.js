@@ -1,6 +1,7 @@
 require('../css/restaurant.scss');
 require('../css/stars.scss');
 require('../css/comment_box.scss');
+require('../css/rating_stats.scss');
 
 const alertify = require('alertifyjs');
 

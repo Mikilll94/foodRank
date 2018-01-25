@@ -20,16 +20,16 @@
         </div>
 
         <div class="col-md-9">
-
             <div class="thumbnail restaurant-details-thumbnail">
                 <img class="img-responsive" src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}"
                      alt="cannot load image">
                 <div class="caption-full">
-                    <br/>
+                    <br />
                     <p class="restaurant-description">{{ restaurant.description }}</p>
                 </div>
             </div>
-            {% include ('comment_box.html.twig') %}
+            {% include 'Restaurant/rating_stats.html.twig' %}
+            {% include 'Restaurant/comment_box.html.twig' %}
         </div>
     </div>
 {% endblock %}

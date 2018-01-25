@@ -25,7 +25,7 @@ class RestaurantController extends Controller
             ->getRepository(Restaurant::class)
             ->findAll();
 
-        return $this->render('Restaurant/all_restaurants.html.twig', ['restaurants' => $restaurants]);
+        return $this->render('All_restaurants/all_restaurants.html.twig', ['restaurants' => $restaurants]);
     }
 
     /**

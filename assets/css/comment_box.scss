@@ -105,37 +105,3 @@ input[type="file"]{
     margin-right: 10px;
   }
 }
-
-@media (max-width: 992px) {
-  #comments-count {
-    padding: 15px 0;
-  }
-}
-
-.rating .glyphicon {
-  font-size: 22px;
-}
-
-.rating-num {
-  margin-top: 0;
-  font-size: 54px;
-}
-
-.progress {
-  margin-bottom: 5px;
-  background-color: #777;
-}
-
-.progress-bar {
-  text-align: left;
-}
-
-.rating-desc .col-md-3 {
-  padding-right: 0;
-}
-
-.rate-percent {
-  margin-left: 5px;
-  overflow: visible;
-  clip: auto;
-}
