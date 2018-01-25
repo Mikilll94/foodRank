@@ -59,7 +59,7 @@ class SecurityController extends Controller
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function register(Request $request,  UserPasswordEncoderInterface $passwordEncoder)
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -73,9 +73,11 @@ class SecurityController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->email_sender->sendMail('Rejestracja w serwisie FoodRank',
+            $this->email_sender->sendMail(
+                'Rejestracja w serwisie FoodRank',
                 $this->renderView('Emails/registration.html.twig', ['name' => $user->getUsername()]),
-                $user->getEmail());
+                $user->getEmail()
+            );
 
             $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
             $this->get('security.token_storage')->setToken($token);
@@ -114,9 +116,11 @@ class SecurityController extends Controller
         $user->setPassword($encoded);
         $this->getDoctrine()->getManager()->flush();
 
-        $this->email_sender->sendMail('Odzyskiwanie hasła w serwisie FoodRank',
+        $this->email_sender->sendMail(
+            'Odzyskiwanie hasła w serwisie FoodRank',
             $this->renderView('Emails/forgot_password.html.twig', ['new_password' => $random_password]),
-            $user->getEmail());
+            $user->getEmail()
+        );
 
         return new JsonResponse(['errors' => []]);
     }

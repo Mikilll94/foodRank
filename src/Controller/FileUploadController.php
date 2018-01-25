@@ -23,7 +23,7 @@ class FileUploadController extends Controller
         $fs = new Filesystem();
 
         $file = $request->files->get('file');
-        $stream = fopen($file->getRealPath(),'rb');
+        $stream = fopen($file->getRealPath(), 'rb');
 
         $user->setAvatar(stream_get_contents($stream));
         $this->getDoctrine()->getManager()->flush();

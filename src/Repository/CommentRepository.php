@@ -58,7 +58,7 @@ class CommentRepository extends ServiceEntityRepository
 
     public function getGroupedCommentsRatesForRestaurant($restaurant_id)
     {
-         $result_arr = $this->createQueryBuilder('c')
+        $result_arr = $this->createQueryBuilder('c')
             ->select('c.rate, count(c.id) as comments_count')
             ->join('c.restaurant', 'r')
             ->andWhere('r.id = :restaurant_id')

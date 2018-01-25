@@ -11,8 +11,8 @@ class EmailSender
      */
     public function sendMail($subject, $template, $to)
     {
-        $https['ssl']['verify_peer'] = FALSE;
-        $https['ssl']['verify_peer_name'] = FALSE;
+        $https['ssl']['verify_peer'] = false;
+        $https['ssl']['verify_peer_name'] = false;
 
         $transport = (new \Swift_SmtpTransport('smtp.gmail.com', '587', 'tls'))
             ->setUsername('wasniewskimikolaj@gmail.com')
