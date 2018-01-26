@@ -7,6 +7,7 @@ const alertify = require('alertifyjs');
 
 $(document).ready(function () {
     $("#add-review").click(function () {
+        $(this).button('loading');
         let content = $('#addComment').val();
         let rate = $('input[name=form-rate]:checked').val();
         let $dataDiv = $('#restaurant-details');
@@ -20,6 +21,7 @@ $(document).ready(function () {
                 restaurantId: $dataDiv.data('restaurant-id')
             },
             success: function (data, status) {
+                $("#add-review").button('reset');
                 if (data.errors.length > 0) {
                     alertify.set('notifier', 'position', 'bottom-center');
                     alertify.notify(data.errors.join('\n'), 'error', 5);

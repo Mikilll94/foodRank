@@ -28,7 +28,10 @@
   padding: 6px 15px;
   border-radius: 20px;
 }
-.btn-circle span { padding-right: 6px; }
+.btn-circle span:not(.spinning) {
+  padding-right: 6px;
+}
+
 .embed-responsive { margin-bottom: 20px; }
 .tab-content {
   padding: 50px 15px;

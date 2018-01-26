@@ -40,7 +40,7 @@
   padding: 6px 15px;
   border-radius: 20px; }
 
-.btn-circle span {
+.btn-circle span:not(.spinning) {
   padding-right: 6px; }
 
 .embed-responsive {
