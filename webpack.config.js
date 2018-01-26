@@ -16,6 +16,8 @@ Encore
         'bootstrap-fileinput/css/fileinput.min.css',
         'bootstrap-fileinput',
         'bootstrap-fileinput/js/locales/pl.js',
+        'bootstrap-star-rating/css/star-rating.min.css',
+        'bootstrap-star-rating/js/star-rating.min.js',
         'alertifyjs/build/alertify.min.js',
         'alertifyjs/build/css/alertify.min.css',
         'alertifyjs/build/css/themes/bootstrap.min.css',

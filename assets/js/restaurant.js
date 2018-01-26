@@ -125,4 +125,6 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#rating').rating({displayOnly: true, step: 0.1});
 });
