@@ -4,10 +4,6 @@ require('../css/navbar.scss');
 require('../images/throbber.gif');
 require('../images/default_avatar.jpg');
 require('../js/login.js');
-require('../images/anna_avatar.jpg');
-require('../images/sonya_avatar.png');
-require('../images/kamila_avatar.jpg');
-require('../images/chris_avatar.png');
 
 const $ = require('jquery');
 global.$ = global.jQuery = $;

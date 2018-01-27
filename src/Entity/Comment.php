@@ -19,12 +19,12 @@ class Comment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Restaurant", inversedBy="comments", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Restaurant", inversedBy="comments")
      */
     private $restaurant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      */
     private $author;
 

@@ -33,7 +33,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
         $comment3_tutti_santi = new Comment();
         $comment3_tutti_santi->setAuthor($this->getReference('chris'));
         $comment3_tutti_santi->setContent('Fantastyczna, prawdziwa włoska pizza. Na pewno powrócę do Tutti Santi');
-        $comment3_tutti_santi->setPostingDate(new \DateTime('2017-03-15 12:15:36'));
+        $comment3_tutti_santi->setPostingDate(new \DateTime('2017-05-08 16:27:43'));
         $comment3_tutti_santi->setRate('5');
         $comment3_tutti_santi->setRestaurant($this->getReference('tutti_santi'));
         $manager->persist($comment3_tutti_santi);
