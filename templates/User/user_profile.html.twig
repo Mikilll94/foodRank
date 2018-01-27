@@ -6,26 +6,47 @@
 
 {% block title %}Mój profil{% endblock %}
 
-{% block content %}
-    <section id="user-profile-section">
-        <div id="upload-avatar-modal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <div id="avatar-errors" class="center-block"></div>
-                        <form action="{{ path('change_avatar') }}" method="post" enctype="multipart/form-data">
-                            <input id="avatar-input" name="file" type="file">
-                        </form>
-                    </div>
+{% block modals %}
+    <div id="upload-avatar-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div id="avatar-errors" class="center-block"></div>
+                    <form action="{{ path('change_avatar') }}" method="post" enctype="multipart/form-data">
+                        <input id="avatar-input" name="file" type="file">
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="modal fade" id="delete-account-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Usuwanie konta w serwisie FoodRank</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="delete-account-warning">Czy na pewno chcesz usunąć konto? Ta czynność jest nieodwracalna.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                    <a href="{{ path('delete_account') }}" id="delete-account-link" class="btn btn-danger">Tak, usuń konto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block content %}
+    <section id="user-profile-section">
         <div class="row">
             <div class="col-lg-4">
                 <div>
@@ -58,25 +79,6 @@
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#delete-account-modal"><i class="fa fa-power-off"></i>Usuń konto</a>
-                                <div class="modal fade" id="delete-account-modal" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h2 class="modal-title">Usuwanie konta w serwisie FoodRank</h2>
-                                                <button type="button" class="close" data-dismiss="modal">
-                                                    <span>&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p id="delete-account-warning">Czy na pewno chcesz usunąć konto? Ta czynność jest nieodwracalna.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-                                                <a href="{{ path('delete_account') }}" id="delete-account-link" class="btn btn-danger">Tak, usuń konto</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </li>
                         </ul>
                     </div>

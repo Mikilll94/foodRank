@@ -10,10 +10,12 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
+    {% include 'Security/forgot_password_modal.html.twig' %}
+    {% block modals %}{% endblock %}
     {% include 'navbar.html.twig' %}
     <div id="global-container" class="container">
         <div class="se-pre-con">
-            <img src="{{ asset('build/images/throbber.93cf3f27.gif') }}">
+            <img src="{{ asset('build/images/throbber.gif') }}">
         </div>
         {% block content %}{% endblock %}
     </div>
