@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -72,6 +73,7 @@ class User implements UserInterface, \Serializable
 
     public function __construct()
     {
+        $this->comments = new ArrayCollection();
         $this->isActive = true;
     }
 
@@ -108,6 +110,16 @@ class User implements UserInterface, \Serializable
     public function setIsActive($isActive): void
     {
         $this->isActive = $isActive;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function setComments($comments): void
+    {
+        $this->comments = $comments;
     }
 
     public function getAvatar()

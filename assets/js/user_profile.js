@@ -27,6 +27,7 @@ $(document).ready(function () {
         language: require('../json/pl.datatables.json'),
         paging: false,
         dom: '<"#table-filter-row"f>rt<"bottom"il><"clear">',
+        order: [[ 1, 'desc' ]],
         columnDefs: [
             {
                 targets: 3,

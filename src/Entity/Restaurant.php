@@ -43,17 +43,11 @@ class Restaurant
      */
     private $comments;
 
-    /**
-     * @return mixed
-     */
     public function getComments()
     {
         return $this->comments;
     }
 
-    /**
-     * @param mixed $comments
-     */
     public function setComments($comments): void
     {
         $this->comments = $comments;
