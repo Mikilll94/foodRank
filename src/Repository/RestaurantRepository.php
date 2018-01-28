@@ -15,6 +15,7 @@ class RestaurantRepository extends ServiceEntityRepository
         parent::__construct($registry, Restaurant::class);
     }
 
+
     /**
      * @param $restaurant_id
      * @return mixed
@@ -24,9 +25,10 @@ class RestaurantRepository extends ServiceEntityRepository
     public function findRestaurantWithCommentsOrdered($restaurant_id)
     {
         return $this->createQueryBuilder('r')
-            ->select('r, c')
+            ->select('r, c, rep')
             ->leftJoin('r.comments', 'c')
-            ->orderBy('c.posting_date', 'DESC')
+            ->leftJoin('c.replies', 'rep')
+            ->add('orderBy', 'c.posting_date DESC, rep.posting_date ASC')
             ->where('r.id = :restaurant_id')->setParameter('restaurant_id', $restaurant_id)
             ->getQuery()
             ->getSingleResult();

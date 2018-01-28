@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -48,6 +49,16 @@ class Comment
      * @ORM\Column(type="datetime")
      */
     private $posting_date;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reply", mappedBy="comment")
+     */
+    private $replies;
+
+    public function __construct()
+    {
+        $this->replies = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -102,5 +113,21 @@ class Comment
     public function setPostingDate($posting_date): void
     {
         $this->posting_date = $posting_date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReplies()
+    {
+        return $this->replies;
+    }
+
+    /**
+     * @param mixed $replies
+     */
+    public function setReplies($replies): void
+    {
+        $this->replies = $replies;
     }
 }

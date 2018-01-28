@@ -71,6 +71,11 @@ class User implements UserInterface, \Serializable
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reply", mappedBy="author")
+     */
+    private $replies;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
