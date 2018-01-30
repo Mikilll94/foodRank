@@ -19,11 +19,8 @@ class ReplyController extends Controller
      * @param UserInterface $user
      * @return JsonResponse
      */
-    public function index(Request $request, UserInterface $user = null)
+    public function index(Request $request, UserInterface $user)
     {
-        if ($user == null) {
-            return new JsonResponse(['errors' => ['Tylko zalogowani użytkownicy mogą dodawać odpowiedzi do komentarzy']]);
-        }
         $reply = new Reply();
         $reply->setAuthor($user);
         $reply->setContent($request->get('content'));
