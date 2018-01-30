@@ -133,12 +133,16 @@ $(document).ready(function () {
     $('.add-reply-form').submit(function (e) {
         e.preventDefault();
 
-        let formData = $(this).serializeArray();
+        let $form = $(this);
+        let formData = $form.serializeArray();
         let formDataObj = formData.reduce(function(obj, item) {
             obj[item.name] = item.value;
             return obj;
         }, {});
 
+
+        let $replyButton = $form.find('.add-reply');
+        $replyButton.button('loading');
         $.ajax({
             url: '/reply/add',
             type: 'POST',
@@ -147,12 +151,17 @@ $(document).ready(function () {
                 content: formDataObj.content,
                 commentId: formDataObj.comment_id
             },
-            success: function (data, status) {
+            success: function (data) {
+                $replyButton.button('reset');
                 if (data.errors.length > 0) {
                     alertify.set('notifier', 'position', 'bottom-center');
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
+                let $newlyAddedReply = $form.next('.newly-added-reply');
+                $newlyAddedReply.find('.new-reply-content').text(formDataObj.content);
+                $form.hide();
+                $newlyAddedReply.slideDown('slow');
             }
         });
     });

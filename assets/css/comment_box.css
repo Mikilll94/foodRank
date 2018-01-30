@@ -115,5 +115,10 @@ input[type="file"] {
 @media (max-width: 768px) {
   .media-body .well {
     margin-right: 10px; } }
+.newly-added-reply {
+  display: none; }
+
+.new-reply .well {
+  background-color: #eaea8780; }
 
 /*# sourceMappingURL=comment_box.css.map */

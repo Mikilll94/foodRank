@@ -57,9 +57,6 @@
                         <button type="button" class="btn btn-danger btn-circle text-uppercase edit-comment-btn">
                             <span class="glyphicon glyphicon-edit"></span> Edytuj
                         </button>
-                        <button type="button" class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
-                                href="#"><span class="glyphicon glyphicon-comment"></span> 0 komentarzy
-                        </button>
                     </div>
                     <div class="button-section-edit">
                         <button type="button" class="submit-edit-btn btn btn-success btn-circle text-uppercase"
@@ -112,11 +109,6 @@
                         <p class="media-comment">{{ comment.getContent() }}</p>
                         <textarea class="media-comment-edit form-control">{{ comment.getContent() }}</textarea>
                         <div class="button-section">
-                            {% if app.user and app.user.username != comment.author.username %}
-                                <button type="button" class="btn btn-primary btn-circle text-uppercase btn-reply">
-                                    <span class="glyphicon glyphicon-share-alt"></span> Odpowiedz
-                                </button>
-                            {% endif %}
                             {% if app.user and app.user.username == comment.author.username
                                 and comment.getPostingDate().timestamp > date().timestamp - 60 %}
                                 <button type="button" class="btn btn-danger btn-circle text-uppercase
@@ -149,16 +141,14 @@
                             </a>
                             <div class="media-body">
                                 <div class="well well-lg">
-                                    <h4 class="media-heading text-uppercase reviews">
-                                        <span class="glyphicon glyphicon-share-alt"></span> {{ reply.author.getUsername() }}
-                                    </h4>
-                                    <div class="media-date text-uppercase reviews list-inline">
-                                            <span class="posting-date">
-                                                {{ reply.getPostingDate() | date("d-m-Y") }}
-                                            </span>
-                                        <span class="posting-date">
-                                                {{ reply.getPostingDate() | date("H:i") }}
-                                            </span>
+                                    <div class="reviews">
+                                        <span class="h4 reviews">
+                                            <span class="glyphicon glyphicon-share-alt"></span> {{ reply.author.getUsername() }}
+                                        </span>
+                                        <p class="list-inline pull-right reviews">
+                                            <span class="posting-date">{{ reply.getPostingDate() | date("d-m-Y") }}</span>
+                                            <span class="posting-date">{{ reply.getPostingDate() | date("H:i") }}</span>
+                                        </p>
                                     </div>
                                     <p class="media-comment">{{ reply.getContent() }}</p>
                                 </div>
@@ -168,13 +158,12 @@
                     {% if app.user %}
                         <div class="media media-replied">
                             <a class="pull-left" href="#">
-                                <img class="media-object img-circle"
-                                     src="{{ app.user.getAvatarImageSrc() }}"
+                                <img class="media-object img-circle" src="{{ app.user.getAvatarImageSrc() }}"
                                      alt="cannot load image">
                             </a>
                             <div class="media-body new-reply">
                                 <div class="well well-lg">
-                                    <h4 class="media-heading text-uppercase reviews">
+                                    <h4 class="media-heading reviews">
                                         <span class="glyphicon glyphicon-share-alt"></span> {{ app.user.getUsername() }}
                                     </h4>
                                     <form class="add-reply-form">
@@ -182,11 +171,17 @@
                                             <input type="hidden" name="comment_id" value="{{ comment.getId() }}"/>
                                             <textarea name="content" class="form-control" rows="5"></textarea>
                                         </div>
-                                        <button class="btn btn-success btn-circle text-uppercase add-reply"
+                                        <button class="btn btn-primary btn-circle text-uppercase add-reply"
                                                 data-loading-text="<span class='glyphicon glyphicon-refresh spinning'></span> Proszę czekać">
-                                            <span class="glyphicon glyphicon-share-alt"></span>Dodaj odpowiedź
+                                            <span class="glyphicon glyphicon-share-alt"></span>Odpowiedz
                                         </button>
                                     </form>
+                                    <div class="newly-added-reply">
+                                        <div class="media-date reviews">
+                                            przed chwilą
+                                        </div>
+                                        <p class="media-comment new-reply-content"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
