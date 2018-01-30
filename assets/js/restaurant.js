@@ -129,4 +129,31 @@ $(document).ready(function () {
     });
 
     $('#rating').rating({displayOnly: true, step: 0.1});
+
+    $('.add-reply-form').submit(function (e) {
+        e.preventDefault();
+
+        let formData = $(this).serializeArray();
+        let formDataObj = formData.reduce(function(obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+
+        $.ajax({
+            url: '/reply/add',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                content: formDataObj.content,
+                commentId: formDataObj.comment_id
+            },
+            success: function (data, status) {
+                if (data.errors.length > 0) {
+                    alertify.set('notifier', 'position', 'bottom-center');
+                    alertify.notify(data.errors.join('\n'), 'error', 5);
+                    return;
+                }
+            }
+        });
+    });
 });
