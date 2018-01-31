@@ -2,22 +2,21 @@
     <h3 class="reviews">Zostaw swoją opinię na temat tego miejsca</h3>
 </div>
 <div id="add-comment-row">
-    <form id="commentForm" role="form">
+    <form id="add-comment-form">
         {% block choice_widget_expanded -%}
             <div class="form_rate">
                 {%- for child in form.rate %}
-                    <input type="radio" id="form_rate_{{ child.vars.value }}" name="form-rate"
+                    <input type="radio" id="rate_{{ child.vars.value }}" name="rate"
                            value="{{ child.vars.value }}">
-                    <label for="form_rate_{{ child.vars.value }}" class="required"></label>
+                    <label for="rate_{{ child.vars.value }}" class="required"></label>
                 {% endfor -%}
             </div>
         {%- endblock choice_widget_expanded -%}
+        <input type="hidden" name="restaurant_id" value="{{ app.request.get('restaurant_id') }}">
         <div class="form-group">
-            <div>
-                <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
-            </div>
+            <textarea class="form-control" name="content" id="new-comment" rows="5"></textarea>
         </div>
-        <button class="btn btn-success btn-circle text-uppercase" type="button" id="add-review"
+        <button class="btn btn-success btn-circle text-uppercase add-comment"
                 data-loading-text="<span class='glyphicon glyphicon-refresh spinning'></span> Proszę czekać">
             <span class="glyphicon glyphicon-send"></span>Dodaj komentarz
         </button>
@@ -31,7 +30,7 @@
                 <img class="media-object img-circle" src="{{ app.user ? app.user.getAvatarImageSrc() : '' }}">
             </a>
             <div class="media-body">
-                <div class="well well-lg newly-added comment-well">
+                <div id="comment-well-new" class="well well-lg comment-well">
                     <div class="comment-header">
                         <div id="star-rate-new-added" class="star-rate">
                             <span class="star glyphicon"></span>

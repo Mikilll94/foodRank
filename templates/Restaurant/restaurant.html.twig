@@ -7,8 +7,7 @@
 {% block title %}{{ restaurant.name }}{% endblock %}
 
 {% block content %}
-    <div id="restaurant-details" data-logged-user="{{ app.user ? app.user.username : null }}"
-         data-restaurant-id="{{ app.request.get('restaurant_id') }}" class="row">
+    <div id="restaurant-details" data-logged-user="{{ app.user ? app.user.username : null }}" class="row">
 
         <div class="col-md-3">
             <p id="restaurant-lead" class="lead">{{ restaurant.name }}</p>

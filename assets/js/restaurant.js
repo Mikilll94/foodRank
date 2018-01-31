@@ -5,12 +5,24 @@ require('../css/rating_stats.scss');
 
 const alertify = require('alertifyjs');
 
+function getPostedData($form) {
+    return $form.serializeArray().reduce(function (obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
+}
+
 $(document).ready(function () {
-    $("#add-review").click(function () {
-        $(this).button('loading');
-        let content = $('#addComment').val();
-        let rate = $('input[name=form-rate]:checked').val();
-        let $dataDiv = $('#restaurant-details');
+
+    $("#add-comment-form").submit(function (e) {
+        e.preventDefault();
+        let $addCommentBtn = $(this).find('.add-comment');
+        $addCommentBtn.button('loading');
+        let $form = $(this);
+        let formData = getPostedData($form);
+        let content = formData.content;
+        let rate = formData.rate;
+
         $.ajax({
             url: '/comment/add',
             type: 'POST',
@@ -18,17 +30,20 @@ $(document).ready(function () {
             data: {
                 rate: rate,
                 content: content,
-                restaurantId: $dataDiv.data('restaurant-id')
+                restaurantId: formData.restaurant_id
             },
-            success: function (data, status) {
-                $("#add-review").button('reset');
+            success: function (data) {
+                $addCommentBtn.button('reset');
                 if (data.errors.length > 0) {
                     alertify.set('notifier', 'position', 'bottom-center');
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
 
-                $('.newly-added.comment-well').data('post-id', data.id);
+                $('#comment-well-new').data('post-id', data.id);
+
+                $('#content-new-added, #content-new-added-edit').text(content);
+
                 let stars = $('#star-rate-new-added').children();
                 for (let i = 0; i < rate; ++i) {
                     stars.eq(i).addClass('glyphicon-star');
@@ -36,8 +51,6 @@ $(document).ready(function () {
                 for (let i = rate; i < 5; ++i) {
                     stars.eq(i).addClass('glyphicon-star-empty');
                 }
-                $('#content-new-added, #content-new-added-edit').text(content);
-
                 let $starRateMewAddedEdit = $('#star-rate-new-added-edit');
                 $starRateMewAddedEdit.children('input').each(function (index, element) {
                     element.setAttribute('id', element.getAttribute('id').replace('{id}', data.id));
@@ -134,12 +147,8 @@ $(document).ready(function () {
         e.preventDefault();
 
         let $form = $(this);
-        let formData = $form.serializeArray();
-        let formDataObj = formData.reduce(function(obj, item) {
-            obj[item.name] = item.value;
-            return obj;
-        }, {});
-
+        let formData = getPostedData($form);
+        let content = formData.content;
 
         let $replyButton = $form.find('.add-reply');
         $replyButton.button('loading');
@@ -148,8 +157,8 @@ $(document).ready(function () {
             type: 'POST',
             dataType: 'json',
             data: {
-                content: formDataObj.content,
-                commentId: formDataObj.comment_id
+                content: content,
+                commentId: formData.comment_id
             },
             success: function (data) {
                 $replyButton.button('reset');
@@ -159,7 +168,7 @@ $(document).ready(function () {
                     return;
                 }
                 let $newlyAddedReply = $form.next('.newly-added-reply');
-                $newlyAddedReply.find('.new-reply-content').text(formDataObj.content);
+                $newlyAddedReply.find('.new-reply-content').text(content);
                 $form.hide();
                 $newlyAddedReply.slideDown('slow');
             }

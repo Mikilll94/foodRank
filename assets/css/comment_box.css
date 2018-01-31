@@ -115,6 +115,9 @@ input[type="file"] {
 @media (max-width: 768px) {
   .media-body .well {
     margin-right: 10px; } }
+#comment-well-new {
+  background-color: #eaea8780; }
+
 .newly-added-reply {
   display: none; }
 
