@@ -167,10 +167,10 @@ $(document).ready(function () {
                     alertify.notify(data.errors.join('\n'), 'error', 5);
                     return;
                 }
-                let $newlyAddedReply = $form.next('.newly-added-reply');
-                $newlyAddedReply.find('.new-reply-content').text(content);
+                let $newReply = $form.closest('.new-reply');
+                $newReply.find('.new-reply-content').text(content);
                 $form.hide();
-                $newlyAddedReply.slideDown('slow');
+                $newReply.find('.newly-added-reply').show();
             }
         });
     });

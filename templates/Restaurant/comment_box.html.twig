@@ -162,25 +162,25 @@
                             </a>
                             <div class="media-body new-reply">
                                 <div class="well well-lg">
-                                    <h4 class="media-heading reviews">
-                                        <span class="glyphicon glyphicon-share-alt"></span> {{ app.user.getUsername() }}
-                                    </h4>
-                                    <form class="add-reply-form">
-                                        <div class="form-group">
-                                            <input type="hidden" name="comment_id" value="{{ comment.getId() }}"/>
-                                            <textarea name="content" class="form-control" rows="5"></textarea>
-                                        </div>
-                                        <button class="btn btn-primary btn-circle text-uppercase add-reply"
-                                                data-loading-text="<span class='glyphicon glyphicon-refresh spinning'></span> Proszę czekać">
-                                            <span class="glyphicon glyphicon-share-alt"></span>Odpowiedz
-                                        </button>
-                                    </form>
-                                    <div class="newly-added-reply">
-                                        <div class="media-date reviews">
+                                    <div class="clearfix">
+                                        <p class="h4 media-heading reviews pull-left">
+                                            <span class="glyphicon glyphicon-share-alt"></span> {{ app.user.getUsername() }}
+                                        </p>
+                                        <div class="newly-added-reply media-date reviews pull-right">
                                             przed chwilą
                                         </div>
-                                        <p class="media-comment new-reply-content"></p>
+                                        <form class="add-reply-form">
+                                            <div class="form-group">
+                                                <input type="hidden" name="comment_id" value="{{ comment.getId() }}"/>
+                                                <textarea name="content" class="form-control" rows="5"></textarea>
+                                            </div>
+                                            <button class="btn btn-primary btn-circle text-uppercase add-reply"
+                                                    data-loading-text="<span class='glyphicon glyphicon-refresh spinning'></span> Proszę czekać">
+                                                <span class="glyphicon glyphicon-share-alt"></span>Odpowiedz
+                                            </button>
+                                        </form>
                                     </div>
+                                    <p class="media-comment new-reply-content newly-added-reply"></p>
                                 </div>
                             </div>
                         </div>
