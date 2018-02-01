@@ -29,3 +29,6 @@ services:
     logout:
       class: App\Service\Logout
 
+    oauth_user_provider:
+      class: App\Service\OAuthUserProvider
+      arguments: ['@doctrine.orm.default_entity_manager', '@security.encoder_factory']

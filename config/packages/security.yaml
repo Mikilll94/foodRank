@@ -18,6 +18,13 @@ security:
         form_login:
           login_path: login_form
           check_path: login_form
+        oauth:
+          resource_owners:
+            facebook: "/connect/check-facebook"
+          login_path: login_form
+          failure_path: login_form
+          oauth_user_provider:
+            service: oauth_user_provider
         provider: user_provider
         logout:
           path: logout

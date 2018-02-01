@@ -99,3 +99,22 @@
 #forgot-password-modal {
   font-size: 16px;
 }
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+}
+
+.btn-facebook:hover {
+  color: #fff;
+  background-color: #2d4373;
+  border-color: rgba(0,0,0,0.2);
+}
+
+.btn-facebook:focus {
+  color: #fff;
+}
+
+.btn-facebook .fa-facebook {
+  padding-right: 6px;
+}

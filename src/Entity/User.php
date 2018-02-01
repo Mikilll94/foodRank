@@ -76,6 +76,32 @@ class User implements UserInterface, \Serializable
      */
     private $replies;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook_id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook_access_token;
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebook_access_token;
+    }
+
+    /**
+     * @param mixed $facebook_access_token
+     */
+    public function setFacebookAccessToken($facebook_access_token): void
+    {
+        $this->facebook_access_token = $facebook_access_token;
+    }
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -171,6 +197,16 @@ class User implements UserInterface, \Serializable
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    public function setFacebookId($facebook_id): void
+    {
+        $this->facebook_id = $facebook_id;
     }
 
     public function getRoles()
