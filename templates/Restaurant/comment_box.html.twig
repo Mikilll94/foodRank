@@ -1,34 +1,9 @@
-<div class="page-header">
-    <h3 class="reviews">Zostaw swoją opinię na temat tego miejsca</h3>
-</div>
-<div id="add-comment-row">
-    <form id="add-comment-form">
-        {% block choice_widget_expanded -%}
-            <div class="form_rate">
-                {%- for child in form.rate %}
-                    <input type="radio" id="rate_{{ child.vars.value }}" name="rate"
-                           value="{{ child.vars.value }}">
-                    <label for="rate_{{ child.vars.value }}" class="required"></label>
-                {% endfor -%}
-            </div>
-        {%- endblock choice_widget_expanded -%}
-        <input type="hidden" name="restaurant_id" value="{{ app.request.get('restaurant_id') }}">
-        <div class="form-group">
-            <textarea class="form-control" name="content" id="new-comment" rows="5"></textarea>
-        </div>
-        <button class="btn btn-success btn-circle text-uppercase add-comment"
-                data-loading-text="<span class='glyphicon glyphicon-refresh spinning'></span> Proszę czekać">
-            <span class="glyphicon glyphicon-send"></span>Dodaj komentarz
-        </button>
-    </form>
-</div>
-<div id="new-comment-msg" class="alert alert-info row" role="alert">Komentarz został dodany</div>
 <div class="row">
     <ul id="comment-list" class="media-list">
         <li id="new-added-comment" class="media">
-            <a class="pull-left" href="#">
+            <div class="pull-left">
                 <img class="media-object img-circle" src="{{ app.user ? app.user.getAvatarImageSrc() : '' }}">
-            </a>
+            </div>
             <div class="media-body">
                 <div id="comment-well-new" class="well well-lg comment-well">
                     <div class="comment-header">
@@ -70,9 +45,9 @@
         </li>
         {% for comment in restaurant.comments %}
             <li class="media">
-                <a class="pull-left" href="#">
+                <div class="pull-left">
                     <img class="media-object img-circle" src="{{ comment.author ? comment.author.getAvatarImageSrc() : asset('build/images/account_deleted.png') }}">
-                </a>
+                </div>
                 <div class="media-body">
                     <div data-post-id="{{ comment.getId() }}" class="well well-lg comment-well">
                         <div class="comment-header">
@@ -134,10 +109,10 @@
                 <div class="media-list collapse" id="reply-block-{{ comment.getId() }}">
                     {% for reply in comment.getReplies() %}
                         <div class="media media-replied">
-                            <a class="pull-left" href="#">
+                            <div class="pull-left">
                                 <img class="media-object img-circle" src="{{ reply.author ? reply.author.getAvatarImageSrc() : asset('build/images/account_deleted.png') }}"
                                      alt="cannot load image">
-                            </a>
+                            </div>
                             <div class="media-body">
                                 <div class="well well-lg">
                                     <div class="reviews">
@@ -156,10 +131,10 @@
                     {% endfor %}
                     {% if app.user %}
                         <div class="media media-replied">
-                            <a class="pull-left" href="#">
+                            <div class="pull-left">
                                 <img class="media-object img-circle" src="{{ app.user.getAvatarImageSrc() }}"
                                      alt="cannot load image">
-                            </a>
+                            </div>
                             <div class="media-body new-reply">
                                 <div class="well well-lg">
                                     <div class="clearfix">
@@ -186,7 +161,6 @@
                         </div>
                     {% endif %}
                 </div>
-
             </li>
         {% endfor %}
     </ul>

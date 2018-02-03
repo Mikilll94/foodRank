@@ -1,0 +1,22 @@
+<div id="add-comment-row">
+    <form id="add-comment-form">
+        {% block choice_widget_expanded -%}
+            <div class="form_rate">
+                {%- for child in form.rate %}
+                    <input type="radio" id="rate_{{ child.vars.value }}" name="rate"
+                           value="{{ child.vars.value }}">
+                    <label for="rate_{{ child.vars.value }}" class="required"></label>
+                {% endfor -%}
+            </div>
+        {%- endblock choice_widget_expanded -%}
+        <input type="hidden" name="restaurant_id" value="{{ app.request.get('restaurant_id') }}">
+        <div class="form-group">
+            <textarea class="form-control" name="content" id="new-comment" rows="5"></textarea>
+        </div>
+        <button class="btn btn-success btn-circle text-uppercase add-comment"
+                data-loading-text="<span class='glyphicon glyphicon-refresh spinning'></span> Proszę czekać">
+            <span class="glyphicon glyphicon-send"></span>Dodaj komentarz
+        </button>
+    </form>
+</div>
+<div id="new-comment-msg" class="alert alert-info row" role="alert">Komentarz został dodany</div>
