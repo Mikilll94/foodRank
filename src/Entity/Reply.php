@@ -25,6 +25,7 @@ class Reply
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="replies")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $author;
 

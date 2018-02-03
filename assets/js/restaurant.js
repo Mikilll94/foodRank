@@ -1,3 +1,4 @@
+require('../images/account_deleted.png');
 require('../css/restaurant.scss');
 require('../css/stars.scss');
 require('../css/comment_box.scss');

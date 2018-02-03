@@ -71,7 +71,7 @@
         {% for comment in restaurant.comments %}
             <li class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object img-circle" src="{{ comment.author.getAvatarImageSrc() }}">
+                    <img class="media-object img-circle" src="{{ comment.author ? comment.author.getAvatarImageSrc() : asset('build/images/account_deleted.png') }}">
                 </a>
                 <div class="media-body">
                     <div data-post-id="{{ comment.getId() }}" class="well well-lg comment-well">
@@ -104,11 +104,11 @@
                                 </span>
                             </div>
                         </div>
-                        <h4 class="media-heading reviews">{{ comment.author.username }}</h4>
+                        <h4 class="media-heading reviews">{{ comment.author ? comment.author.username : 'Konto usunięte' }}</h4>
                         <p class="media-comment">{{ comment.getContent() }}</p>
                         <textarea class="media-comment-edit form-control">{{ comment.getContent() }}</textarea>
                         <div class="button-section">
-                            {% if app.user and app.user.username == comment.author.username
+                            {% if app.user and comment.author and app.user.username == comment.author.username
                                 and comment.getPostingDate().timestamp > date().timestamp - 60 %}
                                 <button type="button" class="btn btn-danger btn-circle text-uppercase
                                     edit-comment-btn"><span class="glyphicon glyphicon-edit"></span> Edytuj
@@ -135,14 +135,14 @@
                     {% for reply in comment.getReplies() %}
                         <div class="media media-replied">
                             <a class="pull-left" href="#">
-                                <img class="media-object img-circle" src="{{ reply.author.getAvatarImageSrc() }}"
+                                <img class="media-object img-circle" src="{{ reply.author ? reply.author.getAvatarImageSrc() : asset('build/images/account_deleted.png') }}"
                                      alt="cannot load image">
                             </a>
                             <div class="media-body">
                                 <div class="well well-lg">
                                     <div class="reviews">
                                         <span class="h4 reviews">
-                                            <span class="glyphicon glyphicon-share-alt"></span> {{ reply.author.getUsername() }}
+                                            <span class="glyphicon glyphicon-share-alt"></span> {{ reply.author ? reply.author.getUsername() : 'Konto usunięte' }}
                                         </span>
                                         <p class="list-inline pull-right reviews">
                                             <span class="posting-date">{{ reply.getPostingDate() | date("d-m-Y") }}</span>

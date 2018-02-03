@@ -19,7 +19,7 @@ class ReplyController extends Controller
      * @param UserInterface $user
      * @return JsonResponse
      */
-    public function index(Request $request, UserInterface $user)
+    public function addReply(Request $request, UserInterface $user)
     {
         $reply = new Reply();
         $reply->setAuthor($user);

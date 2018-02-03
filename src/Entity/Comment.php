@@ -26,12 +26,13 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $author;
 
     /**
      * @ORM\Column(type="string", length=500)
-     * @Assert\NotBlank(message = "Komentarz nie może być pusty.")
+     * @Assert\NotBlank(message="Komentarz nie może być pusty.")
      */
     private $content;
 
