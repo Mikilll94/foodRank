@@ -9,6 +9,6 @@ hwi_oauth:
       type: facebook
       client_id: '%env(resolve:FACEBOOK_CLIENT_ID)%'
       client_secret: '%env(resolve:FACEBOOK_SECRET)%'
-      infos_url: "https://graph.facebook.com/me?fields=id,name,email"
+      infos_url: "https://graph.facebook.com/me?fields=id,name,email,picture.type(large)"
       options:
         csrf: true
