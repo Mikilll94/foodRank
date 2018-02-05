@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
+{% set menu_selected = 'main_page' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/all_restaurants.css') }}">
 {% endblock %}
 
-{% block title %}View restaurants{% endblock %}
+{% block title %}Poznań - gdzie zjeść?{% endblock %}
 
 {% block content %}
     <div class="row all-restaurants-header">
         <div class="col-lg-12">
-            <h1 id="best_restaurants" class="page-header">Najlepsze restauracje w&nbspPoznaniu</h1>
+            <h1 id="best_restaurants" class="page-header">Dobre restauracje w&nbspPoznaniu</h1>
         </div>
     </div>
 

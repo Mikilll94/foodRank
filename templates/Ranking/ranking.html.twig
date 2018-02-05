@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% set menu_selected = 'ranking' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/ranking.css') }}">
+{% endblock %}
+
+{% block title %}Ranking{% endblock %}
+
+{% block content %}
+    <div class="row all-restaurants-header">
+        <div class="col-lg-12">
+            <h1 id="best_restaurants" class="page-header">Top 10 restauracji w&nbspPoznaniu</h1>
+        </div>
+    </div>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>Miejsce</th>
+            <th>Nazwa restauracji</th>
+            <th>Zdjęcie</th>
+            <th>Średnia ocen</th>
+            <th>Liczba komentarzy</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set i = 1 %}
+        {% for restaurant in top_restaurants %}
+            <tr>
+                <th scope="row">{{ i }}</th>
+                {% set i = i + 1 %}
+                <td>{{ restaurant.name }}</td>
+                <td>
+                    <img class="restaurant-rank-image" src="{{ asset('build/images/' ~ restaurant.image_url) }}" />
+                </td>
+                <td>{{ restaurant.avg_rate|round(2) }}</td>
+                <td>{{ restaurant[1] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

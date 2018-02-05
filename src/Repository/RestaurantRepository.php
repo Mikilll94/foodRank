@@ -15,7 +15,6 @@ class RestaurantRepository extends ServiceEntityRepository
         parent::__construct($registry, Restaurant::class);
     }
 
-
     /**
      * @param $restaurant_id
      * @return mixed
@@ -32,5 +31,20 @@ class RestaurantRepository extends ServiceEntityRepository
             ->where('r.id = :restaurant_id')->setParameter('restaurant_id', $restaurant_id)
             ->getQuery()
             ->getSingleResult();
+    }
+
+    public function getTopRestaurants()
+    {
+        return $this->createQueryBuilder('r')
+            ->addSelect('r.name')
+            ->addSelect('r.image_url')
+            ->join('r.comments', 'c')
+            ->addSelect('AVG(c.rate) AS avg_rate')
+            ->addSelect('COUNT(c.id)')
+            ->groupBy('r.id')
+            ->orderBy('avg_rate', 'desc')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
     }
 }

@@ -6,6 +6,7 @@ Encore
     .addEntry('global', './assets/js/global.js')
     .addEntry('all_restaurants', './assets/js/all_restaurants.js')
     .addEntry('restaurant', './assets/js/restaurant.js')
+    .addEntry('ranking', './assets/js/ranking.js')
     .addEntry('register', './assets/js/register.js')
     .addEntry('user_profile', './assets/js/user_profile.js')
     .createSharedEntry('vendor', [
