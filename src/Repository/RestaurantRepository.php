@@ -16,6 +16,18 @@ class RestaurantRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return array
+     */
+    public function getAllRestaurants()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->orderBy('r.name')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * @param $restaurant_id
      * @return mixed
      * @throws NoResultException

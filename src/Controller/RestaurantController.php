@@ -23,7 +23,7 @@ class RestaurantController extends Controller
     {
         $restaurants = $this->getDoctrine()
             ->getRepository(Restaurant::class)
-            ->findAll();
+            ->getAllRestaurants();
 
         return $this->render('All_restaurants/all_restaurants.html.twig', ['restaurants' => $restaurants]);
     }

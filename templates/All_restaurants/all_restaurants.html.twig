@@ -24,39 +24,11 @@
                         <p>{{ restaurant.getShortDescription() }}</p>
                     </div>
                     <a class="btn btn-primary btn-more-info"
-                        href="{{ path('restaurant_details', {'restaurant_id': restaurant.getId()}) }}"
-                        class="btn btn-default">Więcej informacji
+                       href="{{ path('restaurant_details', {'restaurant_id': restaurant.getId()}) }}">
+                        Więcej informacji
                     </a>
                 </div>
             </div>
         {% endfor %}
-    </div>
-
-    <div id="pagination-row" class="row text-center">
-        <div class="col-lg-12">
-            <ul class="pagination">
-                <li>
-                    <a href="#">&laquo;</a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">&raquo;</a>
-                </li>
-            </ul>
-        </div>
     </div>
 {% endblock %}
