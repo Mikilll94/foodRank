@@ -85,6 +85,9 @@ class RestaurantFixtures extends Fixture
         $manager->persist($pyra_bar);
 
         $this->addReference('tutti_santi', $tutti_santi);
+        $this->addReference('restauracja_papierowka', $restauracja_papierowka);
+        $this->addReference('weranda_caffe', $weranda_caffe);
+        $this->addReference('figaro', $figaro);
 
         $manager->flush();
     }

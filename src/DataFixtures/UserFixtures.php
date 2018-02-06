@@ -57,11 +57,31 @@ class UserFixtures extends Fixture
         $kamila_nowak->setIsActive('1');
         $manager->persist($kamila_nowak);
 
+        $chuck = new User();
+        $chuck->setUsername('chuck');
+        $chuck->setPassword('$2y$13$G3g8z/5S8VgIK2r0hfI8X.oPAm/iM.BAJfSVBZxYMY11OwOdtbdRS');
+        $chuck_avatar = stream_get_contents(fopen(__DIR__ . '/avatars/chuck_avatar.jpg', 'rb'));
+        $chuck->setAvatar($chuck_avatar);
+        $chuck->setEmail('chuck@gmail.com');
+        $chuck->setIsActive('1');
+        $manager->persist($chuck);
+
+        $gosia = new User();
+        $gosia->setUsername('gosia');
+        $gosia->setPassword('$2y$13$G3g8z/5S8VgIK2r0hfI8X.oPAm/iM.BAJfSVBZxYMY11OwOdtbdRS');
+        $gosia_avatar = stream_get_contents(fopen(__DIR__ . '/avatars/gosia_avatar.jpg', 'rb'));
+        $gosia->setAvatar($gosia_avatar);
+        $gosia->setEmail('gosia@gmail.com');
+        $gosia->setIsActive('1');
+        $manager->persist($gosia);
+
         $manager->flush();
 
         $this->addReference('anna_kowalska', $anna_kowalska);
         $this->addReference('sonya', $sonya);
         $this->addReference('chris', $chris);
         $this->addReference('kamila_nowak', $kamila_nowak);
+        $this->addReference('chuck', $chuck);
+        $this->addReference('gosia', $gosia);
     }
 }

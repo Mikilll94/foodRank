@@ -15,6 +15,8 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        // Tutti Santi
+
         $comment1 = new Comment();
         $comment1->setAuthor($this->getReference('anna_kowalska'));
         $comment1->setContent('Pizza super ale obsługa do wymiany + kucharz który pizzę przy dwóch stolikach zajętych robił 35 MINUT !!! 😫. W suszonych czeka się max 25min 🙂 kelnerka żeby zyskać napiwek nawet do stolika nie przyszła żeby wziąsc rachunek i spytać czy wydać resztę. Masakra');
@@ -60,6 +62,52 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
         $comment4->setRate('2');
         $comment4->setRestaurant($this->getReference('tutti_santi'));
         $manager->persist($comment4);
+
+        // Restauracja papierówka
+
+        $comment5 = new Comment();
+        $comment5->setAuthor($this->getReference('chuck'));
+        $comment5->setContent('Bardzo fajne miejsce');
+        $comment5->setPostingDate(new \DateTime('2018-02-06 21:04:50'));
+        $comment5->setRate('4');
+        $comment5->setRestaurant($this->getReference('restauracja_papierowka'));
+        $manager->persist($comment5);
+
+        $comment6 = new Comment();
+        $comment6->setAuthor($this->getReference('gosia'));
+        $comment6->setContent('Super restauracja');
+        $comment6->setPostingDate(new \DateTime('2018-02-06 12:32:12'));
+        $comment6->setRate('5');
+        $comment6->setRestaurant($this->getReference('restauracja_papierowka'));
+        $manager->persist($comment6);
+
+        // Weranda Caffe
+
+        $comment7 = new Comment();
+        $comment7->setAuthor($this->getReference('chris'));
+        $comment7->setContent('Bardzo fajne miejsce');
+        $comment7->setPostingDate(new \DateTime('2018-01-31 21:16:23'));
+        $comment7->setRate('4');
+        $comment7->setRestaurant($this->getReference('weranda_caffe'));
+        $manager->persist($comment7);
+
+        $comment8 = new Comment();
+        $comment8->setAuthor($this->getReference('sonya'));
+        $comment8->setContent('Wieczorny wypad we dwoje');
+        $comment8->setPostingDate(new \DateTime('2018-02-03 12:32:23'));
+        $comment8->setRate('5');
+        $comment8->setRestaurant($this->getReference('weranda_caffe'));
+        $manager->persist($comment8);
+
+        // Figaro
+
+        $comment9 = new Comment();
+        $comment9->setAuthor($this->getReference('kamila_nowak'));
+        $comment9->setContent('Ładna restauracja,kelnerki pomocne makaron z grzybami i truflą lekko rozgotowany spodziewaliśmy się  dużo lepszej kuchni.Jeszcze wrócimy.');
+        $comment9->setPostingDate(new \DateTime('2018-02-03 12:32:23'));
+        $comment9->setRate('3');
+        $comment9->setRestaurant($this->getReference('figaro'));
+        $manager->persist($comment9);
 
         $manager->flush();
     }
