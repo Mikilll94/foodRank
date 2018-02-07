@@ -2,4 +2,14 @@
   width: 200px;
   height: auto; }
 
+#ranking-table td, th {
+  vertical-align: middle;
+  text-align: center; }
+
+.ranking-place {
+  font-size: 30px; }
+
+.avg-rate-ranking {
+  width: 100%; }
+
 /*# sourceMappingURL=ranking.css.map */
