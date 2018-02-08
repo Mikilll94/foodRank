@@ -20,8 +20,9 @@ security:
           check_path: login_form
         oauth:
           resource_owners:
-            facebook: "/connect/check-facebook"
+            facebook: "/login_facebook"
           login_path: login_form
+          use_referer: true
           failure_path: login_form
           oauth_user_provider:
             service: oauth_user_provider

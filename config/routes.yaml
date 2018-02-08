@@ -11,4 +11,4 @@ hwi_oauth_login:
     prefix:   /login
 
 facebook_login:
-    path: /connect/check-facebook
+    path: /login_facebook
