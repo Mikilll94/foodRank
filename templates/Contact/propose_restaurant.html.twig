@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% set menu_selected = 'propose_restaurant' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block title %}Zgłoś restaurację{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Zaproponuj nową restaurację</h1>
+        <p>Znasz wartą uwagi restaurację w Poznaniu? Chciałbyś ją wypromować na portalu FoodRank albo poznać co inni
+            ludzie
+            sądzą na jej temat. Śmiało, wypełnij poniższy formularz i zgłoś swoją restaurację!</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form id="propose-restaurant-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Nazwa restauracji</label>
+                                <input type="text" class="form-control" id="name" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Adres restauracji</label>
+                                <input class="form-control" id="email" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Najlepsze dania</label>
+                                <input class="form-control" id="name" required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Krótki opis restauracji</label>
+                                <textarea name="message" id="message" class="form-control" rows="9" cols="25"
+                                          required="required"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                                Zgłoś restaurację
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div id="propose-restaurant-thanks" class="alert alert-info" style="display: none">
+                    Dziękujemy za wypelnienie formularza. W ciągu najbliższych 7 dni zostanie wysłana
+                    na pocztę elektroniczną informacja o statusie propozycji.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+                <div style="padding-bottom: 10px">
+                A może chciałbyś się z nami skontaktować?
+                </div>
+                <legend>
+                    <span class="glyphicon glyphicon-globe"></span> Nasze biuro
+                </legend>
+                <address>
+                    <strong>Twitter, Inc.</strong><br>
+                    795 Folsom Ave, Suite 600<br>
+                    San Francisco, CA 94107<br>
+                    <abbr title="Phone">
+                        P:</abbr>
+                    (123) 456-7890
+                </address>
+                <address>
+                    <strong>Mikołaj Waśniewski</strong><br>
+                    <a href="mailto:wasniewski.mikolaj@gmail.com">wasniewski.mikolaj@gmail.com</a>
+                </address>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src={{ asset('build/propose_restaurant.js') }}></script>
+{% endblock %}

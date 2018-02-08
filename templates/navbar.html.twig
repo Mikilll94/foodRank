@@ -17,8 +17,8 @@
                 <li {% if menu_selected|default('') == 'ranking' %}class="active"{% endif %}>
                     <a href="{{ path('ranking') }}">Ranking</a>
                 </li>
-                <li {% if menu_selected|default('') == 'contact' %}class="active"{% endif %}>
-                    <a href="#contact">Kontakt</a>
+                <li {% if menu_selected|default('') == 'propose_restaurant' %}class="active"{% endif %}>
+                    <a href="{{ path('propose_restaurant') }}">Zgłoś restaurację</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
