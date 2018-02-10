@@ -47,8 +47,7 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=60, unique=true)
-     * @Assert\NotBlank(message="Pole nie może być puste")
+     * @ORM\Column(type="string", length=60, unique=true, nullable=true)
      * @Assert\Email(
      *     message = "Wprowadzony adres email jest nieprawidłowy",
      *     checkMX = true

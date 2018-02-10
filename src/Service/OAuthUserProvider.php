@@ -49,8 +49,6 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
             $user->setUsername($data['name']);
             if (array_key_exists('email', $data)) {
                 $user->setEmail($data['email']);
-            } else {
-                $user->setEmail('no_email');
             }
             $user->setAvatar(file_get_contents($data['picture']['data']['url']));
 

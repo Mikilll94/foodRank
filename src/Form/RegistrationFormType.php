@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
@@ -19,7 +20,9 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, ['label' => 'Nazwa użytkownika'])
-            ->add('email', EmailType::class, ['label' => 'Adres email'])
+            ->add('email', EmailType::class,
+                ['label' => 'Adres email', 'constraints' => [new NotBlank(['message' => 'Adres email nie może być pusty'])]]
+            )
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Wpisane hasła nie są identyczne.',
