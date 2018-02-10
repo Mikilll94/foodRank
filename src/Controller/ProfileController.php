@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 
+use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,11 +21,14 @@ class ProfileController extends Controller
 {
     /**
      * @Route("/profile", name="profile")
+     * @param UserInterface $user
      * @return Response
      */
-    public function index()
+    public function index(UserInterface $user)
     {
-        return $this->render('User/user_profile.html.twig');
+        $user_comments_count = $this->getDoctrine()->getRepository(User::class)
+            ->getUserCommentsCount($user);
+        return $this->render('User/user_profile.html.twig', ['user_comments_count' => $user_comments_count ]);
     }
 
     /**
