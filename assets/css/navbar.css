@@ -96,9 +96,12 @@
   height: auto;
   position: relative;
   top: 10px;
-  right: 15px; }
+  margin-left: 10px; }
 
-#foodrank-logo-containerimg {
+@media (min-width: 768px) {
+  #foodrank-logo-container {
+    margin-right: 10px; } }
+#foodrank-logo-container img {
   width: 100%; }
 
 /*# sourceMappingURL=navbar.css.map */
