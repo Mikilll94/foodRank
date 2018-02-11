@@ -84,10 +84,21 @@
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2); }
 
-.btn-facebook:hover {
+.btn-facebook:focus {
   color: #fff; }
 
 .btn-facebook .fa-facebook {
   padding-right: 6px; }
+
+#foodrank-logo-container {
+  float: left;
+  width: 32px;
+  height: auto;
+  position: relative;
+  top: 10px;
+  right: 15px; }
+
+#foodrank-logo-containerimg {
+  width: 100%; }
 
 /*# sourceMappingURL=navbar.css.map */

@@ -1,3 +1,4 @@
+require('../images/logo.png');
 require('../css/global.scss');
 require('../css/footer.scss');
 require('../css/navbar.scss');
