@@ -1,5 +1,9 @@
 @import 'muli_font';
 
+$grid-float-breakpoint: 992px;
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
 body {
   position: relative;
   padding-bottom: 49.2px;

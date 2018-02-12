@@ -92,12 +92,14 @@
 
 #foodrank-logo-container {
   float: left;
-  margin-right: 10px; }
+  margin-right: 10px;
+  position: relative;
+  bottom: 5px;
+  width: 32px; }
+  #foodrank-logo-container img {
+    width: 100%; }
 
 #foodrank-brand {
-  color: #ffffff; }
-
-#foodrank-logo-container img {
-  width: 100%; }
+  color: #ddd; }
 
 /*# sourceMappingURL=navbar.css.map */

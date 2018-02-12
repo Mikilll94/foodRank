@@ -1,29 +1,41 @@
 #login-dp {
   min-width: 250px;
   padding: 14px 14px 0;
+
+  .help-block {
+    font-size: 12px;
+  }
+
+  .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
+  }
+
+  .social-buttons {
+    margin: 12px 0
+  }
+
+  .social-buttons a {
+    width: 49%;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
 }
 
-#login-dp .help-block {
-  font-size: 12px
-}
+@media(max-width: 992px) {
+  #login-dp {
+    background-color: inherit;
+    color: #fff;
 
-#login-dp .bottom {
-  background-color: rgba(255, 255, 255, .8);
-  border-top: 1px solid #ddd;
-  clear: both;
-  padding: 14px;
-}
-
-#login-dp .social-buttons {
-  margin: 12px 0
-}
-
-#login-dp .social-buttons a {
-  width: 49%;
-}
-
-#login-dp .form-group {
-  margin-bottom: 10px;
+    .bottom {
+      background-color: inherit;
+      border-top: 0 none;
+    }
+  }
 }
 
 .btn-fb {
@@ -48,17 +60,6 @@
 
 .navbar-have-account {
   padding-left: 15px;
-}
-
-@media(max-width: 768px) {
-  #login-dp {
-    background-color: inherit;
-    color: #fff;
-  }
-  #login-dp .bottom {
-    background-color: inherit;
-    border-top: 0 none;
-  }
 }
 
 #navbar {
@@ -108,7 +109,7 @@
 .btn-facebook:hover {
   color: #fff;
   background-color: #2d4373;
-  border-color: rgba(0,0,0,0.2);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .btn-facebook:focus {
@@ -122,12 +123,15 @@
 #foodrank-logo-container {
   float: left;
   margin-right: 10px;
+  position: relative;
+  bottom: 5px;
+  width: 32px;
+
+  img {
+    width: 100%;
+  }
 }
 
 #foodrank-brand {
-  color: #ffffff;
-}
-
-#foodrank-logo-container img {
-  width: 100%;
+  color: #ddd;
 }
