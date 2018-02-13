@@ -14,10 +14,10 @@ class RankingController extends Controller
      */
     public function index()
     {
-        $top_restautants = $this->getDoctrine()->getManager()
+        $top_restaurants = $this->getDoctrine()->getManager()
             ->getRepository(Restaurant::class)
             ->getTopRestaurants();
 
-        return $this->render('Ranking/ranking.html.twig', [ 'top_restaurants' => $top_restautants ]);
+        return $this->render('Ranking/ranking.html.twig', [ 'top_restaurants' => $top_restaurants ]);
     }
 }

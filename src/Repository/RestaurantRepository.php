@@ -48,11 +48,9 @@ class RestaurantRepository extends ServiceEntityRepository
     public function getTopRestaurants()
     {
         return $this->createQueryBuilder('r')
-            ->addSelect('r.name')
-            ->addSelect('r.image_url')
             ->join('r.comments', 'c')
             ->addSelect('AVG(c.rate) AS avg_rate')
-            ->addSelect('COUNT(c.id)')
+            ->addSelect('COUNT(c.id) AS comments_count')
             ->groupBy('r.id')
             ->orderBy('avg_rate', 'desc')
             ->setMaxResults(10)

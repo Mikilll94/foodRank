@@ -2,7 +2,7 @@
 {% set menu_selected = 'main_page' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/all_restaurants.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/all_restaurants.css') }}">
 {% endblock %}
 
 {% block title %}Poznań - gdzie zjeść?{% endblock %}
@@ -18,7 +18,7 @@
         {% for restaurant in restaurants %}
             <div class="col-md-3 col-sm-6 hero-feature restaurant-flex-item">
                 <div class="thumbnail restaurant-thumbnail">
-                    <img src="{{ asset('build/images/' ~ restaurant.getImageUrl()) }}" alt="cannot load image" class="restaurant-image">
+                    <img src="{{ restaurant.getImageSrc() }}" alt="cannot load image" class="restaurant-image">
                     <div class="caption restaurant-caption">
                         <h3>{{ restaurant.getName() }}</h3>
                         <p>{{ restaurant.getShortDescription() }}</p>

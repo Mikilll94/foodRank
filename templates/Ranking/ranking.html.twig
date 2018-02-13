@@ -31,15 +31,14 @@
                     <td class="ranking-place">{{ i }}</td>
                     {% set i = i + 1 %}
                     <td>
-                        <img class="restaurant-rank-image" src="{{ asset('build/images/' ~ restaurant.image_url) }}"/>
+                        <img class="restaurant-rank-image" src="{{ restaurant[0].getImageSrc() }}" />
                     </td>
-                    <td>{{ restaurant.name }}</td>
+                    <td>{{ restaurant[0].getName() }}</td>
                     <td>
                         <table class="avg-rate-ranking">
                             <tr>
                                 <td>
-                                    <input class="rating rating-loading"
-                                           value="{{ restaurant.avg_rate }}"
+                                    <input class="rating rating-loading" value="{{ restaurant.avg_rate }}"
                                            data-min="0" data-max="5" data-step="0.01" data-display-only="true"
                                            data-size="xs">
                                 </td>
@@ -49,7 +48,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td>{{ restaurant[1] }}</td>
+                    <td>{{ restaurant['comments_count'] }}</td>
                 </tr>
             {% endfor %}
             </tbody>

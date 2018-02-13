@@ -4,7 +4,7 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('global', './assets/js/global.js')
-    .addEntry('all_restaurants', './assets/js/all_restaurants.js')
+    .addStyleEntry('css/all_restaurants', './assets/css/all_restaurants.scss')
     .addEntry('restaurant', './assets/js/restaurant.js')
     .addEntry('ranking', './assets/js/ranking.js')
     .addEntry('propose_restaurant', './assets/js/propose_restaurant.js')

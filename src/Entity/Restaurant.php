@@ -24,9 +24,9 @@ class Restaurant
     private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="blob")
      */
-    private $image_url;
+    private $image;
 
     /**
      * @ORM\Column(type="string", length=500)
@@ -73,14 +73,20 @@ class Restaurant
         $this->name = $name;
     }
 
-    public function getImageUrl()
+    public function getImage()
     {
-        return $this->image_url;
+        return $this->image;
     }
 
-    public function setImageUrl($image_url): void
+    public function getImageSrc()
     {
-        $this->image_url = $image_url;
+        rewind($this->image);
+        return 'data:image/jpeg;base64,' . base64_encode(stream_get_contents($this->image));
+    }
+
+    public function setImage($image): void
+    {
+        $this->image = $image;
     }
 
     public function getShortDescription()
