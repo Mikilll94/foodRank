@@ -1,10 +1,12 @@
+'use strict';
+
 require('../images/account_deleted.png');
 require('../css/restaurant.scss');
 require('../css/stars.scss');
 require('../css/comment_box.scss');
 require('../css/rating_stats.scss');
 
-const alertify = require('alertifyjs');
+const notify = require('./notify');
 
 function getPostedData($form) {
     return $form.serializeArray().reduce(function (obj, item) {
@@ -36,8 +38,7 @@ $(document).ready(function () {
             success: function (data) {
                 $addCommentBtn.button('reset');
                 if (data.errors.length > 0) {
-                    alertify.set('notifier', 'position', 'bottom-center');
-                    alertify.notify(data.errors.join('\n'), 'error', 5);
+                    notify('error', data.errors.join('\n'), 'bottom-center');
                     return;
                 }
 
@@ -112,10 +113,9 @@ $(document).ready(function () {
                 newRate: rate,
                 newContent: content
             },
-            success: function (data, status) {
+            success: function (data) {
                 if (data.errors.length > 0) {
-                    alertify.set('notifier', 'position', 'bottom-center');
-                    alertify.notify(data.errors.join('\n'), 'error', 5);
+                    notify('error', data.errors.join('\n'), 'bottom-center');
                     return;
                 }
 
@@ -164,8 +164,7 @@ $(document).ready(function () {
             success: function (data) {
                 $replyButton.button('reset');
                 if (data.errors.length > 0) {
-                    alertify.set('notifier', 'position', 'bottom-center');
-                    alertify.notify(data.errors.join('\n'), 'error', 5);
+                    notify('error', data.errors.join('\n'), 'bottom-center');
                     return;
                 }
                 let $newReply = $form.closest('.new-reply');

@@ -1,4 +1,6 @@
-const alertify = require('alertifyjs');
+'use strict';
+
+const notify = require('./notify');
 
 $(document).ready(function () {
     $('#login-nav').submit(function(e) {
@@ -24,11 +26,10 @@ $(document).ready(function () {
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 $('#login-navbar-btn').button('reset');
-                alertify.set('notifier','position', 'top-left');
                 if (thrownError === "Unauthorized") {
-                    alertify.notify('Nieprawidłowe hasło lub login', 'error', 5);
+                    notify('error', 'Nieprawidłowe hasło lub login', 'top-left');
                 } else {
-                    alertify.notify('Wystąpił nieoczekiwany błąd', 'error', 5);
+                    notify('error', 'Wystąpił nieoczekiwany błąd', 'top-left');
                 }
             }
         })
