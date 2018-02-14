@@ -7,13 +7,16 @@
 
 {% block title %}Poznań - gdzie zjeść?{% endblock %}
 
-{% block content %}
-    <div class="row all-restaurants-header">
-        <div class="col-lg-12">
-            <h1 id="best_restaurants" class="page-header">Dobre restauracje w&nbspPoznaniu</h1>
+{% block header %}
+    <div id="all-restaurants-jumbotron" class="jumbotron masthead">
+        <div class="container">
+            <h1>Katalog restauracji w Poznaniu</h1>
+            <p>Poznaj najlepsze restauracje w&nbspPoznaniu dzięki portalowi społecznościowemu FoodRank.</p>
         </div>
     </div>
+{% endblock %}
 
+{% block content %}
     <div class="row text-center restaurants-flex-container">
         {% for restaurant in restaurants %}
             <div class="col-md-3 col-sm-6 hero-feature restaurant-flex-item">

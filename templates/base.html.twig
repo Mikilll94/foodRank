@@ -14,10 +14,13 @@
     {% include 'Security/forgot_password_modal.html.twig' %}
     {% block modals %}{% endblock %}
     {% include 'navbar.html.twig' %}
+    <div class="se-pre-con">
+        <img src="{{ asset('build/images/throbber.gif') }}">
+    </div>
+    <div>
+        {% block header %}{% endblock %}
+    </div>
     <div id="global-container" class="container">
-        <div class="se-pre-con">
-            <img src="{{ asset('build/images/throbber.gif') }}">
-        </div>
         {% block content %}{% endblock %}
     </div>
     {% include 'footer.html.twig' %}
