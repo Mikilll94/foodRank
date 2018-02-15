@@ -50,10 +50,9 @@
                     </li>
                 {% else %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span>
-                            {{ app.user.username }}
-                            <span class="caret"></span>
+                        <img id="avatar-login-thumbnail" class="img-circle" src="{{ app.user.getAvatarImageSrc() }}">
+                        <a id="username-navbar" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{ app.user.username }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>

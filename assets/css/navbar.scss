@@ -139,3 +139,16 @@
 #foodrank-brand {
   color: #ddd;
 }
+
+#avatar-login-thumbnail {
+  width: auto;
+  height: 40px;
+  position: relative;
+  margin-left: 10px;
+  left: 3px;
+  bottom: 2px;
+}
+
+#avatar-login-thumbnail, #username-navbar  {
+  display: inline-block;
+}
