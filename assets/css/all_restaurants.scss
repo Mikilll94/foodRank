@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
 #all-restaurants-jumbotron {
-  font-family: "Kaushan Script", cursive;
   color: #fff;
   text-align: center;
-  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
   background: url(../images/jumbotron.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
@@ -10,11 +10,20 @@
   padding: 230px 0 240px;
 }
 
+#all-restaurants-jumbotron-header {
+  font-family: "Kaushan Script", cursive;
+  font-size: 70px;
+}
+
 @media(max-width: 768px) {
   #all-restaurants-jumbotron {
     padding: 50px 0 60px;
   }
 
+  #all-restaurants-jumbotron-header {
+    font-family: "Kaushan Script", cursive;
+    font-size: 60px;
+  }
 }
 
 #global-container {
