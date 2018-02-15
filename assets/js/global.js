@@ -13,7 +13,7 @@ const $ = require('jquery');
 global.$ = global.jQuery = $;
 
 $(window).on('load', function() {
-    $(".se-pre-con").fadeOut("slow");
+    $('.se-pre-con').fadeOut('slow');
 });
 
 $(document).ready(function() {
