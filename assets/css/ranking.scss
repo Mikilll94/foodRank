@@ -1,17 +1,33 @@
-.restaurant-rank-image {
-  width: 200px;
-  height: auto;
-}
+#ranking-table {
 
-#ranking-table td, th {
-  vertical-align: middle;
-  text-align: center;
-}
+  tbody > tr:hover {
+    background: linear-gradient(#fffafa, #a69f9f);
+  }
 
-.ranking-place {
-  font-size: 30px;
-}
+  tr {
+    cursor: pointer;
 
-.avg-rate-ranking {
-  width: 100%;
+    td, th {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    td.ranking-place {
+      font-size: 30px;
+    }
+
+    td.image > img {
+      width: 200px;
+      height: auto;
+    }
+
+    td.name {
+      font-size: 18px;
+    }
+
+    td.avg-rate > .rating-container {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
 }

@@ -27,26 +27,18 @@
             <tbody>
             {% set i = 1 %}
             {% for restaurant in top_restaurants %}
-                <tr class="text-center">
+                <tr class="text-center" onclick="window.location='{{ '/restaurants/' ~ restaurant[0].getId() }}'">
                     <td class="ranking-place">{{ i }}</td>
                     {% set i = i + 1 %}
-                    <td>
-                        <img class="restaurant-rank-image" src="{{ restaurant[0].getImageSrc() }}" />
+                    <td class="image">
+                        <img src="{{ restaurant[0].getImageSrc() }}" />
                     </td>
-                    <td>{{ restaurant[0].getName() }}</td>
-                    <td>
-                        <table class="avg-rate-ranking">
-                            <tr>
-                                <td>
-                                    <input class="rating rating-loading" value="{{ restaurant.avg_rate }}"
-                                           data-min="0" data-max="5" data-step="0.01" data-display-only="true"
-                                           data-size="xs">
-                                </td>
-                                <td>
-                                    <label class="control-label">{{ restaurant.avg_rate|round(2) }}</label>
-                                </td>
-                            </tr>
-                        </table>
+                    <td class="name">{{ restaurant[0].getName() }}</td>
+                    <td class="avg-rate">
+                        <input class="rating rating-loading" value="{{ restaurant.avg_rate }}"
+                               data-min="0" data-max="5" data-step="0.01" data-display-only="true"
+                               data-size="xs">
+                        <label class="control-label">{{ restaurant.avg_rate|round(2) }}</label>
                     </td>
                     <td>{{ restaurant['comments_count'] }}</td>
                 </tr>
