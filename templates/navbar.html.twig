@@ -9,7 +9,7 @@
             </button>
             <div class="navbar-brand">
                 <div id="foodrank-logo-container">
-                    <img src="{{ asset('build/images/logo.png') }}">
+                    {% include 'logo_img.html.twig' %}
                 </div>
                 <a id="foodrank-brand" href="{{ path('all_restaurants') }}">FoodRank</a>
             </div>

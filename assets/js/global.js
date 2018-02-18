@@ -1,6 +1,5 @@
 'use strict';
 
-require('../images/logo.png');
 require('../css/global.scss');
 require('../js/notify.js');
 require('../css/footer.scss');
