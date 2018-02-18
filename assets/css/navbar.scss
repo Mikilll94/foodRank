@@ -152,3 +152,7 @@
 #avatar-login-thumbnail, #username-navbar  {
   display: inline-block;
 }
+
+.fast-spin {
+  animation: fa-spin 1s infinite linear;
+}
