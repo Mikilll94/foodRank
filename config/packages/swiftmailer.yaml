@@ -1,7 +1,7 @@
 swiftmailer:
   transport: smtp
   host: smtp.gmail.com
-  username: wasniewskimikolaj@gmail.com
-  password: svwhlfeixxsjxaoy
+  username: portal.foodrank@gmail.com
+  password: foodrankportal123
   port: 587
   encryption: tls
