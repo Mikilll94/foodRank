@@ -50,11 +50,19 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
             ->getOneOrNullResult();
 
         if ($existingUser === null) {
+
             $user = new User();
-            $user->setFacebookId($data['id']);
-            $user->setFacebookAccessToken($response->getAccessToken());
-            $user->setUsername($data['name']);
             if (array_key_exists('email', $data)) {
+                $existingUserWithEmail = $this->em->getRepository(User::class)->createQueryBuilder('u')
+                    ->where('u.email = :email')
+                    ->setParameters(['email' => $data['email']])
+                    ->setMaxResults(1)
+                    ->getQuery()
+                    ->getOneOrNullResult();
+                if ($existingUserWithEmail) {
+                    $user = $existingUserWithEmail;
+                }
+
                 $user_email = $data['email'];
                 $user->setEmail($user_email);
                 $this->email_sender->sendMail(
@@ -63,6 +71,11 @@ class OAuthUserProvider implements OAuthAwareUserProviderInterface, UserProvider
                     $user_email
                 );
             }
+
+            $user->setFacebookId($data['id']);
+            $user->setFacebookAccessToken($response->getAccessToken());
+            $user->setUsername($data['name']);
+
             $user->setAvatar(file_get_contents($data['picture']['data']['url']));
 
             $encoder = $this->factory->getEncoder($user);
